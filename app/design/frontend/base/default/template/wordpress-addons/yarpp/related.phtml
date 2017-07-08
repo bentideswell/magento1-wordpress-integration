@@ -1,0 +1,34 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $posts = $this->getPosts() ?>
+<?php if ($posts && count($posts) > 0): ?>
+	<div class="yarpp-related">
+		<?php if ($this->isThumbnailView()): ?>
+			<h2><?php echo $this->__($this->getThumbnailsHeading()) ?></h2>
+			<div class="yarpp-thumbnails-horizontal">
+				<?php foreach($posts as $post): ?>
+					<a class="yarpp-thumbnail" href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+						<span class="yarpp-thumbnail-default"><img class="yarpp-thumbnail-default-wide" src="<?php echo $this->getThumbnailImage($post) ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" /></span><span class="yarpp-thumbnail-title"><?php echo $this->escapeHtml($post->getPostTitle()) ?></span>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		<?php else: ?>
+			<?php echo $this->getBeforeBlockHtml() ?>
+			<?php foreach($posts as $post): ?>
+				<?php echo $this->getBeforeEntryHtml() ?>
+					<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a>
+					<?php if ($this->canShowExcerpt()): ?>
+						<?php echo $this->getBeforeExcerptHtml() ?><?php echo $this->getPostExcerpt($post) ?><?php echo $this->getAfterExcerptHtml() ?>
+					<?php endif; ?>
+				<?php echo $this->getAfterEntryHtml() ?>
+			<?php endforeach; ?>
+			<?php echo $this->getAfterBlockHtml() ?>
+		<?php endif; ?>
+	</div>
+<?php endif; ?>

@@ -1,0 +1,102 @@
+Path,Ruta
+Author,Autor
+Type,Tipo
+Name,Nombre
+"Previous Post","Entrada anterior"
+"Next Post","Entrada siguiente"
+"Protected: %s","Protegido: %s"
+Home,Inicio
+Submit,Enviar
+Published,Publicada
+Pages,Páginas
+"Search Posts","Buscar entradas"
+Image,Imagen
+"An unidentified error has occurred.","Ha ocurrido un error no identificado."
+of,de
+Add,Añadir
+"No results found.","Sin resultados."
+Tags,Etiquetas
+Categories,Categorías
+"Leave a comment","Deja un comentario"
+"Sorry, you must be logged in to post a comment.","Disculpa, debes identificarte para escribir un comentario."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","La URL de la página de inicio de tu WordPress %s no es válida. Por favor, arregla <a href=\"%s\">la opción de página de inicio</a>."
+Search,Buscar
+"%s Comments","%s comentarios"
+"No Comments","No hay comentarios"
+"1 Comment","1 comentario"
+Comment,Comentario
+Reply,Responder
+"Leave a Reply","Deja un comentario"
+"Your comment is awaiting moderation.","Tu comentario está pendiente de moderación."
+"%s at %s","%s en %s"
+Email,"Correo electrónico"
+Website,Web
+Links,Enlaces
+Archives,Archivos
+"Select Month","Elegir mes"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","<abbr title=\"Really Simple Syndication\">RSS</abbr> de las entradas"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Gestionado con WordPress, una avanzada plataforma semántica de publicación personal."
+"Select Category","Elegir categoría"
+"Recent Posts","Entradas recientes"
+"Recent Comments","Comentarios recientes"
+"%s on %s","%s en %s"
+"Tag Cloud","Nube de etiquetas"
+"Comment on %s by %s","Comentario en %s por %s"
+"By: %s","Por: %s"
+"Error establishing a database connection","Error estableciendo una conexión con la base de datos"
+Password,Contraseña
+"&laquo; Previous","&laquo; Anterior"
+"Next &raquo;","Siguiente &raquo;"
+Close,Cerrar
+January,enero
+February,febrero
+March,marzo
+April,abril
+May,mayo
+June,junio
+July,julio
+August,agosto
+September,septiembre
+October,octubre
+November,noviembre
+December,diciembre
+Jan_January_abbreviation,ene
+Feb_February_abbreviation,feb
+Mar_March_abbreviation,mar
+Apr_April_abbreviation,abr
+May_May_abbreviation,may
+Jun_June_abbreviation,jun
+Jul_July_abbreviation,jul
+Aug_August_abbreviation,ago
+Sep_September_abbreviation,sep
+Oct_October_abbreviation,oct
+Nov_November_abbreviation,nov
+Dec_December_abbreviation,dic
+Sunday,Domingo
+Monday,Lunes
+Tuesday,Martes
+Wednesday,Miércoles
+Thursday,Jueves
+Friday,Viernes
+Saturday,Sábado
+Sun,Dom
+Mon,Lun
+Tue,Mar
+Wed,Mie
+Thu,Jue
+Fri,Vie
+Sat,Sab
+"Please wait...","Un momento..."
+"Daily Archives: %s","Archivo por días: %s"
+"Monthly Archives: %s","Archivo por meses: %s"
+"One thought on &ldquo;%s&rdquo;","Un pensamiento en &ldquo;%s&rdquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s pensamientos en &ldquo;%s&rdquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Sigue leyendo <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Esta entrada se publicó en %s y está etiquetada con %s en %s<span class=\"by-author\"> por %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Esta entrada fue publicada en %s el %s<span class=\"by-author\"> por %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Esta entrada fue publicada el %s<span class=\"by-author\"> por %s</span>."
+"You have version %s installed. Update to %s.","Estás usando la versión %s. Actualiza a %s."
+"Default Template","Plantilla predeterminada"
+"Install %s","Instalar %s"
+"Update to version %s","Actualizar a la versión %s"
+Position,Posición

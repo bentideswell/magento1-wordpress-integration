@@ -1,0 +1,28 @@
+<?php
+/**
+ * @category   Fishpig
+ * @package   Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author     Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $category = $this->getLinkCategory() ?>
+<?php $links = $this->getLinks() ?>
+<?php if ($links): ?>
+	<div class="block block-blog block-blog-links" id="block-blog-links-<?php if ($category): ?><?php echo $category->getId() ?><?php else: ?>all<?php endif; ?>">
+		<div class="block-title">
+			<strong><span><?php if ($category): ?><?php echo $this->__($category->getName()) ?><?php else: ?><?php echo $this->__($this->getTitle()) ?><?php endif; ?></span></strong>
+		</div>
+		<div class="block-content">
+			<ul id="wp-links-list">
+			<?php foreach($links as $link): ?>
+				<li class="item">
+					<a  href="<?php echo $link->getLinkUrl() ?>" title="<?php echo $link->getLinkName() ?>"<?php if ($link->getLinkRel()): ?> rel="<?php echo $link->getLinkRel() ?>"<?php endif; ?><?php if ($link->getLinkTarget()): ?> target="<?php echo $link->getLinkTarget() ?>"<?php endif; ?>><?php echo $link->getLinkName() ?></a>
+					<?php if ($this->displayLinkDescription()): ?><?php echo $link->getLinkDescription() ?><?php endif; ?>
+				</li>
+			<?php endforeach; ?>
+			</ul>
+		</div>
+		<script type="text/javascript">decorateList('block-blog-links-<?php if ($category): ?><?php echo $category->getId() ?><?php else: ?>all<?php endif; ?>')</script>
+	</div>
+<?php endif; ?>

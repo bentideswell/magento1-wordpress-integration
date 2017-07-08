@@ -1,0 +1,99 @@
+Path,Pot
+Plugin,Vtičnik
+Author,Avtor
+Type,Tip
+Name,Ime
+"Previous Post","Prejšnji prispevek"
+"Next Post","Naslednji prispevek"
+"Protected: %s","Zaščiteno: %s"
+Home,Domov
+Submit,Pošlji
+Published,Objavljeno
+Pages,Strani
+"Search Posts","Išči prispevke"
+Image,Slika
+"An unidentified error has occurred.","Prišlo je do neznane napake."
+of,od
+Add,Dodaj
+"No results found.","Ni rezultatov."
+Tags,Znački
+Categories,Kategoriji
+"Leave a comment",Komentiraj
+"Sorry, you must be logged in to post a comment.","Oprostite, za objavo komentarja morate biti prijavljen."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Vaš domači WordPress URL %s ni velajven.  Prosim, <a href=\"%s\">popravite to nastavitev</a>."
+Search,Išči
+"%s Comments","%s Komentarjev"
+"No Comments","Brez komentarja"
+"1 Comment","1 Komentar"
+Comment,Komentar
+Reply,Odgovori
+"Leave a Reply","Dodaj odgovor"
+"Your comment is awaiting moderation.","Vaš komentar čaka na odobritev."
+"%s at %s","%s ob %s"
+Email,E-pošta
+Website,"Spletna stran"
+Links,Povezave
+Archives,Arhivi
+"Select Month","Izberite Mesec"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Vnosi <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Poganja WordPress, najsodobnejši sistem za semantično osebno objavljanje na spletu."
+"Select Category","Izberite kategorijo"
+"Recent Posts","Najnovejši Prispevki"
+"Recent Comments","Najnovejši komentarji"
+"%s on %s","%s na %s"
+"Tag Cloud","Oblak značk"
+"Comment on %s by %s","Komentar na %s od %s"
+"By: %s","Avtor: %s"
+"Error establishing a database connection","Napaka vzpostavljanja povezave z podatkovno bazo"
+Password,Geslo
+"&laquo; Previous","&laquo; Nazaj"
+"Next &raquo;","Naprej &raquo;"
+Close,Zapri
+January,Januar
+February,Februar
+March,Marec
+May,Maj
+June,Junij
+July,Julij
+August,Avgust
+October,Oktober
+Jan_January_abbreviation,jan
+Feb_February_abbreviation,feb
+Mar_March_abbreviation,mar
+Apr_April_abbreviation,apr
+May_May_abbreviation,maj
+Jun_June_abbreviation,jun
+Jul_July_abbreviation,jul
+Aug_August_abbreviation,avg
+Sep_September_abbreviation,sep
+Oct_October_abbreviation,okt
+Nov_November_abbreviation,nov
+Dec_December_abbreviation,dec
+Sunday,Nedelja
+Monday,Ponedeljek
+Tuesday,Torek
+Wednesday,Sreda
+Thursday,Četrtek
+Friday,Petek
+Saturday,Sobota
+Sun,Ned
+Mon,Pon
+Tue,Tor
+Wed,Sre
+Thu,Čet
+Fri,Pet
+Sat,Sob
+"Please wait...","Prosim počakaje..."
+"Daily Archives: %s","Dnevni arhivi: %s"
+"Monthly Archives: %s","Mesečni arhivi: %s"
+"One thought on &ldquo;%s&rdquo;","Ena misel na &ldquo;%s&rdquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s misli na &ldquo;%s&rdquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Beri naprej <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Ta vnos je objavil <span class=\"by-author\">%s</span> %s v %s in označil z %s."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Ta vnos je objavil <span class=\"by-author\">%s</span> %s v %s."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Ta vnos je objavil <span class=\"by-author\">%s</span> %s."
+"You have version %s installed. Update to %s.","Nameščena je različica %s. Posodobi na %s."
+"Default Template","Privzeta predloga"
+"Install %s","Namesti %s"
+"Update to version %s","Posodobitev na različico %s"
+Position,Položaj

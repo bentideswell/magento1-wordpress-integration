@@ -1,0 +1,20 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $archive = $this->getArchive() ?>
+<?php if ($archive): ?>
+	<div class="page-title">
+		<?php if (!$archive->getIsDaily()): ?>
+			<h1><?php echo $this->__('Monthly Archives: %s', $archive->getName()) ?></h1>
+		<?php else: ?>
+			<h1><?php echo $this->__('Daily Archives: %s', $archive->getName()) ?></h1>
+		<?php endif; ?>
+	</div>
+	<?php echo $this->getPostListHtml() ?>
+<?php endif; ?>
+

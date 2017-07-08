@@ -1,0 +1,89 @@
+Path,Pfad
+Author,Autor
+Type,Typ
+"Previous Post","vorheriger Beitrag"
+"Next Post","nächster Beitrag"
+"Protected: %s","Geschützt: %s"
+Submit,Senden
+Published,Veröffentlicht
+Pages,Seiten
+"Search Posts","Beiträge duchsuchen"
+Image,Bild
+"An unidentified error has occurred.","Ein unbekannter Fehler ist aufgetreten."
+of,von
+Add,Hinzufügen
+"No results found.","Es wurden keine Kommentare gefunden, die deinen Suchkriterien entsprechen."
+Tags,Schlagwörter
+Categories,Kategorien
+"Leave a comment","Hinterlasse einen Kommentar"
+"Sorry, you must be logged in to post a comment.","Um einen Kommentar zu hinterlassen, musst du angemeldet sein."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Deine WordPress-Adresse %s ist falsch. Bitte <a href=\"%s\">korrigiere diese</a> (Eingabefeld 'home')."
+Search,Suchen
+"%s Comments","%s Kommentare"
+"No Comments","Keine Kommentare"
+"1 Comment","1 Kommentar"
+Comment,Kommentar
+Reply,Antworten
+"Leave a Reply","Hinterlasse eine Antwort"
+"Your comment is awaiting moderation.","Dein Kommentar wartet auf Freischaltung."
+"%s at %s","%s um %s"
+Email,E-Mail-Adresse
+Archives,Archive
+"Select Month","Wähle den Monat"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Beitrags-Feed (<abbr title=\"Really Simple Syndication\">RSS</abbr>)"
+"Select Category","Kategorie auswählen"
+"Recent Posts","Letzte Beiträge"
+"Recent Comments","Letzte Kommentare"
+"%s on %s","%s bei %s"
+"Tag Cloud",Schlagwörter-Wolke
+"Comment on %s by %s","Kommentar zu %s von %s"
+"By: %s","Von: %s"
+"Error establishing a database connection","Fehler beim Aufbau einer Datenbankverbindung"
+Password,Passwort
+"&laquo; Previous","&laquo; Zurück"
+"Next &raquo;","Weiter &raquo;"
+Close,Schließen
+January,Januar
+February,Februar
+March,März
+May,Mai
+June,Juni
+July,Juli
+October,Oktober
+December,Dezember
+Jan_January_abbreviation,Jan_Januar_abbreviation
+Feb_February_abbreviation,Feb_Februar_abbreviation
+Mar_March_abbreviation,Mrz_März_abbreviation
+May_May_abbreviation,Mai_Mai_abbreviation
+Jun_June_abbreviation,Jun_Juni_abbreviation
+Jul_July_abbreviation,Jul_Juli_abbreviation
+Oct_October_abbreviation,Okt_Oktober_abbreviation
+Dec_December_abbreviation,Dez_Dezember_abbreviation
+Sunday,Sonntag
+Monday,Montag
+Tuesday,Dienstag
+Wednesday,Mittwoch
+Thursday,Donnerstag
+Friday,Freitag
+Saturday,Samstag
+Sun,So
+Mon,Mo
+Tue,Di
+Wed,Mi
+Thu,Do
+Fri,Fr
+Sat,Sa
+"Please wait...","Bitte warten …"
+"Daily Archives: %s","Archiv für den Tag: %s"
+"Monthly Archives: %s","Archiv für den Monat: %s"
+"One thought on &ldquo;%s&rdquo;","Ein Gedanke zu &bdquo;%s&ldquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s Gedanken zu &bdquo;%s&ldquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Weiterlesen <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Dieser Beitrag wurde unter %s abgelegt und mit %s verschlagwortet am %s<span class=\"by-author\"> von %s</span>. "
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Dieser Beitrag wurde unter %s abgelegt am %s<span class=\"by-author\"> von %s</span>. "
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Dieser Beitrag wurde veröffentlicht am %s<span class=\"by-author\"> von %s</span>. "
+"You have version %s installed. Update to %s.","Du hast Version %s installiert. Aktualisiere auf Version %s."
+Home,Startseite
+"Default Template",Standardtemplate
+"Install %s","Installiere %s"
+"Update to version %s","Aktualisiere auf Version %s"

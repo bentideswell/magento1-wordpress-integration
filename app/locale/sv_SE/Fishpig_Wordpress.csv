@@ -1,0 +1,102 @@
+Path,Sökväg
+Plugin,Tillägg
+Author,Författare
+Type,Typ
+Name,Namn
+"Previous Post","Tidigare inlägg"
+"Next Post","Följande inlägg"
+"Protected: %s","Lösenordsskyddad: %s"
+Home,Hem
+Submit,Skicka
+Published,Publicerat
+Pages,Sidor
+"Search Posts","Sök inlägg"
+Image,Bild
+"An unidentified error has occurred.","Ett oidentifierat fel har uppstått."
+of,av
+Add,"Lägg till"
+"No results found.","Hittade inga resultat."
+Tags,Etiketter
+Categories,Kategorier
+"Leave a comment","Lämna en kommentar"
+"Sorry, you must be logged in to post a comment.","Tyvärr måste du vara inloggad för att skriva en kommentar."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Din hemadress angiven för WordPress: %s är ogiltig. Korrigera inställningarna för <a href=\"%s\">hemadressen</a>."
+Search,Sök
+"%s Comments","%s kommentarer"
+"No Comments","Inga kommentarer"
+"1 Comment","1 kommentar"
+Comment,Kommentar
+Reply,Svara
+"Leave a Reply",Kommentera
+"Your comment is awaiting moderation.","Din kommentar inväntar granskning."
+"%s at %s","%s kl. %s"
+Email,E-post
+Website,Webbplats
+Links,Länkar
+Archives,Arkiv
+"Select Month","Välj månad"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Inlägg via <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Drivs med WordPress, en toppmodern, semantisk publiceringsplattform."
+"Select Category","Välj kategori"
+"Recent Posts","Senaste inläggen"
+"Recent Comments","Senaste kommentarer"
+"%s on %s","%s om %s"
+"Tag Cloud",Etikettmoln
+"Comment on %s by %s","Kommentarer till %s av %s"
+"By: %s","Av: %s"
+"Error establishing a database connection","Ett fel uppstod vid anslutning till databasen"
+Password,Lösenord
+"&laquo; Previous","&laquo; Föregående"
+"Next &raquo;","Nästa &raquo;"
+Close,Stäng
+January,januari
+February,februari
+March,mars
+April,april
+May,maj
+June,juni
+July,juli
+August,augusti
+September,september
+October,oktober
+November,november
+December,december
+Jan_January_abbreviation,Jan
+Feb_February_abbreviation,Feb
+Mar_March_abbreviation,Mar
+Apr_April_abbreviation,Apr
+May_May_abbreviation,Maj
+Jun_June_abbreviation,Jun
+Jul_July_abbreviation,Jul
+Aug_August_abbreviation,Aug
+Sep_September_abbreviation,Sep
+Oct_October_abbreviation,Okt
+Nov_November_abbreviation,Nov
+Dec_December_abbreviation,Dec
+Sunday,söndag
+Monday,måndag
+Tuesday,tisdag
+Wednesday,onsdag
+Thursday,torsdag
+Friday,fredag
+Saturday,lördag
+Sun,sön
+Mon,mån
+Tue,tis
+Wed,ons
+Thu,tor
+Fri,fre
+Sat,lör
+"Please wait...",Vänta...
+"Daily Archives: %s","Dagsarkiv: %s"
+"Monthly Archives: %s","månadsarkiv: %s"
+"One thought on &ldquo;%s&rdquo;","En reaktion på &ldquo;%s&rdquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s reaktion på &ldquo;%s&rdquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Läs mer <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Detta inlägg postades i %s och märktes %s den %s<span class=\"by-author\"> av %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Detta inlägg postades i %s den %s<span class=\"by-author\"> av %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Detta inlägg postades den %s<span class=\"by-author\"> av %s</span>."
+"You have version %s installed. Update to %s.","Du har version %s installerad. Uppdatera till %s."
+"Default Template",Standardmall
+"Install %s","Installera %s"
+"Update to version %s","Uppdatera till %s"

@@ -1,0 +1,16 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<div class="page-title">
+	<h1><?php echo $this->__("Search results for: '%s'", $this->getSearchTerm(true)) ?></h1>
+</div>
+<?php if ($posts = $this->getPostListHtml()): ?>
+	<?php echo $posts ?>
+<?php else: ?>
+	<p class="note-msg"><?php echo $this->__('No results found.') ?></p>
+<?php endif; ?>

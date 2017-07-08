@@ -1,0 +1,27 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php if (($menuHtml = trim($this->getMenuHtml())) !== ''): ?>
+<div class="block block-blog block-blog-menu" id="<?php echo $this->getListId() ?>">
+	<?php if ($title = $this->getTitle()): ?>
+		<div class="block-title">
+			<strong><?php echo $title ?></strong>
+		</div>
+	<?php endif; ?>
+	<div class="block-content">
+		<?php echo $menuHtml ?>
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+	$('<?php echo $this->getListId() ?>').select('ul li').invoke('addClassName', 'item');
+	decorateList($('<?php echo $this->getListId() ?>'));
+	$('<?php echo $this->getListId() ?>').select('ul ul li').invoke('insert', {'top': '&raquo; '});
+//]]>
+</script>
+<?php endif; ?>

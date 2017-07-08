@@ -1,0 +1,103 @@
+Email,E-mail
+Name,Nazwa
+Path,Ścieżka
+"Error establishing a database connection","Błąd łączenia się z bazą danych"
+Tags,tagi
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Podany adres strony domowej - %s - jest nieprawidłowy.  Proszę poprawić zawartość <a href=\"%s\">pola z adresem strony domowej</a>."
+Image,Obrazek
+"Leave a comment","Dodaj komentarz"
+Categories,kategorie
+"Search Posts","Szukaj wpisów"
+Pages,strony
+"No results found.","Nie znaleziono żadnych elementów."
+"Select Month","Wybierz miesiąc"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Kanał <abbr title=\"Really Simple Syndication\">RSS</abbr> z wpisami"
+"Select Category","Wybierz kategorię"
+"Recent Posts","Najnowsze wpisy"
+"%s on %s","%s o %s"
+"Tag Cloud","Chmurka tagów"
+"Comment on %s by %s","Skomentuj %s, którego autorem jest %s"
+"By: %s","Autor: %s"
+"&laquo; Previous","&laquo; Poprzednie"
+"Next &raquo;","Następne &raquo;"
+January,Styczeń
+February,Luty
+March,Marzec
+April,Kwiecień
+May,Maj
+June,Czerwiec
+July,Lipiec
+August,Sierpień
+September,Wrzesień
+October,Październik
+November,Listopad
+December,Grudzień
+Jan_January_abbreviation,sty
+Feb_February_abbreviation,lut
+Mar_March_abbreviation,mar
+Apr_April_abbreviation,kwi
+May_May_abbreviation,maj
+Jun_June_abbreviation,cze
+Jul_July_abbreviation,lip
+Aug_August_abbreviation,sie
+Sep_September_abbreviation,wrz
+Oct_October_abbreviation,paź
+Nov_November_abbreviation,lis
+Dec_December_abbreviation,gru
+Sunday,niedziela
+Monday,poniedziałek
+Tuesday,wtorek
+Wednesday,środa
+Thursday,czwartek
+Friday,piątek
+Saturday,sobota
+Sun,nie
+Mon,pon
+Tue,wt
+Wed,śr
+Thu,czw
+Fri,pt
+Sat,sob
+"Please wait...","Proszę czekać..."
+Type,Typ
+"Previous Post","Poprzedni wpis"
+"Next Post","Następny wpis"
+"Protected: %s","Zabezpieczony: %s"
+Home,"Strona główna"
+Published,Opublikowano
+"An unidentified error has occurred.","Wystąpił niezidentyfikowany błąd."
+of,z
+Plugin,Wtyczkę
+Website,"Witryna internetowa"
+"Sorry, you must be logged in to post a comment.","Przepraszamy, musisz się zalogować, aby móc napisać komentarz."
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Ta strona jest oparta na WordPressie &mdash; nowoczesnej, semantycznej, osobistej platformie publikacyjnej."
+"No Comments","Brak komentarzy"
+"1 Comment","1 komentarz"
+"%s Comments","%s komentarzy"
+"Your comment is awaiting moderation.","Twój komentarz oczekuje na moderację."
+"%s at %s","%s o %s"
+"Leave a Reply","Dodaj komentarz"
+Author,Autor
+Comment,Komentarz
+Submit,Wyślij
+"Recent Comments","Najnowsze komentarze"
+Reply,Odpowiedz
+Archives,Archiwa
+Password,Hasło
+Add,Dodaj
+Search,Szukaj
+Links,Odnośniki
+Close,Zamknij
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Wpis opublikowany w %s i otagowany %s %s<span class=\"by-author\"> przez %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Ten wpis został opublikowany w %s dnia %s, <span class=\"by-author\">przez %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Ten wpis został opublikowany dnia %s, <span class=\"by-author\">przez %s</span>."
+"One thought on &ldquo;%s&rdquo;","Jedna myśl nt. &bdquo;%s&rdquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s myśli nt. &bdquo;%s&rdquo;"
+"Daily Archives: %s","Dzienne archiwum: %s"
+"Monthly Archives: %s","Miesięczne archiwum: %s"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Czytaj dalej <span class=\"meta-nav\">&rarr;</span>"
+"You have version %s installed. Update to %s.","Używasz wersji %s. Zaktualizuj do wersji %s."
+"Update to version %s","Zaktualizuj do wersji %s"
+"Install %s","Zainstaluj &#8222;%s&#8221;"
+Position,Położenie
+"Default Template","Domyślny szablon"

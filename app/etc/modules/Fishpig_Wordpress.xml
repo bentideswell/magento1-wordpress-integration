@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Fishpig_Wordpress>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Fishpig_Wordpress>
+		<Fishpig_Wordpress_Addon_WordPressSEO>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Fishpig_Wordpress_Addon_WordPressSEO>
+		<Fishpig_Wordpress_Addon_Yarpp>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Fishpig_Wordpress_Addon_Yarpp>
+	</modules>
+</config>

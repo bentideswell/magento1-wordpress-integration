@@ -1,0 +1,306 @@
+/**
+ * FishPig_WordPress
+ * WordPress Integration for Magento eCommerce
+ * by FishPig
+ *
+ * http://fishpig.co.uk/wordpress-integration.html
+ *
+ */
+
+/**
+ * Search block
+ *
+ */
+.blog-search { padding: 5px; }
+.blog-search .input-text { margin-bottom: 4px;}
+
+/**
+ * General post (view and list)
+ *
+ */
+.post-date { font-style: italic; font-size: 98%; margin-bottom: 10px; }
+.post-meta { font-style: italic; }
+.post-entry { font-size: 110%; height: 1%; margin-bottom: 1.5em; overflow: hidden; }
+.post-entry-with-image { height: 1%; overflow: hidden; }
+.post-entry p { margin-bottom: 1em; }
+
+.featured-image {
+	border: 1px solid #ddd;
+	margin: 4px 10px 2px 0;
+	padding: 1px;
+}
+
+.featured-image.right {
+	margin: 2px 0 4px 10px;
+}
+
+.is-blog .toolbar { margin: 0 0 10px; }
+
+/**
+ * Blog homepage
+ *
+ */
+.blog-title.not-first-page { display: none; }
+.blog-title.with-tagline { margin-bottom: 10px; }
+.blog-tag-line {  }
+
+/**
+ * Post list page
+ *
+ */
+.post-list li.item { margin-bottom: 20px; }
+.post-list li.item .post-list-item { height: 1%; overflow: hidden; }
+.post-list h2 { line-height: 1em; margin-bottom: 1em; }
+
+/**
+ * Post view page
+ *
+ */
+.page-title.post-title { margin-bottom: 4px; }
+.post-view .post-meta { margin-bottom: 20px; }
+.post-view .post-skips { display: block; margin-top: 20px; width: 100%; }
+.post-view .post-skips .post-skip-previous { margin-right: 10px; }
+
+.post-view .yarpp-related { margin-bottom: 20px; }
+
+/**
+ * Post comments
+ *
+ */
+.comments-wrapper h2 { margin-bottom: 10px; }
+.comments-wrapper ul.children { margin-left: 20px; }
+.comment { height: 1%; overflow: hidden; margin-bottom: 10px; }
+.comment .comment-inner { border-bottom: 1px solid #eee; padding: 10px 0; }
+.comment .gravatar { float: left; margin: 0 10px 10px 0; }
+.comment .comment-meta { margin-bottom: 10px; }
+.comment .comment-when { display: block; text-decoration: none; }
+.comment .comment-entry { clear: both; font-size: 110%; }
+
+/**
+ * Author page
+ *
+ */
+.author-description { font-style: italic; margin-bottom: 20px; }
+
+/**
+ * PinterestRssWidget plugin
+ *
+ */
+
+
+.block-blog-pinterest li.item { text-align: center; }
+.block-blog-pinterest .follow { text-align: center; margin: 10px 0 15px; }
+
+.shortcode-pinterest {}
+.shortcode-pinterest ul { height: 1%; overflow: hidden; }
+.shortcode-pinterest li { list-style: none; padding: 0; margin: 0 10px 10px; float: left; }
+
+/**
+ * Alignment and captions
+ * Taken from default WordPress CSS file
+ *
+ */
+.alignleft { display: inline; float: left; margin-right: 1.625em; }
+.alignright { display: inline; float: right; margin-left: 1.625em; }
+.aligncenter { clear: both; display: block; margin-left: auto; margin-right: auto; }
+
+img[class*="align"],
+img[class*="wp-image-"],
+.gallery .gallery-icon img {/* Add fancy borders to all WordPress-added images but not things like badges and icons and the like */
+	border: 1px solid #ddd;
+	padding: 6px;
+}
+
+img[class*="align"],
+img[class*="wp-image-"],
+img[class*="attachment-"] {
+height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+}
+img.size-full,
+img.size-large {
+max-width: 97.5%;
+width: auto; /* Prevent stretching of full-size and large-size images with height and width attributes in IE8 */
+height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+}
+
+img.alignleft,
+img.alignright,
+img.aligncenter {
+margin-bottom: 1.625em;
+}
+
+.wp-caption {
+margin-top: 0.4em;
+}
+.wp-caption {
+background: #eee;
+margin-bottom: 1.625em;
+max-width: 96%;
+padding: 9px;
+}
+.wp-caption img {
+display: block;
+margin: 0 auto;
+max-width: 98%;
+border-color: #eee;
+}
+.wp-caption .wp-caption-text {
+color: #666;
+font-family: Georgia, serif;
+font-size: 12px;
+}
+.wp-caption .wp-caption-text {
+margin-bottom: 0.6em;
+padding: 10px 0 5px 40px;
+position: relative;
+}
+.wp-caption .wp-caption-text:before {
+color: #666;
+content: '\2014';
+font-size: 14px;
+font-style: normal;
+font-weight: bold;
+margin-right: 5px;
+position: absolute;
+left: 10px;
+top: 7px;
+}
+.wp-caption img {
+border-color: #eee;
+}
+.wp-caption a:focus img,
+.wp-caption a:active img,
+.wp-caption a:hover img {
+background: #fff;
+border-color: #ddd;
+}
+
+.wp-caption .wp-caption-text,
+.gallery-caption,
+.entry-caption {
+	font-style: italic;
+	font-size: 12px;
+	font-size: 0.857142857rem;
+	line-height: 2;
+	color: #757575;
+}
+
+div.gallery { height: 1%; overflow: hidden; }
+.gallery-columns-2 dl.gallery-item { width: 50%; }
+.gallery-columns-3 dl.gallery-item { width: 33%; }
+.gallery-columns-4 dl.gallery-item { width: 25%; }
+.gallery-columns-5 dl.gallery-item { width: 20%; }
+
+dl.gallery-item { float: left; }
+dl.gallery-item .gallery-icon { overflow: hidden; }
+
+.post-view ul.form-list { list-style: none outside none; }
+
+/*
+ * WP Calendar
+ */
+#wp-calendar {
+	margin: 0;
+	width: 100%;
+	padding: 5px 10px;
+}
+#wp-calendar th {
+	font-weight: bold;
+}
+#wp-calendar th,
+#wp-calendar td,
+#wp-calendar caption {
+	text-align: left;
+}
+#wp-calendar #next {
+	text-align: right;
+}
+
+/**
+ * Yarpp thumbnails
+ * This is taken directly from the Yarpp plugin
+ */
+
+.yarpp-thumbnails-horizontal .yarpp-thumbnail, .yarpp-thumbnail-default, .yarpp-thumbnail-title {
+	display: inline-block;
+	*display: inline;
+}
+.yarpp-thumbnails-horizontal .yarpp-thumbnail {
+	border: 1px solid rgba(127,127,127,0.1);
+	width: 130px;
+	height: 170px;
+	margin: 5px;
+	margin-left: 0px;
+	vertical-align: top;
+}
+.yarpp-thumbnail > img, .yarpp-thumbnail-default {
+	width: 120px;
+	height: 120px;
+	margin: 5px;
+}
+.yarpp-thumbnails-horizontal .yarpp-thumbnail > img, .yarpp-thumbnails-horizontal .yarpp-thumbnail-default {
+	margin-bottom: 0px;
+	display: block;
+}
+.yarpp-thumbnails-horizontal .yarpp-thumbnail-title {
+	font-size: 1em;
+	max-height: 2.8em;
+	line-height: 1.4em;
+	margin: 7px;
+	margin-top: 0px;
+	width: 120px;
+	text-decoration: inherit;
+	overflow: hidden;
+}
+
+.yarpp-thumbnail-default {
+	overflow: hidden;
+}
+.yarpp-thumbnail-default > img.yarpp-thumbnail-default-wide {
+	height: 120px;
+	max-width: none;
+}
+.yarpp-thumbnail-default > img.yarpp-thumbnail-default-tall {
+	width: 120px;
+	max-height: none;
+}
+
+#recipress_recipe {
+	clear: both;
+}
+
+/**
+ * Product shortcode
+ */
+.std ul.mini-products-list {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+.std ul.mini-products-list ul.item {
+	list-style: none;
+}
+
+img.max-width { max-width: 100%; }
+
+/**
+ * Lightbox styles
+ */
+#fp-gallery { 
+	position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; text-align: center;
+}
+
+#fp-gallery .shadow { 
+	position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 101; background: #000 url('ajax-loader.gif') no-repeat center 40px;
+}
+
+#fp-gallery .inner { 
+	position: relative; z-index: 102; background: #fff; max-width: 95%; margin: 1% auto 0; background: #fff; border: 4px solid #ddd; box-shadow: 4px 4px 4px #666; display: inline-block; min-width: 400px; min-height: 200px;
+}
+
+#fp-gallery .close {
+		display: inline-block; position: absolute; background: #fff url('lightbox-close.png') no-repeat center center; padding: 2px; border-radius: 50%; cursor: pointer; text-decoration: none; display: inline-block; height: 48px; width: 48px; margin: auto; top: 10px; right: 10px; text-indent: -999999px;
+}
+
+.aio-icon i { font-style: normal !important; }

@@ -1,0 +1,41 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $posts = $this->getPosts() ?>
+<?php if (count($posts) > 0): ?>
+	<div class="block block-blog block-recent-posts">
+		<?php if ($title = $this->getTitle()): ?>
+			<div class="block-title">
+				<strong><span><?php echo $this->__($title) ?></span></strong>
+			</div>
+		<?php endif; ?>
+		<div class="block-content">
+			<ul id="<?php echo $this->getListId() ?>">
+			<?php foreach($posts as $post): ?>
+				<?php $post->setExcerptSize($this->getExcerptLength()) ?>
+				<li class="item">
+					<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->htmlEscape($post->getPostTitle()) ?>"><?php echo $this->htmlEscape($post->getPostTitle()) ?></a>
+					<?php if ($this->canDisplayDate()): ?>
+						<p class="post-date"><?php echo $post->getPostDate() ?></p>
+					<?php endif; ?>
+					<?php if ($this->canDisplayImage() && $post->getFeaturedImage()): ?>
+						<p class="post-image">
+							<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->htmlEscape($post->getPostTitle()) ?>"><img src="<?php echo $post->getFeaturedImage()->getAvailableImage() ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" style="<?php if ($this->getThumbW()): ?>max-width:<?php echo $this->getThumbW() ?>px;<?php endif; ?><?php if ($this->getThumbH()): ?>max-height:<?php echo $this->getThumbH() ?>px;<?php endif; ?>"/></a>
+						</p>
+					<?php endif; ?>
+					<?php if ($this->canDisplayExcerpt()): ?>
+						<p class="post-excerpt"><?php echo $post->getPostExcerpt() ?></p>
+					<?php endif; ?>
+					<?php if ($post->getCommentCount() > 0): ?><span>(<?php echo $this->getCommentCountString($post) ?>)</span><?php endif; ?>
+				</li>
+			<?php endforeach; ?>
+			</ul>
+			<script type="text/javascript">decorateList('<?php echo $this->getListId() ?>')</script>
+		</div>
+	</div>
+<?php endif; ?>

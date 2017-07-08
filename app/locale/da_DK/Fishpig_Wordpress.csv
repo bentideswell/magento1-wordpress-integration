@@ -1,0 +1,99 @@
+Path,Sti
+Author,Forfatter
+Name,Navn
+"Previous Post","Tidligere indl&#230;g"
+"Next Post","N&#230;ste indl&#230;g"
+"Protected: %s","Beskyttet: %s"
+Home,Forside
+Submit,Send
+Published,Udgivet
+Pages,Sider
+"Search Posts","Søg i indlæg"
+Image,Billede
+"An unidentified error has occurred.","En ikke-genkendt fejl er opst&#229;et."
+of,af
+Add,Tilføj
+"No results found.","Ingen resultater fundet."
+Categories,Kategorier
+"Leave a comment","Skriv en kommentar"
+"Sorry, you must be logged in to post a comment.","Desv&#230;rre. Du skal v&#230;re logget ind for at skrive en kommentar."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Din WordPress forside URL%s er ugyldig. Ret venligst <a href=\"%s\">forside</a>."
+Search,S&#248;g
+"%s Comments","%s kommentarer"
+"No Comments","Ingen kommentarer"
+"1 Comment","1 kommentar"
+Comment,Kommentar
+Reply,Svar
+"Leave a Reply","Skriv et svar"
+"Your comment is awaiting moderation.","Din kommentar afventer godkendelse."
+"%s at %s","%s kl. %s"
+Email,E-mail
+Website,Webside
+Archives,Arkiver
+"Select Month","V&#230;lg m&#229;ned"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","<abbr title=\"Really Simple Syndication\">RSS</abbr> af indl&#230;g"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Denne webside k&#248;rer WordPress; et moderne, semantisk publiceringsverkt&#248;j"
+"Select Category","V&#230;lg kategori"
+"Recent Posts","Nye indl&#230;g"
+"Recent Comments","Nye kommentarer"
+"%s on %s","%s til %s"
+"Tag Cloud",Tag-cloud
+"Comment on %s by %s","Kommentar til %s af %s"
+"By: %s","Af: %s"
+"Error establishing a database connection","Fejl ved etablering af databaseforbindelse"
+Password,Kodeord
+"&laquo; Previous","&laquo; Tidligere"
+"Next &raquo;","N&#230;ste &raquo;"
+Close,Luk
+January,januar
+February,februar
+March,marts
+April,april
+May,maj
+June,juni
+July,juli
+August,august
+September,september
+October,oktober
+November,november
+December,december
+Jan_January_abbreviation,jan
+Feb_February_abbreviation,feb
+Mar_March_abbreviation,mar
+Apr_April_abbreviation,apr
+May_May_abbreviation,maj
+Jun_June_abbreviation,jun
+Jul_July_abbreviation,jul
+Aug_August_abbreviation,aug
+Sep_September_abbreviation,sep
+Oct_October_abbreviation,okt
+Nov_November_abbreviation,nov
+Dec_December_abbreviation,dec
+Sunday,søndag
+Monday,mandag
+Tuesday,tirsdag
+Wednesday,onsdag
+Thursday,torsdag
+Friday,fredag
+Saturday,lørdag
+Sun,søn
+Mon,man
+Tue,tirs
+Wed,ons
+Thu,tors
+Fri,fre
+Sat,lør
+"Please wait...","Vent venligst..."
+"Daily Archives: %s","Dagsarkiv: %s"
+"Monthly Archives: %s","Månedsarkiv: %s"
+"One thought on &ldquo;%s&rdquo;","En tanke om \"%s\""
+"%s thoughts on &ldquo;%s&rdquo;","%s tanker om \"%s\""
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Læs resten <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Dette indlæg blev udgivet i %s og tagget %s den %s<span class=\"by-author\"> af %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Dette indlæg blev udgivet i %s den %s<span class=\"by-author\"> af %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Dette indlæg blev udgivet den %s<span class=\"by-author\"> af %s</span>."
+"You have version %s installed. Update to %s.","Du har version %s installeret. Opdater til %s."
+"Default Template",Standardskabelon
+"Install %s","Installer %s"
+"Update to version %s","Opdater til version %s"
+Position,Placering

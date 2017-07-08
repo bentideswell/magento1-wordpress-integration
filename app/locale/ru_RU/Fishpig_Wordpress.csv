@@ -1,0 +1,104 @@
+"Sorry, you must be logged in to post a comment.","Извините, для отправки комментария вы должны авторизоваться."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Адрес WordPress (%s) указан неверно. Пожалуйста, исправьте его <a href=\"%s\">в настройках</a>."
+Search,Поиск
+"No results found.","Результатов не найдено."
+Categories,рубрики
+"%s Comments","Комментарии (%s)"
+"No Comments","Комментариев нет"
+"1 Comment","1 комментарий"
+Comment,комментарий
+Reply,Ответить
+"Leave a Reply","Добавить комментарий"
+"Your comment is awaiting moderation.","Ваш комментарий ожидает проверки."
+"%s at %s","%s в %s"
+Name,Название
+Email,E-mail
+Website,Сайт
+Pages,страницы
+Links,Ссылки
+Archives,Архивы
+"Select Month","Выберите месяц"
+Meta,Мета
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","<abbr title=\"Really Simple Syndication\">RSS</abbr> записей"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Сайт работает на WordPress &#8212; современной персональной платформе для публикаций."
+"Select Category","Выберите рубрику"
+"Recent Posts","Свежие записи"
+"Recent Comments","Свежие комментарии"
+"%s on %s","%s к записи %s"
+"Tag Cloud","Облако меток"
+Tags,метки
+"Comment on %s by %s","Комментарий к записи %s (%s)"
+"By: %s","Автор: %s"
+"Error establishing a database connection","Ошибка установки соединения с базой данных"
+Password,Пароль
+"&laquo; Previous","&larr; Ранее"
+"Next &raquo;","Далее &rarr;"
+Close,Закрыть
+January,Январь
+February,Февраль
+March,Март
+April,Апрель
+May,Май
+June,Июнь
+July,Июль
+August,Август
+September,Сентябрь
+October,Октябрь
+November,Ноябрь
+December,Декабрь
+Jan_January_abbreviation,Янв
+Feb_February_abbreviation,Фев
+Mar_March_abbreviation,Мар
+Apr_April_abbreviation,Апр
+May_May_abbreviation,Май
+Jun_June_abbreviation,Июн
+Jul_July_abbreviation,Июл
+Aug_August_abbreviation,Авг
+Sep_September_abbreviation,Сен
+Oct_October_abbreviation,Окт
+Nov_November_abbreviation,Ноя
+Dec_December_abbreviation,Дек
+Sunday,Воскресенье
+Monday,Понедельник
+Tuesday,Вторник
+Wednesday,Среда
+Thursday,Четверг
+Friday,Пятница
+Saturday,Суббота
+Sun,Вс
+Mon,Пн
+Tue,Вт
+Wed,Ср
+Thu,Чт
+Fri,Пт
+Sat,Сб
+"Please wait...","Пожалуйста, подождите..."
+Path,Путь
+Plugin,Плагин
+Author,Автор
+Type,Тип
+"Previous Post","Предыдущая запись"
+"Next Post","Следующая запись"
+"Protected: %s","Защищено: %s"
+Home,Главная
+Submit,Отправить
+Published,Опубликовано
+"Search Posts","Поиск записей"
+Image,Изображение
+"An unidentified error has occurred.","Произошла неопределённая ошибка."
+of,из
+Add,Добавить
+"Leave a comment","Оставить комментарий"
+"Daily Archives: %s","Архив за день: %s"
+"Monthly Archives: %s","Архив за месяц: %s"
+"One thought on &ldquo;%s&rdquo;","%s: Один комментарий"
+"%s thoughts on &ldquo;%s&rdquo;","%s: %s комментария"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Читать далее <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Запись опубликована %s<span class=\"by-author\"> автором %s</span> в рубрике %s с метками %s."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Запись опубликована %s<span class=\"by-author\"> автором %s</span> в рубрике %s."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Запись опубликована %s<span class=\"by-author\"> автором %s</span>."
+Position,Позиция
+"Install %s","Установить %s"
+"Update to version %s","Обновить до версии %s"
+"Default Template","Базовый шаблон"
+"You have version %s installed. Update to %s.","Вы используете версию %s. Обновить до %s."

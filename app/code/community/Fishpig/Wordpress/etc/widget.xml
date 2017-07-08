@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<widgets>
+	<wordpress_posts type="wordpress/sidebar_widget_posts">
+		<name>WordPress &gt; Recent Posts</name>
+		<description type="desc">Add a list of your most recent blog posts.</description>		
+		<parameters>
+			<title translate="label description">
+				<visible>1</visible>
+				<label>Title</label>
+				<description>Enter the block title</description>
+				<value>Recent Posts</value>
+				<type>text</type>
+			</title>
+			<number translate="label description">
+				<visible>1</visible>
+				<label>Number of Posts</label>
+				<value>5</value>
+				<type>text</type>
+			</number>
+			<category_id translate="label description">
+				<visible>1</visible>
+				<label>Category ID</label>
+				<description>If set, only posts from this category will be displayed. Leave empty to display from all categories.</description>
+				<type>text</type>
+			</category_id>
+			<author_id translate="label description">
+				<visible>1</visible>
+				<label>Author ID</label>
+				<description>If set, only posts from this author will be displayed. Leave empty to display from all authors.</description>
+				<type>text</type>
+			</author_id>
+			<template translate="label">
+				<label>Template</label>
+				<visible>1</visible>
+				<type>text</type>
+				<value>wordpress/sidebar/widget/posts.phtml</value>
+			</template>
+		</parameters>
+	</wordpress_posts>
+</widgets>

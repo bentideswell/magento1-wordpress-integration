@@ -1,0 +1,23 @@
+<?php
+/**
+ *
+ **/
+?>
+<?php if ($this->getImages()): ?>
+	<div class="block block-blog block-blog-instagram">
+		<div class="block-title">
+			<strong><span><?php echo $this->getTitle() ?></span></strong>
+		</div>
+		<div class="block-content">
+			<ul>
+				<?php foreach($this->getImages() as $image): ?>
+					<li class="item">
+						<a href="<?php echo $this->getPostUrl($image) ?>" target="_blank">
+							<img src="<?php echo $image->getThumbnailSrc() ?>" alt="<?php echo $this->escapeHtml($image->getCaption()) ?>" />
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+<?php endif; ?>

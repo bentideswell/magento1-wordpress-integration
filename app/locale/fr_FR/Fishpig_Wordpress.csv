@@ -1,0 +1,100 @@
+"Sorry, you must be logged in to post a comment.","Désolé, vous devez être connecté(e) pour rédiger un commentaire."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","L&rsquo;adresse de votre accueil WordPress (%s) n&rsquo;est pas valide. Veuillez la corriger l&rsquo;<a href=\"%s\">option de l&rsquo;accueil</a>."
+Search,Recherche
+"No results found.","Aucun résultat trouvé."
+WordPress.org,"Site de WordPress-FR"
+Categories,Catégories
+"%s Comments","%s commentaires"
+"No Comments","Pas de commentaire"
+"1 Comment","Un commentaire"
+Comment,Commentaire
+Reply,Répondre
+"Leave a Reply","Laisser un commentaire"
+"Your comment is awaiting moderation.","Votre commentaire est en attente de validation."
+"%s at %s","%s à %s"
+Name,Nom
+Email,"Adresse de contact"
+Website,"Site web"
+Links,Liens
+"Select Month","Choisir un mois"
+Meta,Méta
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Flux <abbr title=\"Really Simple Syndication\">RSS</abbr> des articles"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Propulsé par WordPress, plate-forme de publication personnelle sémantique de pointe."
+"Select Category","Choisir une catégorie"
+"Recent Posts","Articles récents"
+"Recent Comments","Commentaires récents"
+"%s on %s","%s dans %s"
+"Tag Cloud","Nuage de mots-clefs"
+Tags,Mots-clefs
+"Comment on %s by %s","Commentaires sur %s par %s"
+"By: %s","Par : %s"
+"Error establishing a database connection","Erreur lors de la connexion à la base de données"
+Password,"Mot de passe"
+"&laquo; Previous","&laquo; Précédent"
+"Next &raquo;","Suivant &raquo;"
+Close,Fermer
+January,janvier
+February,février
+March,mars
+April,avril
+May,mai
+June,juin
+July,juillet
+August,août
+September,septembre
+October,octobre
+November,novembre
+December,décembre
+Jan_January_abbreviation,jan
+Feb_February_abbreviation,fév
+Mar_March_abbreviation,mar
+Apr_April_abbreviation,avr
+May_May_abbreviation,mai
+Jun_June_abbreviation,juin
+Jul_July_abbreviation,juil
+Aug_August_abbreviation,août
+Sep_September_abbreviation,sept
+Oct_October_abbreviation,oct
+Nov_November_abbreviation,nov
+Dec_December_abbreviation,déc
+Sunday,Dimanche
+Monday,Lundi
+Tuesday,Mardi
+Wednesday,Mercredi
+Thursday,Jeudi
+Friday,Vendredi
+Saturday,Samedi
+Sun,dim
+Mon,lun
+Tue,mar
+Wed,mer
+Thu,jeu
+Fri,ven
+Sat,sam
+"Please wait...","Veuillez patienter&hellip;"
+Path,"Chemin "
+Plugin,Extension
+Author,Auteur
+"Previous Post","Article précèdent"
+"Next Post","Article suivant"
+"Protected: %s","Protégé&nbsp;: %s"
+Home,Accueil
+Submit,Envoyer
+Published,Publié
+"Search Posts","Chercher dans les articles"
+"An unidentified error has occurred.","Une erreur non identifiée est survenue."
+of,sur
+Add,Ajouter
+"Leave a comment","Laisser un commentaire"
+"Daily Archives: %s","Archives quotidiennes&nbsp;:"
+"Monthly Archives: %s","Archives mensuelles&nbsp;: %s"
+"One thought on &ldquo;%s&rdquo;","Une réflexion au sujet de &laquo;&nbsp;%s&nbsp;&raquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s réflexions au sujet de &laquo;&nbsp;%s&nbsp;&raquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Lire la suite <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Cette entrée a été publiée dans %s, et marquée avec %s, le %s <span class=\"by-author\">par %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Cette entrée a été publiée dans %s le %s <span class=\"by-author\">par %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Cette entrée a été publiée le %s <span class=\"by-author\">par %s</span>."
+"Install %s","Installer %s"
+"Update to version %s","Mettre à jour vers la version %s"
+"Default Template","Modèle par défaut"
+"You have version %s installed. Update to %s.","Vous utilisez la version %s. Mettez à jour vers la version %s."

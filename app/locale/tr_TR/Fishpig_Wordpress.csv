@@ -1,0 +1,103 @@
+Path,Yol
+Plugin,Eklenti
+Author,Yazar
+Type,Tür
+Name,İsim
+"Previous Post","Önceki Yazı"
+"Next Post","Sonraki Yazı"
+"Protected: %s","Korumalı: %s"
+Home,Başlangıç
+Submit,Gönder
+Published,Yayınlanmış
+Pages,Sayfa
+"Search Posts","Yazılarda Ara"
+Image,Resim
+"An unidentified error has occurred.","Tanımlanamayan bir hata oluştu."
+of,","
+Add,Ekle
+"No results found.","Hiçbir sonuç bulunamadı."
+Tags,Etiket
+Categories,Kategori
+"Leave a comment","Yorum yapın"
+"Sorry, you must be logged in to post a comment.","Üzgünüz, yorum yapmak için giriş yapmalısınız."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","WordPress ana sayfa adresiniz %s geçersiz. Lütfen <a href=\"%s\">anasayfa ayarından</a> düzeltin."
+Search,Ara
+"%s Comments","%s Yorum"
+"No Comments","Yorum Yapılmamış"
+"1 Comment","1 Yorum"
+Comment,Yorum
+Reply,Yanıtla
+"Leave a Reply","Bir Cevap Yazın"
+"Your comment is awaiting moderation.","Yorumunuz denetim için bekliyor."
+"%s at %s","%s, %s"
+Email,E-posta
+Website,"İnternet sitesi"
+Links,Bağlantılar
+Archives,Arşiv
+"Select Month","Ay Seçin"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Yazılar <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","WordPress&#8217;in desteğiyle, kişisel yayın ortamı."
+"Select Category","Kategori Seçin"
+"Recent Posts","Son Yazılar"
+"Recent Comments","Son Yorumlar"
+"%s on %s","%s için %s"
+"Tag Cloud","Etiket Bulutu"
+"Comment on %s by %s","%s yazısına %s tarafından yapılan yorumlar"
+"By: %s","Yazar: %s"
+"Error establishing a database connection","Veritabanı bağlantısı kurulurken hata oluştu"
+Password,Parola
+"&laquo; Previous","&laquo; Önceki"
+"Next &raquo;","Sonraki &raquo;"
+Close,Kapat
+January,Ocak
+February,Şubat
+March,Mart
+April,Nisan
+May,Mayıs
+June,Haziran
+July,Temmuz
+August,Ağustos
+September,Eylül
+October,Ekim
+November,Kasım
+December,Aralık
+Jan_January_abbreviation,Oca
+Feb_February_abbreviation,Şub
+Mar_March_abbreviation,Mar
+Apr_April_abbreviation,Nis
+May_May_abbreviation,May
+Jun_June_abbreviation,Haz
+Jul_July_abbreviation,Tem
+Aug_August_abbreviation,Ağu
+Sep_September_abbreviation,Eyl
+Oct_October_abbreviation,Eki
+Nov_November_abbreviation,Kas
+Dec_December_abbreviation,Ara
+Sunday,Pazar
+Monday,Pazartesi
+Tuesday,Salı
+Wednesday,Çarşamba
+Thursday,Perşembe
+Friday,Cuma
+Saturday,Cumartesi
+Sun,Paz
+Mon,Pts
+Tue,Sal
+Wed,Çar
+Thu,Per
+Fri,Cum
+Sat,Cts
+"Please wait...","Lütfen bekleyin..."
+"Daily Archives: %s","Günlük arşivler: %s"
+"Monthly Archives: %s","Aylık arşivler: %s"
+"One thought on &ldquo;%s&rdquo;","&ldquo;%s&rdquo; üzerine bir düşünce"
+"%s thoughts on &ldquo;%s&rdquo;","&ldquo;%s&rdquo; üzerine %s düşünce"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Okumaya devam et <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","%s içinde %s etiketleriyle %s tarihinde <span class=\"by-author\">%s</span> tarafınadan gönderildi."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Bu yazı %s kategorisine %s tarihinde<span class=\"by-author\"> %s</span> tarafından gönderildi."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Bu yazı %s kategorisine <span class=\"by-author\">%s</span> tarafından gönderildi."
+"You have version %s installed. Update to %s.","%s sürümü kurulu. %s sürümüne yükseltin."
+"Default Template","Varsayılan Şablon"
+"Install %s","Yükle %s"
+"Update to version %s","%s sürümüne güncelle"
+Position,Konum

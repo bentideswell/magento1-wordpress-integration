@@ -1,0 +1,102 @@
+"Sorry, you must be logged in to post a comment.",抱歉，发表评论您须登录。
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","您的 WordPress 地址（URL）%s 不正确。请<a href=\"%s\">修正此选项</a>。"
+Search,搜索
+"No results found.",无结果。
+Categories,分类目录
+"%s Comments","%s 条评论"
+"No Comments",没有评论
+"1 Comment",一条评论
+Comment,评论
+Reply,回复
+"Leave a Reply",发表评论
+"Your comment is awaiting moderation.",您的评论正等待审核。
+"%s at %s",%s%s
+Name,名称
+Email,电子邮件
+Website,站点
+Pages,页面
+Links,链接
+Archives,归档
+"Select Month",选择月份
+Meta,功能
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","文章 <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","基于 WordPress，一个优美、先进的个人信息发布平台。"
+"Select Category",选择分类目录
+"Recent Posts",近期文章
+"Recent Comments",近期评论
+"%s on %s","%s 上的 %s"
+"Tag Cloud",标签云
+Tags,标签
+"Comment on %s by %s","%s 对《%s》的评论"
+"By: %s",作者：%s
+"Error establishing a database connection",建立数据库连接时出错
+Password,密码
+"&laquo; Previous","&laquo; 上一页"
+"Next &raquo;","下一页 &raquo;"
+Close,关闭
+January,一月
+February,二月
+March,三月
+April,四月
+May,五月
+June,六月
+July,七月
+August,八月
+September,九月
+October,十月
+November,十一月
+December,十二月
+Jan_January_abbreviation,一
+Feb_February_abbreviation,二
+Mar_March_abbreviation,三
+Apr_April_abbreviation,四
+May_May_abbreviation,五
+Jun_June_abbreviation,六
+Jul_July_abbreviation,七
+Aug_August_abbreviation,八
+Sep_September_abbreviation,九
+Oct_October_abbreviation,十
+Nov_November_abbreviation,十一
+Dec_December_abbreviation,十二
+Sunday,星期日
+Monday,星期一
+Tuesday,星期二
+Wednesday,星期三
+Thursday,星期四
+Friday,星期五
+Saturday,星期六
+Sun,周日
+Mon,周一
+Tue,周二
+Wed,周三
+Thu,周四
+Fri,周五
+Sat,周六
+"Please wait...",请稍等...
+Path,标签层级
+Plugin,插件
+Author,作者
+Type,类型
+"Previous Post",上一篇文章
+"Next Post",下一篇文章
+"Protected: %s",密码保护：%s
+Home,首页
+Submit,提交
+Published,已发布
+"Search Posts",搜索文章
+Image,图像
+"An unidentified error has occurred.",发生了无法识别的错误。
+of,/
+Add,添加
+"Leave a comment",留下评论
+"Daily Archives: %s",日度归档：%s
+"Monthly Archives: %s",月度归档：%s
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","继续阅读 <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","本条目发布于 %s。属于 %s 分类，被贴了 %s 标签。<span class=\"by-author\">作者是 %s。</span>"
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","本条目发布于 %s。属于 %s 分类。<span class=\"by-author\">作者是 %s。</span>"
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","本条目发布于 %s。<span class=\"by-author\">作者是 %s。</span>"
+Position,位置
+"Install %s","安装 %s"
+"Update to version %s","更新到 %s 版本"
+"Default Template",默认模板
+"You have version %s installed. Update to %s.","您正在使用的是版本 %s。升级至 %s。"

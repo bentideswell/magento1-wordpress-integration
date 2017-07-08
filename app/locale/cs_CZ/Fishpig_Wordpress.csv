@@ -1,0 +1,104 @@
+Path,Cesta
+Author,Redaktor
+Type,Typ
+Name,Název
+"Previous Post","Předchozí příspěvek"
+"Next Post","Následující příspěvek"
+"Protected: %s","Chráněno: %s"
+Home,"Úvodní stránka"
+Submit,Potvrdit
+Published,Publikováno
+Pages,stránky
+"Search Posts","Hledat příspěvky"
+Image,Obrázek
+"An unidentified error has occurred.","Došlo k nějaké blíže neidentifikované chybě."
+of,"z celkem"
+Add,
+"No results found.","Nebylo nic nalezeno."
+Tags,štítky
+Categories,rubriky
+"Leave a comment","Napsat komentář"
+"Sorry, you must be logged in to post a comment.","Pro přidání komentáře se musíte nejdříve přihlásit."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","URL adresa zobrazeného webu %s je neplatná. Opravte ji prosím přímo v <a href=\"%s\">Nastavení pro vývojáře</a> (položka home)."
+Search,Hledat
+WordPress.org,"Česká lokalizace"
+"%s Comments","Komentáře: %s"
+"No Comments","Žádné komentáře"
+"1 Comment","1 komentář"
+Comment,Komentář
+Reply,Odpovědět
+"Leave a Reply","Napsat komentář"
+"Your comment is awaiting moderation.","Komentář čeká na schválení."
+"%s at %s","%s | %s"
+Email,"Emailová adresa"
+Website,"Webová stránka"
+Links,Odkazy
+Archives,Archiv
+"Select Month","Vybrat měsíc"
+Meta,"Další informace"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","<abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Používáme WordPress, nejmodernější sémantický osobní redakční systém."
+"Select Category","Vybrat rubriku"
+"Recent Posts","Nejnovější příspěvky"
+"Recent Comments","Nejnovější komentáře"
+"%s on %s","%s u %s"
+"Tag Cloud","Shluk štítků"
+"Comment on %s by %s","Komentář k příspěvku %s od %s"
+"By: %s","Od: %s"
+"Error establishing a database connection","Během připojování k databázovému serveru došlo k chybě"
+Password,Heslo
+"&laquo; Previous","&laquo; Předchozí"
+"Next &raquo;","Další &raquo;"
+Close,Zavřít
+January,Leden
+February,Únor
+March,Březen
+April,Duben
+May,Květen
+June,Červen
+July,Červenec
+August,Srpen
+September,Září
+October,Říjen
+November,Listopad
+December,Prosinec
+Jan_January_abbreviation,Led
+Feb_February_abbreviation,Úno
+Mar_March_abbreviation,Bře
+Apr_April_abbreviation,Dub
+May_May_abbreviation,Kvě
+Jun_June_abbreviation,Čer
+Jul_July_abbreviation,Čec
+Aug_August_abbreviation,Srp
+Sep_September_abbreviation,Zář
+Oct_October_abbreviation,Říj
+Nov_November_abbreviation,Lis
+Dec_December_abbreviation,Pro
+Sunday,Neděle
+Monday,Pondělí
+Tuesday,Úterý
+Wednesday,Středa
+Thursday,Čtvrtek
+Friday,Pátek
+Saturday,Sobota
+Sun,Ne
+Mon,Po
+Tue,Út
+Wed,St
+Thu,Čt
+Fri,Pá
+Sat,So
+"Please wait...","Prosím čekejte..."
+"Daily Archives: %s","Archiv pro den: %s"
+"Monthly Archives: %s","Archiv pro měsíc: %s"
+"One thought on &ldquo;%s&rdquo;","1 komentář u &bdquo;%s&ldquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s komentáře u &bdquo;%s&ldquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Celý příspěvek <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Příspěvek byl publikován %s | Rubrika: %s | Štítky: %s<span class=\"by-author\"> | Autor: %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Příspěvek byl publikován %s | Rubrika: %s<span class=\"by-author\"> | Autor: %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Příspěvek byl publikován %s<span class=\"by-author\"> | Autor: %s</span>."
+"You have version %s installed. Update to %s.","Používáte zastaralou verzi %s. Můžete aktualizovat na nejnovější verzi %s."
+"Default Template","Výchozí šablona"
+"Install %s","Instalovat %s"
+"Update to version %s","Aktualizovat na nejnovější verzi %s"
+Position,Umístění

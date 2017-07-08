@@ -1,0 +1,100 @@
+Path,パス
+Plugin,プラグイン
+Author,投稿者
+"Previous Post",過去の投稿へ
+"Next Post",次の投稿へ
+"Protected: %s","保護中: %s"
+Home,ホーム
+Submit,送信
+Published,公開済み
+Pages,固定ページ
+"Search Posts",投稿を検索
+Image,画像
+"An unidentified error has occurred.",不明なエラーが発生しました。
+of,/
+Add,追加
+"No results found.",見つかりませんでした。
+Tags,タグ
+Categories,カテゴリー
+"Leave a comment",コメントする
+"Sorry, you must be logged in to post a comment.",コメントを投稿するにはログインしてください。
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","WordPress のホーム URL %s が無効です。<a href=\"%s\">ホーム設定</a>を修正してください。"
+Search,検索
+"%s Comments",%s件のコメント
+"No Comments",コメントはまだありません
+"1 Comment",1件のコメント
+Comment,コメント
+Reply,返信
+"Leave a Reply",コメントを残す
+"Your comment is awaiting moderation.",あなたのコメントは承認待ちです。
+"%s at %s","%s %s"
+Name,名前
+Email,メールアドレス
+Website,ウェブサイト
+Links,リンク
+Archives,アーカイブ
+"Select Month",月を選択
+Meta,メタ情報
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","投稿の <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Select Category",カテゴリーを選択
+"Recent Posts",最近の投稿
+"Recent Comments",最近のコメント
+"%s on %s","%s への %s"
+"Tag Cloud",タグクラウド
+"Comment on %s by %s","%s より %s へのコメント"
+"By: %s","%s より"
+"Error establishing a database connection",データベース接続確立エラー
+Password,パスワード
+"&laquo; Previous","&laquo; 前へ"
+"Next &raquo;","次へ &raquo;"
+Close,閉じる
+January,1月
+February,2月
+March,3月
+April,4月
+May,5月
+June,6月
+July,7月
+August,8月
+September,9月
+October,10月
+November,11月
+December,12月
+Jan_January_abbreviation,1月_January_abbreviation
+Feb_February_abbreviation,2月_February_abbreviation
+Mar_March_abbreviation,3月_March_abbreviation
+Apr_April_abbreviation,4月_April_abbreviation
+May_May_abbreviation,5月_May_abbreviation
+Jun_June_abbreviation,6月_June_abbreviation
+Jul_July_abbreviation,7月_July_abbreviation
+Aug_August_abbreviation,8月_August_abbreviation
+Sep_September_abbreviation,9月_September_abbreviation
+Oct_October_abbreviation,10月_October_abbreviation
+Nov_November_abbreviation,11月_November_abbreviation
+Dec_December_abbreviation,12月_December_abbreviation
+Sunday,日曜日
+Monday,月曜日
+Tuesday,火曜日
+Wednesday,水曜日
+Thursday,木曜日
+Friday,金曜日
+Saturday,土曜日
+Sun,日
+Mon,月
+Tue,火
+Wed,水
+Thu,木
+Fri,金
+Sat,土
+"Please wait...",しばらくお待ちください...
+"Daily Archives: %s","日別アーカイブ: %s"
+"Monthly Archives: %s","月別アーカイブ: %s"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","続きを読む <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","カテゴリー: %s | タグ: %s | 投稿日: %s | <span class=\"by-author\">投稿者: %s</span>"
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","カテゴリー: %s | 投稿日: %s | <span class=\"by-author\">投稿者: %s</span>"
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","この投稿は%s<span class=\"by-author\">に%sが公開しました</span>。"
+"You have version %s installed. Update to %s.","現在お使いのバージョンは %s です。%s に更新します。"
+"Default Template",デフォルトテンプレート
+"Install %s","%s のインストール"
+"Update to version %s","バージョン %s に更新"
+Position,位置

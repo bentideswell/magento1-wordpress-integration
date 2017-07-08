@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<adminhtml>
+	<menu>
+		<wordpress module="wordpress" translate="title">
+			<title>WordPress</title>
+			<sort_order>89</sort_order>
+			<action>adminhtml/system_config/edit/section/wordpress</action>
+			<children>
+				<login>
+					<title><![CDATA[WordPress &raquo;]]></title>
+					<sort_order>6</sort_order>
+					<action>adminhtml/wordpress/login</action>
+				</login>
+				<configuration>
+					<title>Settings</title>
+					<sort_order>100</sort_order>
+					<action>adminhtml/system_config/edit/section/wordpress</action>
+				</configuration>
+			</children>
+		</wordpress>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<wordpress translate="title" module="wordpress">
+										<title>Magento WordPress Integration</title>
+										<sort_order>800</sort_order>
+									</wordpress>
+								</children>
+							</config>
+						</children>
+					</system>
+					<wordpress translate="title" module="wordpress">
+						<title>WordPress</title>
+						<sort_order>800</sort_order>
+						<children>
+							<login translate="title">
+								<title>WordPress Auto-Login</title>
+								<sort_order>800</sort_order>
+							</login>
+							<configuration>
+								<title>Settings</title>
+								<sort_order>801</sort_order>
+							</configuration>
+						</children>
+					</wordpress>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</adminhtml>

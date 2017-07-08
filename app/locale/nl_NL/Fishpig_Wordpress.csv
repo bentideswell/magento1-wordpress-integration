@@ -1,0 +1,98 @@
+Path,Pad
+Author,Auteur
+Name,Naam
+"Previous Post","Vorige bericht"
+"Next Post","Volgende bericht"
+"Protected: %s","Beveiligd: %s"
+Submit,Vastleggen
+Published,Gepubliceerd
+Pages,Pagina&#39;s
+"Search Posts","Berichten zoeken"
+Image,Afbeelding
+"An unidentified error has occurred.","Er is een onge&iuml;dentificeerde fout opgetreden."
+of,van
+Add,Toevoegen
+"No results found.","Niets gevonden."
+Categories,Categorie&#235;n
+"Leave a comment","Een reactie plaatsen"
+"Sorry, you must be logged in to post a comment.","Helaas, je moet ingelogd zijn om een reactie te geven."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Je WordPress home URL %s is ongeldig. Corrigeer de <a href=\"%s\">home optie</a>."
+Search,Zoeken
+"%s Comments","%s reacties"
+"No Comments",Reageren?
+"1 Comment","1 reactie"
+Comment,Reactie
+Reply,Reageren
+"Leave a Reply","Geef een reactie"
+"Your comment is awaiting moderation.","Je reactie is in afwachting van moderatie."
+"%s at %s","%s om %s"
+Email,E-mail
+Website,Site
+Archives,Archieven
+"Select Month","Maand selecteren"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Berichten <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Powered by WordPress"
+"Select Category","Categorie selecteren"
+"Recent Posts","Meest recente berichten"
+"Recent Comments","Recente reacties"
+"%s on %s","%s op %s"
+"Tag Cloud",Tagwolk
+"Comment on %s by %s","Reactie op %s door %s"
+"By: %s","Door: %s"
+"Error establishing a database connection","Fout bij het maken van de databaseconnectie"
+Password,Wachtwoord
+"&laquo; Previous","&laquo; Vorige"
+"Next &raquo;","Volgende &raquo;"
+Close,Sluiten
+January,januari
+February,februari
+March,maart
+April,april
+May,mei
+June,juni
+July,juli
+August,augustus
+September,september
+October,oktober
+November,november
+December,december
+Jan_January_abbreviation,jan
+Feb_February_abbreviation,feb
+Mar_March_abbreviation,mrt
+Apr_April_abbreviation,apr
+May_May_abbreviation,mei
+Jun_June_abbreviation,jun
+Jul_July_abbreviation,jul
+Aug_August_abbreviation,aug
+Sep_September_abbreviation,sep
+Oct_October_abbreviation,okt
+Nov_November_abbreviation,nov
+Dec_December_abbreviation,dec
+Sunday,zondag
+Monday,maandag
+Tuesday,dinsdag
+Wednesday,woensdag
+Thursday,donderdag
+Friday,vrijdag
+Saturday,zaterdag
+Sun,zo
+Mon,ma
+Tue,di
+Wed,wo
+Thu,do
+Fri,vr
+Sat,za
+"Please wait...","Even wachten..."
+"Daily Archives: %s","Dagelijks archief: %s"
+"Monthly Archives: %s","Maandelijks archief: %s"
+"One thought on &ldquo;%s&rdquo;","Een gedachte over &ldquo;%s&rdquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s gedachten over &ldquo;%s&rdquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Lees verder <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Dit bericht werd geplaatst in %s en getagged met %s op %s<span class=\"by-author\"> door %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Dit bericht werd geplaatst in %s op %s<span class=\"by-author\"> door %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Dit bericht werd geplaatst op %s<span class=\"by-author\"> door %s</span>."
+"You have version %s installed. Update to %s.","Je hebt versie %s ge&#239;nstalleerd. Naar versie %s bijwerken."
+"Default Template","Standaard template"
+"Install %s","%s installeren"
+"Update to version %s","Bijwerken naar versie %s"
+Position,Positie

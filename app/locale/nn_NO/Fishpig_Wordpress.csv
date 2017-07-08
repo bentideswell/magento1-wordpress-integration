@@ -1,0 +1,103 @@
+Path,Stig
+Plugin,Innstikk
+Author,Forfattar
+Name,Namn
+"Previous Post","Førre innlegg"
+"Next Post","Neste innlegg"
+"Protected: %s","Verna: %s"
+Home,Heim
+Submit,"Send inn"
+Published,Publisert
+Pages,Sider
+"Search Posts","Søk i innlegg"
+Image,Bilete
+"An unidentified error has occurred.","Det oppstod ein ukjend feil."
+of,av
+Add,"Legg til"
+"No results found.","Ingen treff."
+Tags,Merkelappar
+Categories,Kategoriar
+"Leave a comment","Legg att eit innspel"
+"Sorry, you must be logged in to post a comment.","Du må nok vere innlogga for å kunne gje innspel."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","WordPress-heimadressa %s er ugyldig.  Du må retta opp <a href=\"%s\">heim-innstillinga</a>."
+Search,Søk
+"%s Comments","%s innspel"
+"No Comments","Inkje innspel"
+"1 Comment","1 innspel"
+Comment,Innspel
+Reply,Svar
+"Leave a Reply","Legg att eit svar"
+"Your comment is awaiting moderation.","Kommentaren din ventar på godkjenning."
+"%s at %s","%s kl. %s"
+Email,Epost
+Website,Vevstad
+Links,Lenkjer
+Archives,Arkiv
+"Select Month","Vel månad"
+Meta,Bakom
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Innlegg <abbr lang=\"en\" xml:lang=\"en\" title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Vert driven med WordPress, toppmoderne og semantisk personleg publiseringsverkty."
+"Select Category","Vel kategori"
+"Recent Posts","Nye innlegg"
+"Recent Comments","Seinaste innspel"
+"%s on %s","%s til %s"
+"Tag Cloud",Merkelappsky
+"Comment on %s by %s","Innspel til %s av %s"
+"By: %s","Av: %s"
+"Error establishing a database connection","Greidde ikkje kopla til databasen"
+Password,Passord
+"&laquo; Previous","&laquo; Førre"
+"Next &raquo;","Neste &raquo;"
+Close,Lukk
+January,januar
+February,februar
+March,mars
+April,april
+May,mai
+June,juni
+July,juli
+August,august
+September,september
+October,oktober
+November,november
+December,desember
+Jan_January_abbreviation,jan
+Feb_February_abbreviation,feb
+Mar_March_abbreviation,mar
+Apr_April_abbreviation,apr
+May_May_abbreviation,mai
+Jun_June_abbreviation,jun
+Jul_July_abbreviation,jul
+Aug_August_abbreviation,aug
+Sep_September_abbreviation,sept
+Oct_October_abbreviation,okt
+Nov_November_abbreviation,nov
+Dec_December_abbreviation,des
+Sunday,sundag
+Monday,måndag
+Tuesday,tysdag
+Wednesday,onsdag
+Thursday,torsdag
+Friday,fredag
+Saturday,laurdag
+Sun,sun
+Mon,mån
+Tue,tys
+Wed,ons
+Thu,tor
+Fri,fre
+Sat,lau
+"Please wait...","Vent litt..."
+"Daily Archives: %s","Dagsarkiv: %s"
+"Monthly Archives: %s","Månadsarki: %s"
+"One thought on &ldquo;%s&rdquo;","Ein tanke om &ldquo;%s&rdquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s tankar om &ldquo;%s&rdquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Les meir <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Dette innlegget vart lagt inn  %s<span class=\"by-author\"> av %s</span> i %s og merka %s."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Dette innlegget vart lagt inn %s<span class=\"by-author\"> av %s</span> i %s."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Dette innlegget vart lagt inn %s<span class=\"by-author\"> av %s</span>."
+"You have version %s installed. Update to %s.","Du har utgåve %s installert. Oppdater til %s."
+"Default Template",Standardmal
+"Install %s","Installer %s"
+"Update to version %s","Oppdater til utgåva %s"
+Position,Plassering

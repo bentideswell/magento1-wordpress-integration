@@ -1,0 +1,102 @@
+"Sorry, you must be logged in to post a comment.","Sorry, you must be logged in to post a comment."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>."
+Search,Search
+"No results found.","No results found."
+Categories,Categories
+"%s Comments","%s Comments"
+"No Comments","No Comments"
+"1 Comment","1 Comment"
+Comment,Comment
+Reply,Reply
+"Leave a Reply","Leave a Reply"
+"Your comment is awaiting moderation.","Your comment is awaiting moderation."
+"%s at %s","%s at %s"
+Name,Name
+Email,Email
+Website,Website
+Pages,Pages
+Links,Links
+Archives,Archives
+"Select Month","Select Month"
+Meta,Meta
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Powered by WordPress, state-of-the-art semantic personal publishing platform."
+"Select Category","Select Category"
+"Recent Posts","Recent Posts"
+"Recent Comments","Recent Comments"
+"%s on %s","%s on %s"
+"Tag Cloud","Tag Cloud"
+Tags,Tags
+"Comment on %s by %s","Comment on %s by %s"
+"By: %s","By: %s"
+"Error establishing a database connection","Error establishing a database connection"
+Password,Password
+"&laquo; Previous","&laquo; Previous"
+"Next &raquo;","Next &raquo;"
+Close,Close
+January,January
+February,February
+March,March
+April,April
+May,May
+June,June
+July,July
+August,August
+September,September
+October,October
+November,November
+December,December
+Jan_January_abbreviation,Jan_January_abbreviation
+Feb_February_abbreviation,Feb_February_abbreviation
+Mar_March_abbreviation,Mar_March_abbreviation
+Apr_April_abbreviation,Apr_April_abbreviation
+May_May_abbreviation,May_May_abbreviation
+Jun_June_abbreviation,Jun_June_abbreviation
+Jul_July_abbreviation,Jul_July_abbreviation
+Aug_August_abbreviation,Aug_August_abbreviation
+Sep_September_abbreviation,Sep_September_abbreviation
+Oct_October_abbreviation,Oct_October_abbreviation
+Nov_November_abbreviation,Nov_November_abbreviation
+Dec_December_abbreviation,Dec_December_abbreviation
+Sunday,Sunday
+Monday,Monday
+Tuesday,Tuesday
+Wednesday,Wednesday
+Thursday,Thursday
+Friday,Friday
+Saturday,Saturday
+Sun,Sun
+Mon,Mon
+Tue,Tue
+Wed,Wed
+Thu,Thu
+Fri,Fri
+Sat,Sat
+"Please wait...","Please wait..."
+Path,Path
+Plugin,Plugin
+Author,Author
+Type,Type
+"Previous Post","Previous Post"
+"Next Post","Next Post"
+"Protected: %s","Protected: %s"
+Home,Home
+Submit,Submit
+Published,Published
+"Search Posts","Search Posts"
+Image,Image
+"An unidentified error has occurred.","An unidentified error has occurred."
+of,of
+Add,Add
+"Leave a comment","Leave a comment"
+"Daily Archives: %s","Daily Archives: %s"
+"Monthly Archives: %s","Monthly Archives: %s"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Continue reading <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","This entry was posted on %s<span class=\"by-author\"> by %s</span>."
+Position,Position
+"Install %s","Install %s"
+"Update to version %s","Update to version %s"
+"Default Template","Default Template"
+"You have version %s installed. Update to %s.","You have version %s installed. Update to %s."

@@ -1,0 +1,99 @@
+Path,Caminho
+Author,Autor
+Type,Tipo
+Name,Nome
+"Previous Post","Artigo anterior"
+"Next Post","Artigo seguinte"
+"Protected: %s","Protegido: %s"
+Home,Início
+Submit,Submeter
+Published,Publicado
+Pages,Páginas
+"Search Posts","Pesquisar artigos"
+Image,Imagem
+"An unidentified error has occurred.","Ocorreu um erro não identificado."
+of,de
+Add,Adicionar
+"No results found.","Nenhum resultado encontrado."
+Tags,Etiquetas
+Categories,Categorias
+"Leave a comment","Deixe o seu comentário"
+"Sorry, you must be logged in to post a comment.","Tem de ter sessão iniciada para publicar um comentário."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","O seu URL %s de 'home' do WordPress é inválido. Por favor corrija a <a href=\"%s\">opção</a>."
+Search,Procurar
+"%s Comments","%s Comentários"
+"No Comments","Sem Comentários"
+"1 Comment","1 Comentário"
+Comment,Comentário
+Reply,Responder
+"Leave a Reply","Deixar uma resposta"
+"Your comment is awaiting moderation.","O seu comentário aguarda moderação."
+"%s at %s","%s ás %s"
+Archives,Arquivo
+"Select Month","Seleccionar Mês"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","<abbr title=\"Really Simple Syndication\">RSS</abbr> dos artigos"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Criado com WordPress, plataforma de publicação pessoal sem&acirc;ntica de vanguarda."
+"Select Category","Seleccionar categoria"
+"Recent Posts","Artigos recentes"
+"Recent Comments","Comentários recentes"
+"%s on %s","%s em %s"
+"Tag Cloud","Nuvem de etiquetas"
+"Comment on %s by %s","Comentário em %s por %s"
+"By: %s","Por: %s"
+"Error establishing a database connection","Erro ao estabelecer uma ligação com a base de dados"
+Password,Senha
+"&laquo; Previous","&laquo; Anterior"
+"Next &raquo;","Seguinte &raquo;"
+Close,Fechar
+January,Janeiro
+February,Fevereiro
+March,Março
+April,Abril
+May,Maio
+June,Junho
+July,Julho
+August,Agosto
+September,Setembro
+October,Outubro
+November,Novembro
+December,Dezembro
+Jan_January_abbreviation,Jan
+Feb_February_abbreviation,Fev
+Mar_March_abbreviation,Mar
+Apr_April_abbreviation,Abr
+May_May_abbreviation,Mai
+Jun_June_abbreviation,Jun
+Jul_July_abbreviation,Jul
+Aug_August_abbreviation,Ago
+Sep_September_abbreviation,Set
+Oct_October_abbreviation,Out
+Nov_November_abbreviation,Nov
+Dec_December_abbreviation,Dez
+Sunday,Domingo
+Monday,Segunda-feira
+Tuesday,Terça-feira
+Wednesday,Quarta-feira
+Thursday,Quinta-feira
+Friday,Sexta-feira
+Saturday,Sábado
+Sun,Dom
+Mon,Seg
+Tue,Ter
+Wed,Qua
+Thu,Qui
+Fri,Sex
+Sat,Sáb
+"Please wait...","Por favor aguarde..."
+"Daily Archives: %s","Arquivo diário: %s"
+"Monthly Archives: %s","Arquivo mensal: %s"
+"One thought on &ldquo;%s&rdquo;","1 comentário a &ldquo;%s&rdquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s comentários a &ldquo;%s&rdquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Continuar a ler <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Publicado em %s com a(s) etiqueta(s) %s a %s<span class=\"by-author\"> por %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Publicado em %s a %s<span class=\"by-author\"> por %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Publicado a %s<span class=\"by-author\"> por %s</span>."
+"You have version %s installed. Update to %s.","Você tem a versão %s instalada. Actualize para a versão %s."
+"Default Template","Modelo por Omissão"
+"Install %s","Instalar %s"
+"Update to version %s","Actualizado para a versão %s"
+Position,Posição

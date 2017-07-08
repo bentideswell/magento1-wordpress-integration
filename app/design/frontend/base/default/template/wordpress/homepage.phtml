@@ -1,0 +1,17 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<div class="page-title blog-title <?php if (!$this->isFirstPage()): ?>not-<?php endif; ?>first-page<?php if ($this->isFirstPage() && $this->getTagLine()): ?> with-tagline<?php endif; ?>">
+	<h1><?php echo $this->escapeHtml($this->getBlogTitle()) ?></h1>
+</div>
+<?php if ($this->isFirstPage() && $this->getTagLine()): ?>
+	<p class="blog-desc blog-tag-line"><?php echo $this->escapeHtml($this->getTagLine()) ?></p>
+<?php endif; ?>
+<div class="blog-home">
+	<?php echo $this->getPostListHtml() ?>
+</div>

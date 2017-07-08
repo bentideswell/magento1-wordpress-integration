@@ -1,0 +1,295 @@
+/**
+ * @category Fishpig
+ * @package Fishpig_Wordpress
+ * @url https://fishpig.co.uk/magento/wordpress-integration/
+ * @author Ben Tideswell <ben@fishpig.co.uk>
+ */
+
+26/06/2017 = 4.2.2.4
+- Added better support for new term meta table in WordPress.
+
+17/06/2017 = 4.2.2.2
+- Fixed object translation issue.
+
+??/05/2017 = 4.2.1.16
+- Added translation rewrite to fix translation issues when using bbPress and other add-on extensions.
+
+13/05/2017 = 4.2.1.15
+- Added better support for TwitterCard and Facebook OpenGraph data in WordPress SEO by Yoast.
+
+12/05/2017 = 4.2.1.14
+- Added setPageSize method to Post/List.php. This allows you to set a custom number of posts per page. This can be called via XML and targeted to specific categories, post types or any kind of archive page.
+
+24/03/2017 - 4.2.1.12
+- Fixed issue with search system when search contained malformed characters
+
+16/03/2017 - 4.2.1.10
+- Fixed XML sitemap issue when using Legacy
+
+08/03/2017 - 4.2.1.9
+- Added missing file. This fixes issue with wpautop not functioning correctly.
+
+17/02/2017 - 4.2.1.8
+- Fixed issue with Yoast SEO and og:description tag
+
+13/02/2017 - 4.2.1.7
+- Fixed post format bug
+
+09/02/2017 - 4.2.1.6
+- Fixed issue with XML sitemap when using Multisite.
+
+17/01/2017 - 4.2.1.5
+- Fixed missing /category/ in category URLs
+
+09/12/2016 - 4.2.1.3
+- Added better database connection error reporting. It is now reported if the DB connection was successful but the table prefix is wrong.
+
+??/11/2016 - 4.2.0.29
+- Added fix for comments on custom post types.
+
+31/10/2016 - 4.2.0.28
+- Fixed issue that stopped non 'post' post types from working.
+
+26/10/2016 - 4.2.0.25
+- Fixed pager issue that affected a small number of installs.
+- Fixed preview issue for posts when using Root. Requires Root upgrade to latest version.
+
+29/09/2016 - 4.2.0.23
+- Added support for recurring events in The Events Calendar Pro 1.1.0.18.
+
+09/09/2016 - 4.2.0.21
+- Fixed issue that broke some add-on integrations.
+
+01/09/2016 - 4.2.0.20
+- Added support for %%page%% in Yoast SEO title and metas.
+- Added config options to include jQuery and underscore.js if required by an add-on extension. These options can be found in System > Configuration > WordPress > Misc.
+
+13/07/2016 - 4.2.0.19
+- Fixed DB issue with Root installed.
+
+23/06/2016 - 4.2.0.17
+- Fixed title html entity issue
+
+07/06/2016 - 4.2.0.16
+- API fix. You also need to update Root (if you have this installed).
+
+24/05/2016 - 4.2.0.14
+- Fixed issue where disabling Open Graph tags in Yoast SEO did not disable OG tags. This now does disable them.
+
+24/05/2016 - 4.2.0.12
+- Fixed XML sitemap issue so that all XML sitemaps are now created when generating via the CRON.
+
+23/05/2016 - 4.2.0.11
+- Added wordpress/shortcode_product block for product shortcodes. This fixes the issue where prices don't display.
+
+19/05/2016 - 4.2.0.10
+- Fixed issue with title separator in Yoast SEO plugin.
+
+11/05/2016 - 4.2.0.9
+- Fixed issue that added Site name to the end of a page title set via Yoast.
+
+05/05/2016 - 4.2.0.8
+- Fixed issue with primary category.
+
+05/05/2016 - 4.2.0.7
+- Fixed empty post view page issue.
+
+04/05/2016 - 4.2.0.6
+- Fixed issue that stopped custom template being set for post view pages. To fix, ensure template="wordpress/post/view.phtml" is removed from wordpress.xml.
+
+27/04/2016 - 4.2.0.4
+- Improved category selection for Post permalinks. By default, the category with the lowest ID will be used. If Yoast SEO is installed, the lowest category alphabetically will be used. If you select a Primary Category using Yoast SEO, this will be used on a per post basis.
+
+18/04/2016 - 4.2.0.3
+- Fixed XML Sitemap issue when running via the CRON. 
+
+31/03/2016 - 4.2.0.2
+- Fixed issue where underscore.js wasn't included when required.
+
+16/03/2016 - 4.2.0.0
+- Added new add-on integration system that allows for better integration. You can now use supported shortcodes anywhere around your Magento site using <?php echo Mage::helper('wordpress/filter')->process('[contact-form-7 id="1"]') ?>.  You will need to change the shortcode to match your shortcode. Only supported shortcodes will work. You may need to purchase an add-on extension to get specific shortcodes working.
+
+02/03/2016 - 4.1.2.11
+- Improved the auto-paragraph function (wpautop).
+
+19/02/2016 - 4.1.2.10
+- Fixed pagination issue when using Integrated Search
+- Improved $post->getPostExcerpt() to accept an integer parameter that limits the number of words returned. echo $post->getPostExcerpt(50) will limit the excerpt to 50 words.
+
+27/01/2016 - 4.1.2.9
+- Added the shortcode params to the block for the product shortcode. This means you can set custom values such as [product id="4" type="custom"] and then in the template you can use $this->getParams()->getType() to get the type you set. This allows you to customise the template based on what's set in the shortcode.
+
+19/01/2016 - 4.1.2.8
+- Improved wpautop function.
+
+19/01/2016 - 4.1.2.7
+- Added before/after RSS entry text via Yoast SEO.
+
+16/01/2016 - 4.1.2.6
+- Bug fix for issue introduced in version 4.1.2.4 where if a term had no child term's, no posts would be displayed.
+
+15/01/2016 - 4.1.2.4
+- Fixed issue so that posts that belong to child categories show up in parent category
+- Fix for Custom Sidebars
+
+05/01/2016 - 4.1.2.3
+- Fixed issue with permalinks being encoded incorrectly.
+
+04/01/2016 - 4.1.2.2
+- Fixed menu caching issue.
+- Added support for PHP 7.
+
+14/12/2015 - 4.1.2.1
+- Fixed version number in config.xml
+- Fixed pass by reference error
+
+10/12/2015 - 4.1.1.33
+- Added custom taxonomies to associated category list.
+- Improved Fishpig_Wordpress_Helper_Abstract::getDefaultStore() method
+
+09/12/2015 - 4.1.1.31
+- Fix for custom post type archive pages not showing up.
+
+25/11/2015 - 4.1.1.28
+- Fixed issue that stopped setting a WordPress page template from the WordPress Admin from working. You can use the page template feature to set a 1 column layout for Page (post type with post_type of 'page').
+
+13/11/2015 - 4.1.1.27
+- Fixed issue with incorrect URLs for posts
+
+06/11/2015 - 4.1.1.25
+- Improve jQuery inclusion by add-ons.
+
+04/11/2015 - 4.1.1.23
+- Fix for URLs in The Events Calendar
+
+02/11/2015 - 4.1.1.21
+- Fixed YouTube shortcode includes.
+
+02/11/2015 - 4.1.1.20
+- Added support for '.html' in permalink strings for custom post types when using the WP Permastructure plugin. This requires the Post Types and Taxonomies add-on extension (http://fishpig.co.uk/magento/wordpress-integration/post-types-taxonomies/).
+- Added support for custom taxonomies in the breadcrumbs.
+
+02/11/2015 - 4.1.1.19
+- Updated WPSeo to work with the Tribe Events Calendar plugin integration.
+
+29/10/2015 - 4.1.1.18
+- Added support for the WP Permastructure plugin. This requires the Post Types and Taxonomies add-on (http://fishpig.co.uk/magento/wordpress-integration/post-types-taxonomies/).
+
+14/10/2015 - 4.1.1.14
+- Added support for Spotify URLs (eg. http://open.spotify.com/track/4bz7uB4edifWKJXSDxwHcs) and Spotify codes (eg. spotify:track:2TpxZ7JUBn3uw46aR7qd6V). Simply add the URL or code to your post content field on it's own line and this will be converted into a Spotify include/iframe.
+
+14/10/2015 - 4.1.1.12
+- Fixed issue that broke RSS feeds for custom post type comments.
+- Fixed issue that broke RSS feeds when a blog post author didn't have an email address set.
+- Fixed issue that stopped the pager working. If you are still experiencing this issue, find wordpress.xml in your custom theme's layout directory and delete this file. This will allow the updated version in base/default to be used. For future reference, you should try not to edit wordpress.xml and instead, make all changes via a local.xml file in your custom theme's layout directory. This will allow you to avoid common layout issues such as these and will make upgrading the extension much easier.
+
+13/10/2015 - 4.1.1.11
+- Reordered layout handles so that more specific layout handles take precedence over simple layout handles.
+
+06/10/2015 - 4.1.1.8
+- Fixed issue with term_order field in term collections. Field is only added to order if it exists in the database.
+
+05/10/2015 - 4.1.1.7
+- Added 'term_order' to ORDER BY for term collections.
+
+05/10/2015 - 4.1.1.6
+- Improved auto HTML formatting, especially when using Visual Composer.
+
+02/10/2015 - 4.1.1.5
+- Added fix for using WordPress as homepage. Fixed issue that caused WP Page and post list to display.
+
+24/09/2015 - 4.1.1.4
+- Fixed issue with category slugs in post permalinks
+- Fixed issue with YouTube shortcodes
+
+22/09/2015 - 4.1.1.2
+- Fixed issue with trailing slash not appearing in page URLs when not using the Post Types & Taxonomies add-on extension.
+
+18/09/2015 - 4.1.1.1
+- Added fix for custom sidebars with categories and other terms
+- Fixed escaping slashes issue in social helper
+
+12/09/2015 - 4.1.0.5
+- Added fix for sticky posts so that sticky posts always come first.
+- Added fix for custom sidebars with categories and other terms
+
+10/09/2015 - 4.1.0.2
+- Fixed issue that could cause a double '/' in pager URLs.
+- Fixed issue that stopped custom post view templates (defined in the XML) from working.
+
+08/09/2015 - 4.1.0.1
+- Fixed issue regarding automatic template selection. You can now create the following templates for custom post types that will be used automatically. For the post list/archive view create wordpress/post/list/renderer/posttype.phtml (changing posttype for the name of your post type) and for the single post view, you can create wordpress/post/view/posttype.phtml. These paths are relative to the template directory of your custom theme.
+
+04/09/2015 - 4.1.0.0
+- Added licensing to the extension.
+
+01/09/2015 - 4.0.0.40
+- Fixed an issue that caused a conflict with the m2e extension.
+
+14/08/2015 - 4.0.0.39
+- Fixed issue that triggered a PHP fatal error (Fatal error: Call to a member function isHierarchical() on a non-object) when previewing a post.
+- Fixed Twitter Card image. The featured image is now used at the Twitter Card image.
+
+12/08/2015 - 4.0.0.38
+- Fix for the associations system that shows the correct blog posts when viewing a store that is associated with a blog that is not the default blog.
+
+10/08/2015 - 4.0.0.37
+- Another ACL fix for the auto-login system
+
+14/07/2015 - 4.0.0.36
+- Fixed issue that caused 'Warning: session_start(): Cannot send session cache limiter - headers already sent ' error message.
+
+13/07/2015 - 4.0.0.35
+- Added some legacy references to the Page model to make upgrading slightly easier.
+
+09/07/2015 - 4.0.0.34
+- This update fixes the ACL issue present when using Magento 1.9.2.0. If you get an 'Access Denied' message when viewing the SmartTabs admin page (even after logging out and logging back in) and are using Magento 1.9.2.0, upgrading to this version will fix that issue.
+
+26/06/2015 - 4.0.0.29
+- Fixed getConnection() issue in associated products and categories
+
+24/06/2015 - 4.0.0.24
+- Minor bug fixes for Root compatibility
+
+19/06/2015 - 4.0.0.23
+- Fixed WordPress menu issue
+
+16/06/2015 - 4.0.0.18
+- Fixed issue with category and tag prefixes
+
+15/06/2015 - 4.0.0.17
+- Added automatic setting of custom templates for post archive pages. Simply create a file at wordpress/post/list/renderer/%postyype%.phtml and it will be used automatically.
+
+15/06/2015 - 4.0.0.16
+- Minor bug fixes
+
+13/06/2015 - 4.0.0.10
+- Added support for the Post Types Order plugin
+
+12/06/2015 - 4.0.0.9
+- Fixed issue that broke Multisite
+
+12/06/2015 - 4.0.0.8
+- Fixed URL's for 'page' post type
+
+12/06/2015 - 4.0.0.7
+- Fixed URL's for 'post' post type
+
+11/06/2015 - 4.0.0.6
+ - Added improvements to post types that have hierarchies
+ 
+11/06/2015 - 4.0.0.4
+- Fixed issue when using default permalinks
+
+10/06/2015 - 4.0.0.3
+- Fixed issue with sub-categories not displaying in sidebar widget
+- Fixed WordPress SEO issue
+
+09/06/2015 - 4.0.0.2
+- Fixed XML sitemap generation error
+
+09/06/2015 - 4.0.0.0
+- Game on! Big changes!
+- The Page model has been removed and is now served via the Post model.
+- The Post_Category and Post_Tag models have been removed and can be accessed via the Term model
+- For more information, please see http://fishpig.co.uk/magento/wordpress-integration/upgrading-to-version-4/

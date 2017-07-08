@@ -1,0 +1,103 @@
+Path,Bane
+Plugin,Utvidelse
+Author,Forfatter
+Name,Navn
+"Previous Post","Forrige innlegg"
+"Next Post","Neste innlegg"
+"Protected: %s","Beskyttet: %s"
+Home,Hjem
+Submit,Send
+Published,Publisert
+Pages,Sider
+"Search Posts","Søk i innlegg"
+Image,Bilde
+"An unidentified error has occurred.","En ikke identifisert feil har oppstått."
+of,av
+Add,"Legg til "
+"No results found.","Ingen treff."
+Tags,Stikkord
+Categories,Kategorier
+"Leave a comment","Legg igjen en kommentar"
+"Sorry, you must be logged in to post a comment.","Beklager, du må være innlogget for å kunne kommentere."
+"Your WordPress home URL %s is invalid.  Please fix the <a href=\"%s\">home option</a>.","Din WordPress hjem-URL %s er ugyldig. Fiks <a href=\"%s\">hjem-valget</a>."
+Search,Søk
+"%s Comments","%s kommentarer"
+"No Comments","Ingen kommentarer"
+"1 Comment","1 kommentar"
+Comment,Kommentar
+Reply,Svar
+"Leave a Reply","Legg igjen en kommentar"
+"Your comment is awaiting moderation.","Din kommentar avventer moderasjon."
+"%s at %s","%s, kl. %s"
+Email,E-post
+Website,Nettsted
+Links,Lenker
+Archives,Arkiv
+"Select Month","Velg måned"
+"Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>","Innlegg <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+"Powered by WordPress, state-of-the-art semantic personal publishing platform.","Drives med WordPress, toppmoderne personlig publiseringsverktøy."
+"Select Category","Velg kategori"
+"Recent Posts","Siste innlegg"
+"Recent Comments","Siste kommentarer"
+"%s on %s","%s til %s"
+"Tag Cloud",Stikkordsky
+"Comment on %s by %s","Kommentar til %s av %s"
+"By: %s","Av: %s"
+"Error establishing a database connection","Feil: klarte ikke å etablere databasetilkobling"
+Password,Passord
+"&laquo; Previous","&laquo; Forrige"
+"Next &raquo;","Neste &raquo;"
+Close,Lukk
+January,januar
+February,februar
+March,mars
+April,april
+May,mai
+June,juni
+July,juli
+August,august
+September,september
+October,oktober
+November,november
+December,desember
+Jan_January_abbreviation,jan
+Feb_February_abbreviation,feb
+Mar_March_abbreviation,mar
+Apr_April_abbreviation,apr
+May_May_abbreviation,mai
+Jun_June_abbreviation,jun
+Jul_July_abbreviation,jul
+Aug_August_abbreviation,aug
+Sep_September_abbreviation,sept
+Oct_October_abbreviation,okt
+Nov_November_abbreviation,nov
+Dec_December_abbreviation,des
+Sunday,søndag
+Monday,mandag
+Tuesday,tirsdag
+Wednesday,onsdag
+Thursday,torsdag
+Friday,fredag
+Saturday,lørdag
+Sun,søn
+Mon,man
+Tue,tir
+Wed,ons
+Thu,tor
+Fri,fre
+Sat,lør
+"Please wait...","Vennligst vent..."
+"Daily Archives: %s","Daglige arkiver: %s"
+"Monthly Archives: %s","Månedlige arkiver: %s"
+"One thought on &ldquo;%s&rdquo;","En tanke om &ldquo;%s&rdquo;"
+"%s thoughts on &ldquo;%s&rdquo;","%s tanker om &ldquo;%s&rdquo;"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Les videre <span class=\"meta-nav\">&rarr;</span>"
+"This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","Dette innlegget ble skrevet i %s og market %s, %s<span class=\"by-author\"> av %s</span>."
+"This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","Dette innlegget ble skrevet i %s, %s<span class=\"by-author\"> av %s</span>."
+"This entry was posted on %s<span class=\"by-author\"> by %s</span>.","Dette innlegget ble skrevet %s<span class=\"by-author\"> av %s</span>."
+"You have version %s installed. Update to %s.","Du bruker versjon %s. Oppgrader til %s."
+Tumblr,"Tumblr mikroblogg"
+"Default Template",Standardmal
+"Install %s","Installer %s"
+"Update to version %s","Oppdater til versjon %s"
+Position,Posisjon

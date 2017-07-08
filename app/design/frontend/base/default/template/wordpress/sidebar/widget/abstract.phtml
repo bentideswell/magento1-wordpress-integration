@@ -1,0 +1,28 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php if ($blockContentHtml = $this->getBlockContentHtml()): ?>
+	<?php if ($this->getTemplateType() === 'none'): ?>
+		<?php echo $blockContentHtml ?>
+	<?php elseif ($this->getTemplateType() === 'simple'): ?>
+		<div class="block block-blog block-<?php echo $this->getClassName() ?>">	
+			<?php echo $blockContentHtml ?>
+		</div>
+	<?php else: ?>
+		<div class="block block-blog block-<?php echo $this->getClassName() ?>">	
+			<?php if ($title = $this->getTitle()): ?>
+				<div class="block-title">
+					<strong><span><?php echo $this->__($title) ?></span></strong>
+				</div>
+			<?php endif; ?>
+			<div class="block-content">
+				<?php echo $blockContentHtml ?>
+			</div>
+		</div>
+	<?php endif; ?>
+<?php endif; ?>
