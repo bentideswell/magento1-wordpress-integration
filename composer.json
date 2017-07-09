@@ -1,5 +1,5 @@
 {
-    "name": "bentideswell/magento1-wordpress-integration",
+    "name": "fishpig/magento1-wordpress-integration",
     "type": "magento-module",
     "homepage": "https://fishpig.co.uk/magento/wordpress-integration/",
     "description": "Magento WordPress Integration module for Magento 1 CE and Magento 1 EE.",
