@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+21/07/2017 = 4.2.2.7
+- Added support for SVG images.
+
 26/06/2017 = 4.2.2.4
 - Added better support for new term meta table in WordPress.
 

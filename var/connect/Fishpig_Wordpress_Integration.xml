@@ -1,5 +1,5 @@
 <_>
-   <form_key>rACpnF7VgjsI74t4</form_key>
+   <form_key>uqVUpTDHMdF8iXvm</form_key>
    <name>Fishpig_Wordpress_Integration</name>
    <channel>community</channel>
    <version_ids>
@@ -9,7 +9,7 @@
    <description>Easily integrate Magento and WordPress without modifying any core files.</description>
    <license>FishPig EULA</license>
    <license_uri>http://fishpig.co.uk/license.txt</license_uri>
-   <version>4.2.2.6</version>
+   <version>4.2.2.7</version>
    <stability>stable</stability>
    <notes>For changes, please see https://fishpig.co.uk/magento/wordpress-integration/#changelog</notes>
    <authors>
@@ -40,7 +40,7 @@
             <max/>
          </max>
          <files>
-            <files>                                                                                                                                                                                                                                                                                                </files>
+            <files>                                                                                                                                                                                                                                                                                                 </files>
          </files>
       </package>
       <extension>

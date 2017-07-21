@@ -98,6 +98,10 @@ class Fishpig_Wordpress_Model_Image extends Fishpig_Wordpress_Model_Post_Attachm
 	 */
 	protected function _getImagePath($type = null)
 	{
+		if ($this->isSvg()) {
+			return $this->getData('guid');
+		}
+		
 		$filename = null;
 		
 		if ($type == null) {
@@ -116,6 +120,18 @@ class Fishpig_Wordpress_Model_Image extends Fishpig_Wordpress_Model_Post_Attachm
 		}
 		
 		return $this->_getThisImageUrl().$filename;
+	}
+	
+	/*
+	 * Determine if the current image is an SVG image
+	 * These cannot be resized by WordPress so all requests for a different image
+	 * should return the upload URL (this is stored as guid by WordPress)
+	 *
+	 * @return bool
+	 */
+	public function isSvg()
+	{
+		return $this->getPostMimeType() === 'image/svg+xml';
 	}
 	
 	/**
