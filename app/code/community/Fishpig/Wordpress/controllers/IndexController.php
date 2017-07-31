@@ -175,4 +175,27 @@ class Fishpig_Wordpress_IndexController extends Fishpig_Wordpress_Controller_Abs
 	{
 		return $this->getResponse()->setRedirect($url)->sendResponse();
 	}
+
+	/**
+	 *
+	 */
+	public function wpjsonAction()
+	{
+		try {
+			$coreModules = (array)Mage::app()->getConfig()->getNode('wordpress/core/modules');
+			
+			if (!$coreModules) {
+				throw new Exception('No WP Core modules installed.');
+			}
+			
+			$coreModule = array_shift(array_keys($coreModules));
+
+			Mage::helper($coreModule . '/core')->isActive();
+
+			exit;
+		}
+		catch (Exception $e) {
+			return $this->_forward('noRoute');
+		}
+	}
 }

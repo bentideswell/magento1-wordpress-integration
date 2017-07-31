@@ -162,6 +162,7 @@ class Fishpig_Wordpress_Controller_Router extends Mage_Core_Controller_Varien_Ro
 			$this->_getAjaxRoutes($uri);
 		}
 		
+		$this->addRoute(array('/^wp-json\/(.*)$/' => array('json_route_data')), '*/index/wpjson');
 		$this->addRoute(array('/^author\/([^\/]{1,})/' => array('author')), '*/author/view');
 		$this->addRoute(array('/^([1-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})$/' => array('year', 'month')), '*/archive/view');
 		$this->addRoute(array('/^([1-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})$/' => array('year', 'month')), '*/archive/view');
