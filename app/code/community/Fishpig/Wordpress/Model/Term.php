@@ -202,33 +202,4 @@ class Fishpig_Wordpress_Model_Term extends Fishpig_Wordpress_Model_Abstract
 		
 		return $this->_getData('child_ids');
 	}
-	
-	/**
-	 * Get the meta value using ACF if it's installed
-	 *
-	 * @param string $key
-	 * @return mixed
-	 **/
-	public function getMetaValue($key)
-	{
-		if ($value = parent::getMetaValue($key)) {
-			return $value;
-		}
-
-		$ikey = '__acf_meta_' . $key;
-		
-		if ($this->hasData($ikey)) {
-			return $this->_getData($ikey);
-		}
-		
-		if (!Mage::helper('wordpress')->isAddonInstalled('ACF')) {
-			$this->setData($ikey, null);
-			
-			return null;
-		}
-		
-		$this->setData($ikey, Mage::helper('wp_addon_acf')->getTermValue($key, $this));
-
-		return $this->_getData($ikey);
-	}
 }

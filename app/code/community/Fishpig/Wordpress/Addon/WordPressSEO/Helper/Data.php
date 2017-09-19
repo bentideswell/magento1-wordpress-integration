@@ -291,7 +291,22 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 				$robots = explode(',', $advancedRobots);
 			}
 		}
+
+		/* Allow custom fields in meta data */
+		$data = $this->getRewriteData();
 		
+		foreach($meta->getData() as $key => $value) {
+			if (strpos($value, '%%cf_') !== false) {
+				if (preg_match_all('/%%cf_([^%]+)%%/', $value, $matches)) {
+					foreach($matches[1] as $customField) {
+						$data['cf_' . $customField] = $object->getMetaValue($customField);
+					}
+				}
+			}
+		}
+		
+		$this->setRewriteData($data);
+
 		$robots = array_keys($robots);
 
 		if (count($robots) > 0) {
@@ -610,7 +625,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 		}
 		
 		if ($items = $object->getParentCategories()) {
-			$categoryValue = '';
+			$categoryValue = array();
 
 			foreach($items as $item) {
 				$categoryValue[] = $item->getName();

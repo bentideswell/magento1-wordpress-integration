@@ -131,9 +131,10 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 				->load();
 
 			foreach($posts as $post) {
+				echo $post->getPermalink() . '<br/>';
 				$xml .= sprintf(
 					'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
-					htmlspecialchars($post->getUrl()),
+					htmlspecialchars($post->getPermalink()),
 					$post->getPostModifiedDate('Y-m-d'),
 					'monthly',
 					'0.5'

@@ -405,4 +405,34 @@ class Fishpig_Wordpress_Helper_Data extends Fishpig_Wordpress_Helper_Abstract
 	{
 		return strpos(trim(Mage::app()->getRequest()->getPathInfo(), '/'), 'api/') === 0;
 	}
+	
+	/*
+	 * Get the current page type
+	 *
+	 * @return string
+	 */
+	/*
+	public function getPageType()
+	{
+		if (!($controller = Mage::registry('wordpress_controller'))) {
+			return false;
+		}
+		
+		if ($controller instanceof Fishpig_Wordpress_IndexController) {
+			return 'homepage';
+		}
+		else if ($post = Mage::registry('wordpress_post')) {
+			return $post->isHomepagePage() || $post->isBlogListingPage() ? 'homepage' : $post->getPostType();
+		}
+		else if ($term = Mage::registry('wordpress_term')) {
+			return $term->getTaxonomy();
+		}
+		else if ($archive = Mage::registry('wordpress_archive')) {
+			return 'archive';
+		}
+		else if ($user = Mage::registry('wordpress_author')) {
+			return 'author';
+		}
+	}
+	*/
 }

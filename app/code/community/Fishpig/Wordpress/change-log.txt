@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+14/09/2017 = 4.2.2.12
+- Allow custom fields in Yoast SEO meta templates
+
 21/07/2017 = 4.2.2.7
 - Added support for SVG images.
 
