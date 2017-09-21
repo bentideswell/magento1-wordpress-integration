@@ -2,7 +2,7 @@
 <config>
     <modules>
       <Fishpig_Wordpress>
-        <version>4.2.2.12</version>
+        <version>4.2.2.15</version>
       </Fishpig_Wordpress>
     </modules>
     <global>
@@ -296,6 +296,8 @@
 				<rss><block>sidebar_widget_rss</block><template>wordpress/sidebar/widget/rss.phtml</template></rss>
 				<nav_menu><block>sidebar_widget_menu</block><template>wordpress/sidebar/widget/menu.phtml</template></nav_menu>
 				<calendar><block>sidebar_widget_calendar</block></calendar>
+				<media_image><block>sidebar_widget_image</block></media_image>
+				<custom_html><block>sidebar_widget_html</block></custom_html>
 				<categoryposts><block>sidebar_widget_posts</block><template>wordpress/sidebar/widget/categoryposts.phtml</template></categoryposts>
 				<widget_sp_image><block>sidebar_widget_image</block></widget_sp_image>
 				<lc_taxonomy><block>sidebar_widget_taxonomy</block><template>wordpress/sidebar/widget/taxonomy.phtml</template></lc_taxonomy>

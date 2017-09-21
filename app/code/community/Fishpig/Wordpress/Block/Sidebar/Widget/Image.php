@@ -5,11 +5,10 @@
  * @license     http://fishpig.co.uk/license.txt
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
-
 class Fishpig_Wordpress_Block_Sidebar_Widget_Image extends Fishpig_Wordpress_Block_Sidebar_Widget_Abstract
 {
 	/**
-	 * Set the posts collection
+	 * 
 	 *
 	 */
 	protected function _beforeToHtml()
