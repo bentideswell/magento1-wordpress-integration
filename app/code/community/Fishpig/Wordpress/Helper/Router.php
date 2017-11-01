@@ -86,7 +86,7 @@ class Fishpig_Wordpress_Helper_Router extends Fishpig_Wordpress_Helper_Abstract
 		$uri = urldecode(implode('/', $pathInfo));
 		
 		self::$_blogUri = $uri;
-		
+	
 		return $uri;
 	}
 

@@ -187,13 +187,23 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 		else {
 			$template = $post->getMetaValue('_wp_page_template');
 		}
-
-		if (strpos($template, 'full-width') !== false) {
-			if ($root = $this->getLayout()->getBlock('root')) {
-				$root->setTemplate('page/1column.phtml');
+		
+		if ($template) {
+			$template = str_replace(array('template-', '.php'), '', $template);
+			
+			if (in_array($template, array('1column', '2columns-left', '2columns-right', '3columns'))) {
+				if ($root = $this->getLayout()->getBlock('root')) {
+					$root->setTemplate('page/' . $template . '.phtml');
+				}
+			}
+			else if (strpos($template, 'full-width') !== false) {
+				// Legacy
+				if ($root = $this->getLayout()->getBlock('root')) {
+					$root->setTemplate('page/1column.phtml');
+				}
 			}
 		}
-		
+
 		if ($rootBlock = $this->getLayout()->getBlock('root')) {
 			$rootBlock->addBodyClass('wordpress-' . $post->getPostType() . '-' . $post->getId());
 		}

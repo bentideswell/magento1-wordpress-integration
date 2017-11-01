@@ -132,10 +132,17 @@ class Fishpig_Wordpress_Helper_System extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	protected function _validateTheme()
 	{
-		if (Mage::helper('wordpress')->getWpOption('template') !== 'twentytwelve') {
+		$helper = Mage::helper('wordpress/theme');
+		
+		if (!$helper->install()) {	
 			throw Fishpig_Wordpress_Exception::error('Themes', 
-				stripslashes(Mage::helper('wordpress')->__('You are using a non-supported WordPress theme that has not been tested. To improve your integration, enable the Twenty Twelve WordPress theme.'))
+				stripslashes(Mage::helper('wordpress')->__('Unable to install the FishPig theme. Please manually copy the theme from %s to %s.', $helper->getSourceDirectory(), $helper->getThemeDirectory()))
 			);
+		}
+		else if (!$helper->isEnabled()) {
+			throw Fishpig_Wordpress_Exception::error('Themes', 
+				stripslashes(Mage::helper('wordpress')->__('The FishPig theme is installed but not enabled. Login to the WordPress Admin and enable the FishPig theme.'))
+			);			
 		}
 		
 		return true;

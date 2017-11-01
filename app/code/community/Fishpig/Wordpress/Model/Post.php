@@ -112,8 +112,8 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 				$this->setPostExcerpt($this->_getPostTeaser(true));
 			}
 			else if ((int)$maxWords > 1) {
-				$excerpt = trim(strip_tags(str_replace(array("\n", '  ', '  '), ' ', $this->_getData('post_content'))));
-				$excerpt = preg_replace('/\[[\/]{0,1}[^\]]{1,}\]/', '', $excerpt);
+				$excerpt = trim(strip_tags(str_replace(array("\n", '  ', '  '), ' ', $this->getPostContent())));
+#				$excerpt = preg_replace('/\[[\/]{0,1}[^\]]{1,}\]/', '', $excerpt);
 				$excerpt = preg_replace('/[\s]{1,}/', " ", $excerpt);
 				$excerpt = explode(' ', $excerpt);
 

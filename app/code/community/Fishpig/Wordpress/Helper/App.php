@@ -85,7 +85,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		 */
 		$this->_initDb();
 	}
-	
+
 	/**
 	 * Initialise the post type and taxonomy data
 	 *
@@ -93,6 +93,17 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	public function init()
 	{
+		try {
+			Mage::helper('wordpress/theme')->install();
+			
+			if (!Mage::helper('wordpress/theme')->isEnabled()) {
+				throw new Exception('Unable to install FishPig theme in WordPress.');
+			}
+		}
+		catch (Exception $e) {
+			$this->addError($e->getMessage());
+		}
+		
 		$this->_initPostTypes();
 		$this->_initTaxonomies();
 
