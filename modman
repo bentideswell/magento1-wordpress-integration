@@ -10,6 +10,7 @@ app/code/community/Fishpig/Wordpress/change-log.txt app/code/community/Fishpig/W
 app/code/community/Fishpig/Wordpress/controllers app/code/community/Fishpig/Wordpress/controllers
 app/code/community/Fishpig/Wordpress/etc app/code/community/Fishpig/Wordpress/etc
 app/code/community/Fishpig/Wordpress/sql app/code/community/Fishpig/Wordpress/sql
+app/code/community/Fishpig/Wordpress/wptheme app/code/community/Fishpig/Wordpress/wptheme
 app/design/adminhtml/default/default/layout/wordpress.xml app/design/adminhtml/default/default/layout/wordpress.xml
 app/design/adminhtml/default/default/template/wordpress app/design/adminhtml/default/default/template/wordpress
 app/design/frontend/base/default/layout/wordpress.xml app/design/frontend/base/default/layout/wordpress.xml
