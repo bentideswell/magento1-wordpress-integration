@@ -16,7 +16,7 @@ class Fishpig_Wordpress_Block_Sidebar_Widget_Menu extends Fishpig_Wordpress_Bloc
 	protected function _beforeToHtml()
 	{
 		parent::_beforeToHtml();
-		
+
 		$menuBlock = $this->getLayout()->createBlock('wordpress/menu')
 			->setMenuId($this->getNavMenu())
 			->includeWrapper(true);

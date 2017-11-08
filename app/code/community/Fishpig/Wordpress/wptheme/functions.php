@@ -128,9 +128,13 @@ remove_filter('template_redirect', 'redirect_canonical');
 
 add_filter('preview_post_link', 'fishpig_preview_post_link', 10, 2);
 
-function fishpig_preview_post_link($previewLink, $post)
-{
-	return $previewLink . '&fishpig=' . time();
+function fishpig_preview_post_link($pl, $post) {
+	if (strpos($pl, 'nonce') !== false) {
+		if (preg_match('/nonce=([a-z0-9]{10})/', $pl, $matches)) {
+			$pl = str_replace($matches[1], substr(wp_hash(wp_nonce_tick()."|post_preview_{$post->ID}|0|", 'nonce'), -12, 10), $pl);
+		}
+	}
+	return $pl . '&fishpig=' . time();
 }
 
 /* Include local.php*/

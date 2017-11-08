@@ -22,6 +22,23 @@ class Fishpig_Wordpress_Block_Menu extends Mage_Page_Block_Html_Topmenu
 
 		return trim($this->_getHtml($this->_menu, $childrenWrapClass));
 	}
+	
+	public function getMenu()
+	{
+		if (!$this->hasMenu()) {
+			if ($this->getMenuId()) {
+				$this->setMenu(false);
+				
+				$menu = Mage::getModel('wordpress/menu')->load($this->getMenuId());
+
+				if ($menu->getId()) {
+					$this->setMenu($menu);
+				}
+			}
+		}
+		
+		return $this->_getData('menu');
+	}
 
 	/**
 	 * Load and render the menu
@@ -30,23 +47,17 @@ class Fishpig_Wordpress_Block_Menu extends Mage_Page_Block_Html_Topmenu
 	 */
 	protected function _beforeToHtml()
 	{
-		if ($this->getMenuId()) {
-			$menu = Mage::getModel('wordpress/menu')->load($this->getMenuId());
-
-			if ($menu->getId()) {
-				$this->setMenu($menu);
-				
-				if ($menu->applyToTreeNode($this->_menu)) {
-					if (($html = trim($this->getHtml())) !== '') {
-						if ($this->includeWrapper()) {
-							$html = sprintf('<ul %s>%s</ul>', $this->_getListParams(), $html);
-						}
-					
-						$this->setMenuHtml($this->_beforeRenderMenuHtml($html));
+		if ($menu = $this->getMenu()) {
+			if ($menu->applyToTreeNode($this->_menu)) {
+				if (($html = trim($this->getHtml())) !== '') {
+					if ($this->includeWrapper()) {
+						$html = sprintf('<ul %s>%s</ul>', $this->_getListParams(), $html);
 					}
-					
-					return true;
+				
+					$this->setMenuHtml($this->_beforeRenderMenuHtml($html));
 				}
+				
+				return true;
 			}
 		}
 		
@@ -143,7 +154,7 @@ class Fishpig_Wordpress_Block_Menu extends Mage_Page_Block_Html_Topmenu
     	if ($this->getMenu()) {
 	    	return $this->getMenu()->getName();
     	}
-    	
+
     	return '';
     }
 
