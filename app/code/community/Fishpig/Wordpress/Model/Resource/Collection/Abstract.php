@@ -67,9 +67,11 @@ abstract class Fishpig_Wordpress_Model_Resource_Collection_Abstract extends Mage
 	 * @param string $dir = 'asc'
 	 * @return $this
 	 */
-	public function addMetaFieldToSort($field, $dir = 'asc')
+	public function addMetaFieldToSort($metaKey, $dir = 'asc')
 	{
-		$this->getSelect()->order($field . ' ' . $dir);
+		if (($field = $this->_joinMetaField($metaKey)) !== false) {
+			$this->getSelect()->order($field . ' ' . $dir);
+		}
 		
 		return $this;
 	}
