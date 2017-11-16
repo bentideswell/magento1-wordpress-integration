@@ -8,6 +8,13 @@
 
 abstract class Fishpig_Wordpress_Block_Feed_Abstract extends Fishpig_Wordpress_Block_Abstract
 {
+	/*
+	 *
+	 * @const string
+	 */
+	const IMG_WRAPPER = '<!-- Image=%s ID=%d -->';
+	const IMG_WRAPPER_REGEX = '/(<!-- Image=(.*) ID=[0-9]+ -->)]]><\/description>/U';
+	
 	/**
 	 *
 	 * @param $feed
@@ -22,7 +29,30 @@ abstract class Fishpig_Wordpress_Block_Feed_Abstract extends Fishpig_Wordpress_B
 	 */
 	protected function _toHtml()
 	{
-		return $this->getFeedWriter()->export($this->getFeedType());		
+		$feed = $this->getFeedWriter()->export($this->getFeedType());
+
+		return $feed;
+		
+		/*
+		if (strpos($feed, 'Image=') !== false) {
+			if (preg_match_all(self::IMG_WRAPPER_REGEX, $feed, $matches)) {
+				foreach($matches[0] as $it => $match) {
+					$mediaTag = sprintf('<media:thumbnail url="%s"/>', $matches[2][$it]);
+					
+					$feed = str_replace($match, $match . "\n      " . $mediaTag, $feed);
+
+					// Remove the image tag
+					$feed = str_replace($matches[1][$it], '', $feed);
+				}
+
+			}
+			
+			$feed = preg_replace('/[\s]+(]]><\/description>)/', '$1', $feed);
+			 
+		}
+		 
+		return $feed;
+		*/
 	}
 	
 	/**

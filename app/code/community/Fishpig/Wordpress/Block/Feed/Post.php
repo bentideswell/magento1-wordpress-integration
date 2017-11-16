@@ -16,7 +16,7 @@ class Fishpig_Wordpress_Block_Feed_Post extends Fishpig_Wordpress_Block_Feed_Abs
 	 */
 	protected function _addEntriesToFeed($feed)
 	{
-			$this->getItemAfterContent();
+		$this->getItemAfterContent();
 			
 		$posts = Mage::getSingleton('core/layout')->createBlock($this->getSourceBlock())
 			->getPostCollection();
@@ -25,7 +25,7 @@ class Fishpig_Wordpress_Block_Feed_Post extends Fishpig_Wordpress_Block_Feed_Abs
 
 		foreach($posts as $post) {
 			$entry = $feed->createEntry();
-			
+
 			if (!$post->getPostTitle()) {
 				continue;
 			}
@@ -53,6 +53,18 @@ class Fishpig_Wordpress_Block_Feed_Post extends Fishpig_Wordpress_Block_Feed_Abs
 				. $this->_applyVars(Mage::helper('wp_addon_wordpressseo')->getData('rssafter'), $post);
 
 			$entry->setDescription($description ? $description : '&nbsp;');
+			
+			if ($image = $post->getFeaturedImage()) {
+				$entry->setDescription($entry->getDescription() . '<p><img src="' . $image->getFullSizeImage() . '" alt=""/></p>');
+				
+				/*
+				$entry->setDescription(
+					$entry->getDescription() 
+					. "\n\n"
+					. sprintf(Fishpig_Wordpress_Block_Feed_Abstract::IMG_WRAPPER, $image->getFullSizeImage(), $post->getId())
+				);
+				*/
+			}
 			
 			foreach($post->getParentCategories() as $category) {
 				$entry->addCategory(array(
