@@ -6,7 +6,7 @@
  */
 
 
-var 	fishpig 		= fishpig 			|| {};
+var fishpig 		= fishpig 		|| {};
 		fishpig.WP 	= fishpig.WP 	|| {};
 
 fishpig.WP.Update = new Class.create({

@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+07/12/2017 - 4.3.0.7
+- Fixed update check system
+
 01/11/2017 - 4.3.0.0
 - Added FishPig theme to extension. This should auto install in WordPress but you will need to enable it. This adds security and integration features to the extension. The theme should auto update.
 

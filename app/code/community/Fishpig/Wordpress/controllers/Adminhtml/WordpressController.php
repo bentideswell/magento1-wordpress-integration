@@ -13,8 +13,8 @@ class Fishpig_Wordpress_Adminhtml_WordpressController extends Mage_Adminhtml_Con
 	 *
 	 * @const string
 	 */
-	const URL_RELEASES = 'http://connect20.magentocommerce.com/community/Fishpig_Wordpress_Integration/releases.xml';
-
+	const URL_RELEASES = 'https://raw.githubusercontent.com/bentideswell/magento1-wordpress-integration/master/app/code/community/Fishpig/Wordpress/etc/config.xml';
+	
 	/**
 	 * Attempt to login to the WordPress Admin action
 	 *
@@ -54,27 +54,22 @@ class Fishpig_Wordpress_Adminhtml_WordpressController extends Mage_Adminhtml_Con
 		$cacheKey = 'wordpress_integration_update' . str_replace('.', '_', $current);
 
 		try {
+
 			if (($latest = Mage::app()->getCache()->load($cacheKey)) === false) {
+
 				$response = Mage::helper('wordpress/system')->makeHttpGetRequest(
 					self::URL_RELEASES
 				);
-				
+		
 				if (strpos($response, '<?xml') === false) {
 					throw new Exception('Invalid response');
 				}
 
 				$response = trim(substr($response, strpos($response, '<?xml')));
-				$xml = simplexml_load_string($response);
-				$latest = false;
-				
-				foreach($xml->r as $release) {
-					if ((string)$release->s === 'stable') {
-						if (!$latest || version_compare($release->v, $latest, '>=')) {
-							$latest = (string)$release->v;
-						}
-					}
-				}
-				
+
+				$xml = @simplexml_load_string($response);
+				$latest = (string)$xml->modules->Fishpig_Wordpress->version;
+
 				Mage::app()->getCache()->save(
 					$latest,
 					$cacheKey, 
