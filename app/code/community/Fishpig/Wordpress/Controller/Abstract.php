@@ -81,9 +81,18 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 		// Check for redirects and forwards
 		$transport = new Varien_Object();
 
+		$className = get_class($this);
+
+		$eventName = substr(
+			$className, 
+			strpos($className, '_', strpos($className, '_')+1)+1,
+			-strlen('Controller')
+		);
+		
+		$eventName = strtolower(trim(str_replace('Wordpress', '', $eventName), '_'));
 
 		Mage::dispatchEvent(
-			'wordpress_' . strtolower(substr(get_class($this), strlen('Fishpig_Wordpress_'), -strlen('Controller'))) . '_controller_pre_dispatch_after', 
+			'wordpress_' . $eventName . '_controller_pre_dispatch_after', 
 			array(
 				'transport' => $transport,
 				'action' => $this,

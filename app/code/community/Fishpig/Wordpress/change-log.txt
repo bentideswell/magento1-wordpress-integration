@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+09/12/2017 - 4.3.0.8
+- Fixed issue with event names when using custom controllers.
+
 07/12/2017 - 4.3.0.7
 - Fixed update check system
 
