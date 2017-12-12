@@ -8,21 +8,21 @@
 
 class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress_Model_Resource_Collection_Abstract
 {
-	/**
+	/*
 	 * Name prefix of events that are dispatched by model
 	 *
 	 * @var string
 	*/
 	protected $_eventPrefix = 'wordpress_post_collection';
 	
-	/**
+	/*
 	 * Name of event parameter
 	 *
 	 * @var string
 	*/
 	protected $_eventObject = 'posts';
 
-	/**
+	/*
 	 * True if term tables have been joined
 	 * This stops the term tables being joined repeatedly
 	 *
@@ -30,14 +30,14 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 	 */
 	protected $_termTablesJoined = array();
 
-	/**
+	/*
 	 * Store post types to be allowed in collection
 	 *
 	 * @var array
 	 */
 	protected $_postTypes = array();
 		
-	/**
+	/*
 	 * Set the resource
 	 *
 	 * @return void
@@ -51,20 +51,19 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		$this->_map['fields']['post_status'] = 'main_table.post_status';
 	}
 
-    /**
-     * Init collection select
-     *
-     * @return Mage_Core_Model_Resource_Db_Collection_Abstract
-     */
-    protected function _initSelect()
-    {
-	    parent::_initSelect();
+  /*
+   * Init collection select
+   *
+   * @return Mage_Core_Model_Resource_Db_Collection_Abstract
+   */
+  protected function _initSelect()
+  {
+    parent::_initSelect();
 
-		return $this->setOrder('main_table.menu_order', 'ASC')
-			->setOrder('main_table.post_date', 'DESC');
-    }
+		return $this->setOrder('main_table.post_date', 'DESC');
+  }
     	
-	/**
+	/*
 	 * Add the permalink data before loading the collection
 	 *
 	 * @return $this
@@ -111,7 +110,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;		
 	}
 	
-	/**
+	/*
 	 * Ensure that is any pages are in the collection, they are correctly cast
 	 *
 	 * @return $this
@@ -125,7 +124,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 	
-	/**
+	/*
 	 * Filters the collection by an array of post ID's and category ID's
 	 * When filtering by a category ID, all posts from that category will be returned
 	 * If you change the param $operator to AND, only posts that are in a category specified in
@@ -167,29 +166,29 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;	
 	}
 
-	/**
-	  * Filter the collection by a category ID
-	  *
-	  * @param int $categoryId
-	  * @return $this
-	  */
+	/*
+	 * Filter the collection by a category ID
+	 *
+	 * @param int $categoryId
+	 * @return $this
+	 */
 	public function addCategoryIdFilter($categoryId)
 	{
 		return $this->addTermIdFilter($categoryId, 'category');
 	}
 	
-	/**
-	  * Filter the collection by a tag ID
-	  *
-	  * @param int $categoryId
-	  * @return $this
-	  */
+	/*
+	 * Filter the collection by a tag ID
+	 *
+	 * @param int $categoryId
+	 * @return $this
+	 */
 	public function addTagIdFilter($tagId)
 	{
 		return $this->addTermIdFilter($tagId, 'post_tag');
 	}
 	
-	/**
+	/*
 	 * Filters the collection with an archive date
 	 * EG: 2010/10
 	 *
@@ -207,7 +206,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;	
 	}
 	
-	/**
+	/*
 	 * Add sticky posts to the filter
 	 *
 	 * @param bool $isSticky = true
@@ -234,7 +233,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 	
-	/**
+	/*
 	 * Add a post type filter to the collection
 	 *
 	 * @param string|array $postTypes
@@ -251,7 +250,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 	
-	/**
+	/*
 	 * Determine whether any post type filters exist
 	 *
 	 * @return bool
@@ -261,7 +260,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return count($this->_postTypes) > 0;
 	}
 
-	/**
+	/*
 	 * Adds a published filter to collection
 	 *
 	 */
@@ -270,7 +269,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this->addIsViewableFilter();
 	}
 	
-	/**
+	/*
 	 * Filters the collection so that only posts that can be viewed are displayed
 	 *
 	 * @return $this
@@ -285,7 +284,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this->addStatusFilter($fields);
 	}
 
-	/**
+	/*
 	 * Adds a filter to the status column
 	 *
 	 * @param string $status
@@ -297,7 +296,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this->addFieldToFilter('post_status', array($op => $status));
 	}
 	
-	/**
+	/*
 	 * Orders the collection by post date
 	 *
 	 * @param string $dir
@@ -309,7 +308,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this->setOrder('post_date', $dir);
 	}
 	
-	/**
+	/*
 	 * Filter the collection by a date
 	 *
 	 * @param string $dateStr
@@ -326,7 +325,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 
-	/**
+	/*
 	 * Skip the permalink generation
 	 *
 	 * @return $this
@@ -336,7 +335,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this->setFlag('skip_permalink_generation', true);
 	}
 
-	/**
+	/*
 	 * Filters the collection by an array of words on the array of fields
 	 *
 	 * @param array $words - words to search for
@@ -365,7 +364,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 	
-	/**
+	/*
 	 * Fix search issue when searching for: "%FF%FE"
 	 *
 	 * @param string
@@ -376,7 +375,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return htmlspecialchars($s);
 	}
 	
-	/**
+	/*
 	 * Filters the collection by a term ID and type
 	 *
 	 * @param int|array $termId
@@ -396,7 +395,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 	
-	/**
+	/*
 	 * Filters the collection by a term and type
 	 *
 	 * @param int|array $termId
@@ -416,7 +415,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 
-	/**
+	/*
 	 * Joins the category tables to the collection
 	 * This allows filtering by category
 	 */
@@ -440,7 +439,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 	
-	/**
+	/*
 	 * Add post parent ID filter
 	 *
 	 * @param int $postParentId
@@ -452,7 +451,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return $this;
 	}
 	
-	/**
+	/*
 	 * Calculate the collection size correctly
 	 *
 	 * @return int
@@ -466,7 +465,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return intval($this->_totalRecords);
 	}
     
-    /**
+    /*
      * Get a valid count SQL object
      *
      * @return
