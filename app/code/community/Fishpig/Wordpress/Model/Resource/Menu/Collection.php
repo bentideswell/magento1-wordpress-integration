@@ -24,9 +24,6 @@ class Fishpig_Wordpress_Model_Resource_Menu_Collection extends Fishpig_Wordpress
 		
 		$this->_orders = array();
 		
-		$this->setOrder('main_table.menu_order', 'ASC');
-		$this->setOrder('main_table.post_date', 'DESC');
-		
 		$this->getSelect()->where('taxonomy.taxonomy=?', $this->getNewEmptyItem()->getTaxonomy());
 			
 		return $this;
