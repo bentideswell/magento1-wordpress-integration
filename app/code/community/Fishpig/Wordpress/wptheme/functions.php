@@ -13,10 +13,12 @@ if (!function_exists('fishpig_setup')) {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		set_post_thumbnail_size(9999, 9999);
-
+		
 		add_theme_support( 'post-formats', array(
 			'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
 		));
+		
+		show_admin_bar(false);
 	}
 }
 
