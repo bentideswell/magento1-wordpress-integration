@@ -28,7 +28,12 @@
 				<ul>
 					<li>
 						<span>
-							<?php echo $this->__('Magento WordPress Integration extension update available.') ?> <?php echo $this->__('Update to version %s', '<span id="wp-version"></span>') ?>
+							<?php echo $this->__('Magento WordPress Integration extension update available.') ?>
+							<?php if (Mage::helper('wordpress/system_update')->isGit()): ?>
+								<?php echo $this->__('Run \'git pull\' to update to version %s.', '<span id="wp-version"></span>') ?>
+							<?php else: ?>
+								<a href="<?php echo $this->getUrl('*/wordpress/update') ?>"><?php echo $this->__('Update to version %s automatically.', '<span id="wp-version"></span>') ?></a>
+							<?php endif; ?>
 						</span>
 					</li>
 				</ul>

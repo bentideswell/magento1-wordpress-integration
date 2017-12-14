@@ -91,6 +91,24 @@ class Fishpig_Wordpress_Adminhtml_WordpressController extends Mage_Adminhtml_Con
 		}		
 	}
 
+	public function updateAction()
+	{
+		try {
+			if (!Mage::helper('wordpress/system_update')->update()) {
+				throw new Exception('Unable to update module.');
+			}
+			
+			Mage::getSingleton('adminhtml/session')->addSuccess(
+				$this->__('Magento WordPress Integration updated to version %s.', Mage::helper('wordpress/system_update')->getCurrentVersion())
+			);
+		}
+		catch (Exception $e) {
+			Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+		}
+		
+		return $this->_redirect('*/system_config/edit/section/wordpress');
+	}
+	
 	/**
 	 * Determine ACL permissions
 	 *

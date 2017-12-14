@@ -42,4 +42,3 @@ js/fishpig/wordpress/lightbox.js js/fishpig/wordpress/lightbox.js
 js/fishpig/wordpress/search.js js/fishpig/wordpress/search.js
 js/fishpig/wordpress/update.js js/fishpig/wordpress/update.js
 skin/frontend/base/default/wordpress skin/frontend/base/default/wordpress
-var/connect/Fishpig_Wordpress_Integration.xml var/connect/Fishpig_Wordpress_Integration.xml
