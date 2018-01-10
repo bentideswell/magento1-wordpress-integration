@@ -265,7 +265,7 @@ class Fishpig_Wordpress_Helper_Associations extends Fishpig_Wordpress_Helper_Abs
 	public function processObserver(Varien_Event_Observer $observer)
 	{
 		$storeIds = $this->getAssociationStoreIds();
-		
+
 		if (($product = $observer->getEvent()->getProduct()) !== null) {
 			$objectId = $product->getId();
 		}
@@ -274,7 +274,7 @@ class Fishpig_Wordpress_Helper_Associations extends Fishpig_Wordpress_Helper_Abs
 		}
 		else if ($observer->getEvent()->getObject() instanceof Mage_Cms_Model_Page) {
 			$objectId = $observer->getEvent()->getObject()->getId();
-			$storeIds = array(0);
+#			$storeIds = array(0);
 		}
 		else {
 			return false;
@@ -294,8 +294,7 @@ class Fishpig_Wordpress_Helper_Associations extends Fishpig_Wordpress_Helper_Abs
 				$type = $object . '/' . $wpObject;
 		
 				foreach($storeIds as $storeId) {
-					$this->deleteAssociations($type, $objectId, $storeId)
-						->createAssociations($type, $objectId, $associations, $storeId);
+					$this->deleteAssociations($type, $objectId, $storeId)->createAssociations($type, $objectId, $associations, $storeId);
 				}
 			}
 		}
@@ -386,7 +385,19 @@ class Fishpig_Wordpress_Helper_Associations extends Fishpig_Wordpress_Helper_Abs
 		if (!$singleStore && ($storeId = (int)Mage::app()->getRequest()->getParam('store'))) {
 			return array($storeId);
 		}
-
+		
+		$request = Mage::app()->getRequest();
+		
+		if ($request->getControllerName() === 'cms_page' && $request->getActionName() === 'save') {
+			$page = Mage::getModel('cms/page')->load((int)$request->getParam('page_id'));
+			
+			if ($page->getId()) {
+				if ($storeIds = $page->getStoreId()) {
+					return array((int)array_shift($storeIds));
+				}
+			}
+		}
+		
 		$select = $this->_getReadAdapter()
 			->select()
 			->from($this->_getTable('core/store'), 'store_id')
