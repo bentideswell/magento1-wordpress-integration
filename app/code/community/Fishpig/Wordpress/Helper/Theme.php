@@ -83,7 +83,7 @@ class Fishpig_Wordpress_Helper_Theme extends Fishpig_Wordpress_Helper_Abstract
 			@mkdir($themeDirectory, 0755, true);
 			
 			if (!is_dir($themeDirectory)) {
-				throw new Exception('Unable to create theme directory at ' . $sourceDirectory);
+				throw new Exception('Unable to create theme directory at ' . $themeDirectory);
 			}
 			
 			$this->_installThemeFiles();

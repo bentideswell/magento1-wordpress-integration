@@ -46,15 +46,21 @@ class Fishpig_Wordpress_Adminhtml_Wordpress_AssociationsController extends Mage_
 	 */
 	protected function _performAssociationAction($handlePostfix = '')
 	{
+		
 		try {
-			if (!$this->_isSingleStoreMode() && $this->getStoreId() === false) {
-				$this->getResponse()
-					->setBody('<p style="font-size: 18px; margin-top: 40px; text-align: center;">Please select a store using the Store View selector.</p>');
-					
-				return false;
-			}
 			if ($this->_initObject() === false) {
 				return $this->_forward('noRoute');
+			}
+			
+			// Fix for multistores on CMS pages. First store used.
+			if ($this->_getMagentoEntity() === 'cms_page') {
+				Mage::app()->getRequest()->setParam('store', $this->getStoreId());
+			}
+			
+			if (!$this->_isSingleStoreMode() && $this->getStoreId() === false) {
+				$this->getResponse()->setBody('<p style="font-size: 18px; margin-top: 40px; text-align: center;">Please select a store using the Store View selector.</p>');
+					
+				return false;
 			}
 
 /*
@@ -146,6 +152,12 @@ class Fishpig_Wordpress_Adminhtml_Wordpress_AssociationsController extends Mage_
 	public function getStoreId()
 	{
 		if ($this->_getMagentoEntity() === 'cms_page') {
+			if ($page = $this->_initCmsPage()) {
+				if ($storeIds = $page->getStoreId()) {
+					return (int)array_shift($storeIds);
+				}
+			}
+
 			return 0;
 		}
 
@@ -228,14 +240,16 @@ class Fishpig_Wordpress_Adminhtml_Wordpress_AssociationsController extends Mage_
 	 */
 	protected function _initCmsPage()
 	{
-		if (!Mage::registry('cms_page')) {
-			if ($pageId = $this->getRequest()->getParam('id')) {
-				$page = Mage::getModel('cms/page')->load($pageId);
-				
-				if ($page->getId()) {
-					Mage::register('cms_page', $page);
-					return $page;
-				}
+		if (Mage::registry('cms_page')) {
+			return Mage::registry('cms_page');
+		}
+		
+		if ($pageId = $this->getRequest()->getParam('id')) {
+			$page = Mage::getModel('cms/page')->load($pageId);
+			
+			if ($page->getId()) {
+				Mage::register('cms_page', $page);
+				return $page;
 			}
 		}
 		

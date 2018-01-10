@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <config>
-    <modules>
-      <Fishpig_Wordpress>
-        <version>4.3.1.0</version>
-      </Fishpig_Wordpress>
-    </modules>
-    <global>
+  <modules>
+    <Fishpig_Wordpress>
+      <version>4.3.1.1</version>
+    </Fishpig_Wordpress>
+  </modules>
+  <global>
 		<events>
       <controller_front_init_before>
         <observers>

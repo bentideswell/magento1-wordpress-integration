@@ -32,7 +32,7 @@
 	 -->
 	<adminhtml_system_config_edit>
 		<reference name="content">
-			<block type="core/template" name="wp.integration.tests"  before="-" template="wordpress/integration-tests.phtml">
+			<block type="adminhtml/template" name="wp.integration.tests"  before="-" template="wordpress/integration-tests.phtml">
 				<block type="wordpress/adminhtml_extend" name="fishpig.extend" as="extend">
 					<action method="setModule"><module>Fishpig_Wordpress</module></action>
 					<action method="setMedium"><medium>System Configuration</medium></action>

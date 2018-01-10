@@ -147,7 +147,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		if (!Mage::getStoreConfigFlag('wordpress/database/is_shared', $this->getStore()->getId())) {
 			// If database not shared, connect to WP database
 			$configs = array('model' => 'mysql4', 'active' => '1', 'host' => '', 'username' => '', 'password' => '', 'dbname' => '', 'charset' => 'utf8');
-		
+
 			foreach($configs as $key => $defaultValue) {
 				if ($value = Mage::getStoreConfig('wordpress/database/' . $key, $this->getStore()->getId())) {
 					$configs[$key] = $value;
@@ -159,7 +159,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 					$configs[$field] = Mage::helper('core')->decrypt($configs[$field]);
 				}
 			}
-		
+
 			if (!isset($configs['host']) || !$configs['host']) {
 				return $this->addError('Database host not defined.');
 			}
@@ -193,6 +193,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 			);
 		}
 		catch (Exception $e) {
+
 			self::$_tablePrefixIsWrong = true;
 
 			return $this->addError($e->getMessage())
@@ -444,7 +445,9 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		$storeId = $this->getStore()->getId();
 		
 		if (!isset(self::$_blogId[$storeId])) {
-			self::$_blogId[$storeId] = (int)Mage::getStoreConfig('wordpress/mu/blog_id', $this->getStore()->getId());
+			self::$_blogId[$storeId] = Mage::getStoreConfigFlag('wordpress/mu/enabled') 
+				? (int)Mage::getStoreConfig('wordpress/mu/blog_id', $this->getStore()->getId()) 
+				: 1;
 		}
 
 		return (int)self::$_blogId[$storeId] > 0 ? self::$_blogId[$storeId] : 1;
