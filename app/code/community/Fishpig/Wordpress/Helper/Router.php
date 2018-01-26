@@ -156,7 +156,7 @@ class Fishpig_Wordpress_Helper_Router extends Fishpig_Wordpress_Helper_Abstract
 		else {
 			$searchTerm = $this->getRequest()->getParam($key);
 		}
-		
+
 		return $escape
 			? Mage::helper('wordpress')->escapeHtml($searchTerm)
 			: $searchTerm;

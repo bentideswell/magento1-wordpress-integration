@@ -5,6 +5,10 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+26/01/2018 - 4.3.1.3
+- Added weighting to the search system. The post_title is now weighted higher than the post_content field and a full match of the search term is weight higher than matching a single word.
+- The search JS has also been removed and the redirect system for SEO search URLs is now used. This means less JS on the page!
+
 14/12/2017 - 4.3.1.0
 - Add in auto updater
 

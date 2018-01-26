@@ -8,6 +8,14 @@
 
 class Fishpig_Wordpress_SearchController extends Fishpig_Wordpress_Controller_Abstract
 {
+	/*
+	 * If this is set in $_GET
+	 * Redirect to SEO URL
+	 *
+	 * @const string
+	 */
+	const BROKEN_URL_PARAM_NAME = 'redirect_broken_url';
+	
 	/**
 	 * If Integrated search is installed, redirect if enabled
 	 *
@@ -15,12 +23,11 @@ class Fishpig_Wordpress_SearchController extends Fishpig_Wordpress_Controller_Ab
 	 */
 	public function preDispatch()
 	{
-		if ($this->getRequest()->getParam('redirect_broken_url')) {
-			$this->getResponse()
-				->setRedirect(Mage::helper('wordpress')->getUrl('search/' . $this->getRequest()->getParam('s') . '/'))
-				->sendResponse();
-
-            $this->getRequest()->setDispatched( true );
+		if ($this->getRequest()->getParam(self::BROKEN_URL_PARAM_NAME)) {
+			if ($seoSearchUrl = $this->_getSeoSearchUrl()) {
+				$this->getResponse()->setRedirect($seoSearchUrl)->sendResponse();
+        $this->getRequest()->setDispatched( true );
+      }
 		}
 		else if (Mage::helper('wordpress')->isAddonInstalled('IntegratedSearch') && Mage::getStoreConfigFlag('wordpress/integratedsearch/blog')) {
 			$this->_forceForwardViaException('index', 'result', 'catalogsearch', array(
@@ -31,6 +38,26 @@ class Fishpig_Wordpress_SearchController extends Fishpig_Wordpress_Controller_Ab
 		return parent::preDispatch();
 	}
 
+	protected function _getSeoSearchUrl()
+	{
+		$params = $this->getRequest()->getParams();
+		
+		if (empty($params['s'])) {
+			return false;
+		}
+		
+		$searchTerm = urlencode(strtolower(trim($params['s'])));
+		
+		unset($params['s']);
+		
+		if (isset($params[self::BROKEN_URL_PARAM_NAME])) {
+			unset($params[self::BROKEN_URL_PARAM_NAME]);
+		}
+		
+		$searchUrlKey = 'search/' . $searchTerm . '/' . ($params ? '?' . urldecode(http_build_query($params)) : '');
+
+		return Mage::helper('wordpress')->getUrl($searchUrlKey);
+	}
 	/**
 	  *
 	  *
