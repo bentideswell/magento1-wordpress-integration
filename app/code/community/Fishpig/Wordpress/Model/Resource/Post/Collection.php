@@ -347,18 +347,8 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		if (count($words) > 0) {
 			$db = $this->getConnection();
 			
-			if (count($words) > 1) {
-				// Add full word into words array
-				array_unshift($words, implode(' ', $words));
-			}
-			
 			// Set word as key and weight (value) to 1
 			$words = array_fill_keys(array_unique($words), 1);
-			
-			if (count($words) > 1) {
-				// Set full word weight (value) to 2
-				$words[key($words)] = 5;
-			}
 
 			// Ensure main query only contains correct posts
 			foreach($words as $word => $wordWeight) {
@@ -371,6 +361,11 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 				$this->getSelect()->where(join(' ' . Zend_Db_Select::SQL_OR . ' ', $conditions));
 			}
 			
+			
+			if (count($words) > 1) {
+				// Add full word into words array with higher weight
+				$words = array(implode(' ', array_keys($words)) => 5) + $words;
+			}
 			// Calculate weight
 			$weightSql = array();
 			
