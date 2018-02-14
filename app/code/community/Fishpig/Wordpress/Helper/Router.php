@@ -76,6 +76,18 @@ class Fishpig_Wordpress_Helper_Router extends Fishpig_Wordpress_Helper_Abstract
 				}
 			}
 		}
+
+		// Clean off amp
+		if (Mage::helper('wordpress')->isAddonInstalled('AMP')) {
+			if (($key = array_search('amp', $pathInfo)) !== false) {
+				if (!isset($pathInfo[($key+1)])) {
+					$this->getRequest()->setParam('amp', 1);
+					unset($pathInfo[$key]);
+					
+					$pathInfo = array_values($pathInfo);
+				}
+			}
+		}
 		
 		if (count($pathInfo) == 1 && preg_match("/^[0-9]{1,8}$/", $pathInfo[0])) {
 			$this->getRequest()->setParam('p', $pathInfo[0]);
