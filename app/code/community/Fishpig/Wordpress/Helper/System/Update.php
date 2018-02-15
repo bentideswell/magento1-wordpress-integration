@@ -168,13 +168,18 @@ class Fishpig_Wordpress_Helper_System_Update extends Mage_Core_Helper_Abstract
 			throw new Exception('Zip file does not exist so cannot extract.');
 		}
 		
-		if (class_exists('ZipArchive')) {
+		if (@class_exists('ZipArchive')) {
 			$zip = new ZipArchive($file);
 			
 			if ($zip->open($file) === true) {
 				$zip->extractTo(dirname($unzippedDir));
 				$zip->close();
 			}
+		}
+		else {
+			$originalDir = getcwd();
+			
+			shell_exec('cd ' . dirname($unzippedDir) . ';unzip ' . $file . ';cd ' . $originalDir);
 		}
 
 		if (!is_dir($unzippedDir)) {

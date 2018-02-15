@@ -56,8 +56,8 @@ class Fishpig_Wordpress_Helper_Associations extends Fishpig_Wordpress_Helper_Abs
 			return false;
 		}
 
-		$associations = array_keys($this->getAssociations('cms_page/post', $page->getId(), 0));
-		$categoryAssociations = array_keys($this->getAssociations('cms_page/category', $page->getId(), 0));
+		$associations = array_keys($this->getAssociations('cms_page/post', $page->getId()));
+		$categoryAssociations = array_keys($this->getAssociations('cms_page/category', $page->getId()));
 		$associations = array_merge($associations, $this->_convertWpCategoryIds($categoryAssociations));
 
 		if (count($associations) > 0) {
