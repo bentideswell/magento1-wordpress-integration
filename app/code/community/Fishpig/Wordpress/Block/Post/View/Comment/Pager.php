@@ -8,6 +8,11 @@
 
 class Fishpig_Wordpress_Block_Post_View_Comment_Pager extends Fishpig_Wordpress_Block_Post_List_Pager 
 {
+	/*
+	 * @const string
+	 */
+	const COMMENT_PAGER_VAR = 'comment-page-%s';
+	
 	/**
 	 * Gets the comments per page limit
 	 *
@@ -51,7 +56,7 @@ class Fishpig_Wordpress_Block_Post_View_Comment_Pager extends Fishpig_Wordpress_
 	{
 		if (isset($params['page']) && $params['page'] != 1) {
 			return rtrim($this->getPost()->getPermalink(), '/')
-				. '/' . sprintf(trim($this->helper('wordpress/router')->getCommentPagerVarFormat(), '^$'), $params['page']) . '#comments';
+				. '/' . sprintf(trim(self::COMMENT_PAGER_VAR, '^$'), $params['page']) . '#comments';
 		}
 		
 		return $this->getPost()->getPermalink() . '#comments';

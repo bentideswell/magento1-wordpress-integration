@@ -59,10 +59,6 @@
 			<img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Please wait...') ?>" class="v-middle" /> <?php echo $this->__('Please wait...') ?>
 		</span>
 	</div>
-	<script type="text/javascript">
-	//<![CDATA[
-		new fishpig.WP.Comments.Form('respond', '<?php echo $this->getPost()->getPermalink() ?>');
-	//]]>
-	</script>
+	<script type="text/javascript">WPComments=new (function(formId){this.validation=new Validation(formId,{onSubmit:null});$(formId).observe('submit',function(e){if(!this.validation.validate()){Event.stop(e);}else if(typeof grecaptcha==='object'&&grecaptcha.getResponse().length===0){alert('Please complete the ReCaptcha');Event.stop(e);}}.bindAsEventListener(this));})('respond');</script>
 	<?php endif; ?>
 </form>
