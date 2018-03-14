@@ -242,50 +242,91 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			return $this;
 		}
 
-		$modulesConfigObjects = Mage::getConfig()->getNode('wordpress/core/modules');
-		
-		if (!$modulesConfigObjects) {
-			return $this;
-		}
-		
-		$modules = array_keys($modulesConfigObjects->asArray());
-		$content = array();
-
-		foreach($modules as $module) {
-			if ($code = trim(Mage::getSingleton($module . '/observer')->getHeadFooterContent())) {
-				$content[] = $code;
-			}
-		}
-		
-		if (count($content) === 0) {
-			return $this;
-		}
-
 		$bodyHtml = $observer->getEvent()
 			->getFront()
 				->getResponse()
 					->getBody();
+						
+		if (Mage::helper('wordpress')->isAddonInstalled('PluginShortcodeWidget')) {
+			$assets = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer')->getAssets($bodyHtml);
 
-		$baseUrl = Mage::helper('wordpress')->getBaseUrl();
-		$jsTemplate = '<script type="text/javascript" src="%s"></script>';
+			if (count($assets) === 0) {
+				return $this;
+			}
+		}
+		else {
+			if (!($modulesConfigObjects = Mage::getConfig()->getNode('wordpress/core/modules'))) {
+				return $this;
+			}
+			
+			$modules = array_keys($modulesConfigObjects->asArray());
+			$assets = array();
+	
+			foreach($modules as $module) {
+				if ($code = Mage::getSingleton($module . '/observer')->getAssets($bodyHtml)) {
+					$code = $this->_cleanAssetArray($code);
 
-		if (Mage::getStoreConfigFlag('wordpress/misc/include_underscore')) {
-			array_unshift($content, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/underscore.min.js?ver=1.6.0'));
+					foreach((array)$code as $asset) {
+						$asset = trim($asset);
+
+						if (!in_array($asset, $assets)) {
+							$assets[] = $asset;
+						}
+					}
+				}
+			}
+
+			if (count($assets) === 0) {
+				return $this;
+			}
+	
+			$baseUrl = Mage::helper('wordpress')->getBaseUrl();
+			$jsTemplate = '<script type="text/javascript" src="%s"></script>';
+
+			if (Mage::getStoreConfigFlag('wordpress/misc/include_underscore')) {
+				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/underscore.min.js?ver=1.6.0'));
+			}
+
+			if (Mage::getStoreConfigFlag('wordpress/misc/include_jquery')) {
+				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'));
+				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/jquery/jquery.js?ver=1.12.4'));
+			}
 		}
 
-		if (Mage::getStoreConfigFlag('wordpress/misc/include_jquery')) {
-			array_unshift($content, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'));
-			array_unshift($content, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/jquery/jquery.js?ver=1.12.4'));
+		if ($assets) {
+			$observer->getEvent()
+				->getFront()
+					->getResponse()
+						->setBody(str_replace('</body>', PHP_EOL . PHP_EOL . implode('', $assets) . '</body>', $bodyHtml));
 		}
 
-		$observer->getEvent()
-			->getFront()
-				->getResponse()
-					->setBody(str_replace('</body>', implode('', $content) . '</body>', $bodyHtml));
-		
 		return $this;
 	}
-	
+
+	/*
+	 * Clean the asset array into a single level array
+	 *
+	 * @param  array $assets
+	 * @return array
+	 */
+	protected function _cleanAssetArray($assets)
+	{
+		$buffer = array();
+		
+		foreach($assets as $key => $value) {
+			if (!is_array($value)) {
+				$buffer[] = $value;
+			}
+			else {
+				foreach($this->_cleanAssetArray($value) as $tvalue) {
+					$buffer[] = $tvalue;
+				}
+			}
+		}
+		
+		return $buffer;
+	}
+
 	/**
 	 * Determine whether the observer method can run
 	 * This stops methods being called twice in a single cycle

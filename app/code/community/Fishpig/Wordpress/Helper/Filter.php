@@ -38,7 +38,7 @@ class Fishpig_Wordpress_Helper_Filter extends Fishpig_Wordpress_Helper_Abstract
 		));
 
 		Mage::dispatchEvent('wordpress_string_filter_before', array('content' => $contentObj, 'object' => $object, 'context' => $context, 'helper' => $this));
-		
+
 		$content = $contentObj->getContent();
 
 		$this->_applyShortcodes($content, $object, $context);

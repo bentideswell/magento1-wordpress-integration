@@ -37,7 +37,6 @@ app/locale/sl_SI/Fishpig_Wordpress.csv app/locale/sl_SI/Fishpig_Wordpress.csv
 app/locale/sv_SE/Fishpig_Wordpress.csv app/locale/sv_SE/Fishpig_Wordpress.csv
 app/locale/tr_TR/Fishpig_Wordpress.csv app/locale/tr_TR/Fishpig_Wordpress.csv
 app/locale/zh_CN/Fishpig_Wordpress.csv app/locale/zh_CN/Fishpig_Wordpress.csv
-js/fishpig/wordpress/comments.js js/fishpig/wordpress/comments.js
 js/fishpig/wordpress/lightbox.js js/fishpig/wordpress/lightbox.js
 js/fishpig/wordpress/update.js js/fishpig/wordpress/update.js
 skin/frontend/base/default/wordpress skin/frontend/base/default/wordpress

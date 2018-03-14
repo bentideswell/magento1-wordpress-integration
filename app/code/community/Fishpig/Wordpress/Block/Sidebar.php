@@ -50,7 +50,19 @@ class Fishpig_Wordpress_Block_Sidebar extends Fishpig_Wordpress_Block_Abstract
 	 */
 	public function getWidgetType($name)
 	{
-		return isset($this->_widgets[$name]) ? $this->_widgets[$name] : false;
+		if (isset($this->_widgets[$name])) {
+			return $this->_widgets[$name];
+		}
+		
+		$widget = new Varien_Object(array('block' => false, 'template' => false));
+		
+		Mage::dispatchEvent('wordpress_sidebar_widget', array('widget' => $widget, 'name' => $name));
+
+		if (!$widget->getBlock()) {
+			return false;
+		}
+
+		return $this->_widgets[$name] = $widget->getData();
 	}
 	
 	/**
@@ -72,6 +84,7 @@ class Fishpig_Wordpress_Block_Sidebar extends Fishpig_Wordpress_Block_Abstract
 			
 			foreach($widgets as $widgetType) {
 				$name = $this->_getWidgetName($widgetType);
+				
 				$widgetIndex = $this->_getWidgetIndex($widgetType);
 
 				if ($widget = $this->getWidgetType($name)) {
