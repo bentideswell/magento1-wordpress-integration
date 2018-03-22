@@ -684,6 +684,11 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 				$data['name'] = $author->getDisplayName();
 			}			
 			
+			if (($postType = Mage::registry('wordpress_post_type')) !== null) {
+				$data['pt_single'] = $postType->getNameSingular();
+				$data['pt_plural'] = $postType->getName();
+			}
+
 			$data['currenttime'] = Mage::helper('wordpress')->formatTime(date('Y-m-d H:i:s'));
 			$data['currentdate'] = Mage::helper('wordpress')->formatDate(date('Y-m-d H:i:s'));
 			$data['currentmonth'] = date('F');

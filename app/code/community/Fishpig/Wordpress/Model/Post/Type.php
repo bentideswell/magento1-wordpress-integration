@@ -214,8 +214,7 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 		
 		return false;
 	}
-	
-	
+
 	/**
 	 * Get the name of the post type
 	 *
@@ -226,6 +225,16 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 		return $this->getData('labels/name');
 	}
 	
+	/*
+	 * Get the singular name
+	 *
+	 * @return string
+	 */	
+	public function getNameSingular()
+	{
+		return $this->getData('labels/singular_name');
+	}
+
 	/**
 	 * Determine whether this post type is hierarchical
 	 *
@@ -331,5 +340,5 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 		$customTemplate = Mage::getBaseDir('design') . DS . Mage::getDesign()->getTemplateFilename($customTemplateFile, array('_relative'=>true));
 
 		return is_file($customTemplate) ? $customTemplateFile : false;
-	}
+	}	
 }
