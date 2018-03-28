@@ -16,40 +16,27 @@ class Fishpig_Wordpress_Helper_Filter extends Fishpig_Wordpress_Helper_Abstract
 	 **/
 	public function process($string)
 	{
-		return $this->applyFilters($string, Mage::getModel('wordpress/post'));
+		return $this->applyFilters($string);
 	}
 	
 	/**
 	 * Applies a set of filters to the given string
 	 *
 	 * @param string $content
-	 * @param Fishpig_Wordpress_Model_Post $object
-	 * @param string $context
 	 * @return string
 	 */
-	public function applyFilters($content, $object, $context = null)
+	public function applyFilters($content)
 	{
 		if (Mage::getStoreConfigFlag('wordpress/misc/autop')) {
 			$content = $this->addParagraphsToString($content);
 		}
 
-		$contentObj = new Varien_Object(array(
-			'content' => trim(preg_replace('/(&nbsp;)$/', '', trim($content)))
-		));
-
-		Mage::dispatchEvent('wordpress_string_filter_before', array('content' => $contentObj, 'object' => $object, 'context' => $context, 'helper' => $this));
-
-		$content = $contentObj->getContent();
-
-		$this->_applyShortcodes($content, $object, $context);
-		$this->_addMagentoFilters($content);
+		$content = $this->doShortcode($content);
 		
-		$contentObj = new Varien_Object(array('content' => $content));
-				
-		Mage::dispatchEvent('wordpress_string_filter_after', array('content' => $contentObj, 'object' => $object, 'context' => $context, 'helper' => $this));
+		if (strpos($content, '{{') !== false) {
+			$content = Mage::helper('cms')->getBlockTemplateProcessor()->filter($content);
+		}
 
-		$content = $contentObj->getContent();
-		
 		return $content;
 	}
 
@@ -59,40 +46,38 @@ class Fishpig_Wordpress_Helper_Filter extends Fishpig_Wordpress_Helper_Abstract
 	 * @param string &$content
 	 * @param Fishpig_Wordpress_Model_Post $post
 	 */
-	protected function _applyShortcodes(&$content, $object, $context)
+	public function doShortcode($content)
 	{
-		Mage::helper('wordpress/shortcode_gist')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_scribd')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_dailymotion')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_vimeo')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_instagram')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_youtube')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_product')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_caption')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_gallery')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_spotify')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_code')->apply($content, $object);
-		Mage::helper('wordpress/shortcode_associatedProducts')->apply($content, $object);
-		
-		$contentObj = new Varien_Object(array('content' => $content));
-				
-		Mage::dispatchEvent('wordpress_shortcode_apply', array('content' => $contentObj, 'object' => $object, 'context' => $context, 'helper' => $this));
-		
-		$content = $contentObj->getContent();
-	}
+		$transport = new Varien_Object(array('content' => trim(preg_replace('/(&nbsp;)$/', '', trim($content)))));
 
-	/**
-	  * Apply the Magento filters that are applied to static blocks
-	  * This allows for {{store url=""}} & {{block type="..."}} strings
-	  *
-	  * @param string &$content
-	  * @param array $params = array()
-	  */
-	protected function _addMagentoFilters(&$content)
-	{
-		if (strpos($content, '{{') !== false) {
-			$content = Mage::helper('cms')->getBlockTemplateProcessor()->filter($content);
-		}
+		Mage::dispatchEvent('wordpress_string_filter_before', array('content' => $transport));
+
+		$content = $transport->getContent();
+		
+		Mage::helper('wordpress/shortcode_gist')->apply($content);
+		Mage::helper('wordpress/shortcode_scribd')->apply($content);
+		Mage::helper('wordpress/shortcode_dailymotion')->apply($content);
+		Mage::helper('wordpress/shortcode_vimeo')->apply($content);
+		Mage::helper('wordpress/shortcode_instagram')->apply($content);
+		Mage::helper('wordpress/shortcode_youtube')->apply($content);
+		Mage::helper('wordpress/shortcode_product')->apply($content);
+		Mage::helper('wordpress/shortcode_caption')->apply($content);
+		Mage::helper('wordpress/shortcode_gallery')->apply($content);
+		Mage::helper('wordpress/shortcode_spotify')->apply($content);
+		Mage::helper('wordpress/shortcode_code')->apply($content);
+		Mage::helper('wordpress/shortcode_associatedProducts')->apply($content);
+		
+		$transport = new Varien_Object(array('content' => $content));
+				
+		Mage::dispatchEvent('wordpress_shortcode_apply', array('content' => $transport));
+		
+		$content = $transport->getContent();
+		
+		$transport = new Varien_Object(array('content' => $content));
+				
+		Mage::dispatchEvent('wordpress_string_filter_after', array('content' => $transport));
+
+		return $transport->getContent();
 	}
 
 	/**

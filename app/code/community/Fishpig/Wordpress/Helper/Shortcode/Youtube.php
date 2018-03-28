@@ -22,10 +22,9 @@ class Fishpig_Wordpress_Helper_Shortcode_Youtube extends Fishpig_Wordpress_Helpe
 	 * Apply the Vimeo short code
 	 *
 	 * @param string &$content
-	 * @param Fishpig_Wordpress_Model_Post $post
 	 * @return void
 	 */	
-	protected function _apply(&$content, Fishpig_Wordpress_Model_Post $post)
+	protected function _apply(&$content)
 	{
 		if (preg_match_all('/\[youtube=(.*)\]/iU', $content, $matches)) {
 			foreach($matches[1] as $key => $match) {

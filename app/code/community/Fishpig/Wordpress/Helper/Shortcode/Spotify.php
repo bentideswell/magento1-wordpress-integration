@@ -22,10 +22,9 @@ class Fishpig_Wordpress_Helper_Shortcode_Spotify extends Fishpig_Wordpress_Helpe
 	 * Apply the Vimeo short code
 	 *
 	 * @param string &$content
-	 * @param Fishpig_Wordpress_Model_Post $post
 	 * @return void
 	 */	
-	protected function _apply(&$content, Fishpig_Wordpress_Model_Post $post)
+	protected function _apply(&$content)
 	{
 		// Convert URLs to spotify strings
 		if (preg_match_all('/http[s]{0,1}:\/\/(open|play|embed).spotify.com\/(.*)[\n]{1,}/U', "\n" . $content . "\n", $matches)) {

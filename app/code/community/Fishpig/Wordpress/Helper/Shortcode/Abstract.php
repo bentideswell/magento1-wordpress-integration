@@ -30,7 +30,7 @@ abstract class Fishpig_Wordpress_Helper_Shortcode_Abstract extends Fishpig_Wordp
 	 * @param Fishpig_Wordpress_Model_Post $post
 	 * @return void
 	 */
-	abstract protected function _apply(&$content, Fishpig_Wordpress_Model_Post $post);
+	abstract protected function _apply(&$content);
 
 	/**
 	 * Apply the shortcode to the content
@@ -39,7 +39,7 @@ abstract class Fishpig_Wordpress_Helper_Shortcode_Abstract extends Fishpig_Wordp
 	 * @param Fishpig_Wordpress_Model_Post $post
 	 * @return void
 	 */	
-	public function apply(&$content, Fishpig_Wordpress_Model_Post $post)
+	public function apply(&$content)
 	{
 		if (strpos($content, $this->getTag()) === false) {
 			return $this;
@@ -52,7 +52,7 @@ abstract class Fishpig_Wordpress_Helper_Shortcode_Abstract extends Fishpig_Wordp
 			$this->_convertInnerUrls($content);
 			$this->_convertRawUrls($content);
 
-			return $this->_apply($content, $post);
+			return $this->_apply($content);
 		}
 		catch (Exception $e) {
 			$this->log($e);

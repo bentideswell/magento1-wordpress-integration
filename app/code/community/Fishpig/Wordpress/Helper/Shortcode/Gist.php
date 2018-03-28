@@ -32,24 +32,22 @@ class Fishpig_Wordpress_Helper_Shortcode_Gist extends Fishpig_Wordpress_Helper_S
 	 * Apply the shortcode to the content
 	 *
 	 * @param string $content
-	 * @param Fishpig_Wordpress_Model_Post $post
 	 * @return void
 	 */	
-	public function apply(&$content, Fishpig_Wordpress_Model_Post $post)
+	public function apply(&$content)
 	{
 		$content = preg_replace('/(\[' . $this->getTag() . ' .*)([ ]{0,1}\/)(\])/iU', '$1$3', $content);
 		
-		return parent::apply($content, $post);
+		return parent::apply($content);
 	}
 	
 	/**
 	 * Apply the Vimeo short code
 	 *
 	 * @param string &$content
-	 * @param Fishpig_Wordpress_Model_Post $post
 	 * @return void
 	 */	
-	protected function _apply(&$content, Fishpig_Wordpress_Model_Post $post)
+	protected function _apply(&$content)
 	{
 		if (($shortcodes = $this->_getShortcodes($content)) !== false) {
 			foreach($shortcodes as $shortcode) {

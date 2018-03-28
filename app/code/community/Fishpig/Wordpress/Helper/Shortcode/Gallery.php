@@ -22,10 +22,9 @@ class Fishpig_Wordpress_Helper_Shortcode_Gallery extends Fishpig_Wordpress_Helpe
 	 * Apply the Vimeo short code
 	 *
 	 * @param string &$content
-	 * @param Fishpig_Wordpress_Model_Post $post
 	 * @return void
 	 */	
-	protected function _apply(&$content, Fishpig_Wordpress_Model_Post $post)
+	protected function _apply(&$content)
 	{
 		if (($shortcodes = $this->_getShortcodes($content)) !== false) {
 			foreach($shortcodes as $it => $shortcode) {
@@ -61,13 +60,13 @@ class Fishpig_Wordpress_Helper_Shortcode_Gallery extends Fishpig_Wordpress_Helpe
 					}
 				}
 				else {
-					$images = $post->getImages();
+					$images = $post ? $post->getImages() : array();
 				}
 				
 				$html = $this->_createBlock('wordpress/template')
 					->setImageCollection($images)
 					->setColumns($args->getColumns())
-					->setPost($post)
+					->setPost($post ? $post : Mage::registry('wordpress_post'))
 					->setSize($args->getSize())
 					->setLink($args->getLink())
 					->setGalleryIt(($it+1))
@@ -79,4 +78,3 @@ class Fishpig_Wordpress_Helper_Shortcode_Gallery extends Fishpig_Wordpress_Helpe
 		}
 	}
 }
-
