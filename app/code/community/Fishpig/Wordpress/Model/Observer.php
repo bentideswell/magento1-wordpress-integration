@@ -253,17 +253,6 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			if (count($assets) === 0) {
 				return $this;
 			}
-			$baseUrl = Mage::helper('wordpress')->getBaseUrl();
-			$jsTemplate = '<script type="text/javascript" src="%s"></script>';
-
-			if (Mage::getStoreConfigFlag('wordpress/misc/include_underscore')) {
-				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/underscore.min.js?ver=1.6.0'));
-			}
-
-			if (Mage::getStoreConfigFlag('wordpress/misc/include_jquery')) {
-				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'));
-				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/jquery/jquery.js?ver=1.12.4'));
-			}
 		}
 		else {
 			if (!($modulesConfigObjects = Mage::getConfig()->getNode('wordpress/core/modules'))) {
