@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+28/03/2018 - 4.5.0.2
+- Added better support for global $post;
+
 01/03/2018 - 4.3.1.7
 - Added form validation when using ReCaptcha
 

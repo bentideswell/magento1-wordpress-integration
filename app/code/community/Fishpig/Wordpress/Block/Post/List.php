@@ -117,6 +117,8 @@ class Fishpig_Wordpress_Block_Post_List extends Fishpig_Wordpress_Block_Post_Abs
 	 */
 	public function getPostRenderer(Fishpig_Wordpress_Model_Post $post)
 	{
+		$post->setAsGlobal();
+
 		if (!$this->hasPostRenderer()) {
 			$this->setPostRenderer(
 				$this->getLayout()->createBlock('wordpress/post_list_renderer')

@@ -674,36 +674,85 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 	{
 		return $this->getPostTitle();
 	}
-	
+
+	/*
+	 *
+	 *
+	 * @return
+	 */
 	public function getParentPage()
 	{
-		return $this->isType('page')
-			? $this->getParentPost()
-			: false;
+		return $this->isType('page') ? $this->getParentPost() : false;
 	}	
-	
+
+	/*
+	 *
+	 *
+	 * @return
+	 */
 	public function hasChildren()
 	{
 		return $this->hasChildrenPosts();
 	}
-	
+
+	/*
+	 *
+	 *
+	 * @return
+	 */
 	public function getChildren()
 	{
 		return $this->getChildrenPosts();
 	}
-	
+
+	/*
+	 *
+	 *
+	 * @return
+	 */
 	public function isHomepagePage()
 	{
 		return $this->isType('page') && (int)$this->getId() === (int)Mage::helper('wordpress/router')->getHomepagePageId();
 	}
-	
+
+	/*
+	 *
+	 *
+	 * @return
+	 */
 	public function isBlogListingPage()
 	{
 		return $this->isType('page') && (int)$this->getId() === (int)Mage::helper('wordpress/router')->getBlogPageId();
 	}
-	
+
+	/*
+	 *
+	 *
+	 * @return
+	 */
 	public function getMetaDescription($maxWords = 30)
 	{
 		return strip_tags($this->getPostExcerpt($maxWords));
+	}
+	
+	/*
+	 *
+	 *
+	 * @return
+	 */
+	public function setAsGlobal()
+	{
+		if (!$this->getWpPostObject()) {
+			Mage::dispatchEvent('wordpress_post_setasglobal_before', array('post' => $this));
+		}
+
+		if ($this->getWpPostObject()) {
+			$GLOBALS['post'] = $this->getWpPostObject();			
+		}
+		else {
+			$GLOBALS['post'] = json_decode(array('ID' => $this->getId()));
+		}
+		
+		return $this;
 	}
 }
