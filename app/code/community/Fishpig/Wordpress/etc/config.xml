@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Fishpig_Wordpress>
-      <version>4.5.0.5</version>
+      <version>4.5.0.6</version>
     </Fishpig_Wordpress>
   </modules>
   <global>
@@ -308,21 +308,10 @@
 				<lc_taxonomy><block>sidebar_widget_taxonomy</block><template>wordpress/sidebar/widget/taxonomy.phtml</template></lc_taxonomy>
 			</widgets>
 		</sidebar>
-			<core>
-				<globals>
-					<post />
-				</globals>
-			</core>
+		<core>
+			<globals>
+				<post />
+			</globals>
+		</core>
 	</wordpress>
-	<fishpig>
-		<injection>
-			<Fishpig_Magento_Block_Adminhtml_Extend>
-				<Fishpig_Wordpress>
-					<Block_Adminhtml_Extend>
-						<ignore />
-					</Block_Adminhtml_Extend>
-				</Fishpig_Wordpress>
-			</Fishpig_Magento_Block_Adminhtml_Extend>
-		</injection>
-	</fishpig>
 </config>

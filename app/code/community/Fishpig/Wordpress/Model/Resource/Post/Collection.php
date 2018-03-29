@@ -60,6 +60,10 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
   {
     parent::_initSelect();
 
+		if (Mage::helper('wordpress/plugin')->isEnabled('post-types-order/post-types-order.php')) {
+			return $this->setOrder('main_table.menu_order', 'ASC');
+		}
+
 		return $this->setOrder('main_table.post_date', 'DESC');
   }
     	
