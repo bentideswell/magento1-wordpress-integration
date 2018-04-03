@@ -81,7 +81,11 @@ class Fishpig_Wordpress_Helper_System_Update extends Mage_Core_Helper_Abstract
 				}
 				else if (is_file($source)) {
 					if (!is_file($target) || md5_file($source) !== md5_file($target)) {
-						copy($source, $target);
+						if (is_dir($target)) {
+							Mage::helper('wordpress')->log('Update Error: ' . $target . ' is a directory but ' . $source . ' is a file.');
+						}
+						
+						@copy($source, $target);
 					}
 				}
 			}
