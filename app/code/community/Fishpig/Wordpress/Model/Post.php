@@ -127,7 +127,7 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 				return $excerpt;
 			}
 			else {
-				return $this->getPostContent('excerpt');
+				return $this->getPostContent();
 			}
 		}
 
@@ -153,7 +153,7 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 	protected function _getPostTeaser($includeSuffix = true)
 	{
 		if ($this->hasMoreTag()) {
-			$content = $this->getPostContent('excerpt');
+			$content = $this->getPostContent();
 
 			if (preg_match('/<!--more (.*)-->/', $content, $matches)) {
 				$anchor = $matches[1];
@@ -353,15 +353,24 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 	 *
 	 * @return string
 	 */
-	public function getPostContent($context = 'full')
+	public function getPostContent()
 	{
-		$key = rtrim('filtered_post_content_' . $context, '_');
-		
-		if (!$this->hasData($key)) {
-			$this->setData($key, Mage::helper('wordpress/filter')->applyFilters($this->_getData('post_content'), $this, $context));
+		if (!$this->hasProcessedPostContent()) {
+			$transport = new Varien_Object();
+
+			Mage::dispatchEvent('wordpress_get_post_content', array('transport' => $transport, 'post' => $this));
+			
+			if ($transport->getPostContent()) {
+				$this->setProcessedPostContent($transport->getPostContent());
+			}
+			else {
+				$this->setProcessedPostContent(
+					Mage::helper('wordpress/filter')->applyFilters($this->_getData('post_content'))
+				);
+			}
 		}
 		
-		return $this->_getData($key);
+		return $this->_getData('processed_post_content');
 	}
 
 	/**
