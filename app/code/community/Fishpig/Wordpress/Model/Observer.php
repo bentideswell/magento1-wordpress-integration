@@ -246,9 +246,29 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			->getFront()
 				->getResponse()
 					->getBody();
-						
+
+#   Add support for WPBakery Frontend Editor
+#   Not stable yet
+#		$bodyHtml = preg_replace('/<script[^>]{0,}>.*<\/script>/sU', '', $bodyHtml);
+		
 		if (Mage::helper('wordpress')->isAddonInstalled('PluginShortcodeWidget')) {
 			$assets = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer')->getAssets($bodyHtml);
+
+			if (!$this->_canIncludeJquery()) {
+				foreach($assets as $key => $value) {
+					if (strpos($value, '/wp-includes/js/jquery/jquery.js') || strpos($value, '/wp-includes/js/jquery/jquery-migrate.min.js')) {
+						unset($assets[$key]);
+					}
+				}
+			}
+			
+			if (!$this->_canIncludeUnderscore()) {
+				foreach($assets as $key => $value) {
+					if (strpos($value, '/wp-includes/js/underscore.min.js') !== false) {
+						unset($assets[$key]);
+					}
+				}
+			}
 
 			if (count($assets) === 0) {
 				return $this;
@@ -283,11 +303,11 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			$baseUrl = Mage::helper('wordpress')->getBaseUrl();
 			$jsTemplate = '<script type="text/javascript" src="%s"></script>';
 
-			if (Mage::getStoreConfigFlag('wordpress/misc/include_underscore')) {
+			if ($this->_canIncludeUnderscore()) {
 				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/underscore.min.js?ver=1.6.0'));
 			}
 
-			if (Mage::getStoreConfigFlag('wordpress/misc/include_jquery')) {
+			if ($this->_canIncludeJquery()) {
 				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'));
 				array_unshift($assets, sprintf($jsTemplate, $baseUrl . 'wp-includes/js/jquery/jquery.js?ver=1.12.4'));
 			}
@@ -303,6 +323,28 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 		return $this;
 	}
 
+	/*
+	 *
+	 *
+	 * @return bool
+	 */
+	protected function _canIncludeJquery()
+	{
+		return false;
+		return Mage::getStoreConfigFlag('wordpress/misc/include_jquery');
+	}
+	
+	/*
+	 *
+	 *
+	 * @return bool
+	 */
+	protected function _canIncludeUnderscore()
+	{
+		return false;
+		return Mage::getStoreConfigFlag('wordpress/misc/include_underscore');
+	}
+	
 	/*
 	 * Clean the asset array into a single level array
 	 *
