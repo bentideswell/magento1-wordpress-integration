@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+20/04/2018 - 4.5.0.12
+- Fixed issue with og:title on homepage and fp:app_id
+
 28/03/2018 - 4.5.0.2
 - Added better support for global $post;
 

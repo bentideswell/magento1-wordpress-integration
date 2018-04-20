@@ -109,7 +109,9 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 			'site_name' => $helper->getWpOption('blogname'),
 			'article:publisher' => $this->getFacebookSite(),
 			'image' => $this->getData('og_default_image'),
+			'fb:app_id' => $this->getData('fbadminapp'),
 		));
+
 		$this->_addGooglePlusLinkRel();
 		
 		return parent::_beforeObserver();
@@ -196,10 +198,13 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 		));
 
 		$this->_applyOpenGraph(array(
+			'title' => $this->getData('og_frontpage_title'),
 			'description' => $this->getData('og_frontpage_desc'),
 			'image' => $this->getData('og_frontpage_image'),
 		));
-
+		
+		$this->_addRelNextPrev($object, __METHOD__);
+		
 		return $this;
 	}
 
@@ -242,6 +247,10 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 	 */	
 	protected function _applyPostPageLogic($object, $type = 'post')
 	{
+		if ($object->isBlogListingPage()) {
+			$this->_addRelNextPrev($object, __METHOD__);
+		}
+		
 		$meta = new Varien_Object(array(
 			'title' => $this->_getTitleFormat($object->getPostType()),
 			'description' => trim($this->getData('metadesc_' . $object->getPostType())),
@@ -358,6 +367,8 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 	 */
 	public function processRouteWordpressTermView($term)
 	{
+		$this->_addRelNextPrev($object, __METHOD__);
+
 		$this->_applyMeta(array(
 			'title' => $this->getData('title_tax_' . $term->getTaxonomyType()),
 			'description' => $this->getData('metadesc_tax_' . $term->getTaxonomyType()),
@@ -407,6 +418,8 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 		if ($this->getDisableDate()) {
 			$this->_redirect(Mage::helper('wordpress')->getBlogRoute());
 		}
+
+		$this->_addRelNextPrev($object, __METHOD__);
 		
 		$meta = new Varien_Object(array(
 			'title' => $this->getTitleArchiveWpseo(),
@@ -438,6 +451,8 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 		if ($this->getDisableAuthor()) {
 			$this->_redirect(Mage::helper('wordpress')->getBlogRoute());
 		}
+
+		$this->_addRelNextPrev($object, __METHOD__);
 		
 		$meta = new Varien_Object(array(
 			'title' => $this->getTitleAuthorWpseo(),
@@ -464,6 +479,8 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 	 */
 	public function processRouteWordpressSearchIndex($object = null)
 	{
+		$this->_addRelNextPrev($object, __METHOD__);
+		
 		$meta = new Varien_Object(array(
 			'title' => $this->getTitleSearchWpseo(),
 		));
@@ -600,7 +617,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 		if ($fbTitle = $object->getMetaValue('_yoast_wpseo_opengraph-title')) {
 			$tags['title'] = $fbTitle;
 		}
-		
+
 		if ($fbDesc = $object->getMetaValue('_yoast_wpseo_opengraph-description')) {
 			$tags['description'] = $fbDesc;
 		}
@@ -849,5 +866,32 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 	public function getData($key='', $index=null)
 	{
 		return parent::getData(str_replace('-', '_', $key), $index);
+	}
+	
+	/*
+	 *
+	 *
+	 * @param  $object
+	 * @param  string $method
+	 * @return
+	 */
+	protected function _addRelNextPrev($object, $method)
+	{
+		return $this;
+
+		$postListBlock = Mage::getSingleton('core/layout')->getBlock('wordpress_post_list');
+		
+		if (!$postListBlock) {
+			return false;
+		}
+		
+		$postListWrapperBlock = $postListBlock->getParentBlock();
+		
+		// This ensure it is the correct post list block
+		if (!$postListWrapperBlock || !($postListWrapperBlock instanceof Fishpig_Wordpress_Block_Post_List_Wrapper_Abstract)) {
+			return false;
+		}
+		
+		$postCollection = $postListBlock->getPosts();
 	}
 }
