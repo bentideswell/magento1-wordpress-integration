@@ -203,7 +203,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 			'image' => $this->getData('og_frontpage_image'),
 		));
 		
-		$this->_addRelNextPrev($object, __METHOD__);
+		//$this->_addRelNextPrev($object, __METHOD__);
 		
 		return $this;
 	}
@@ -248,7 +248,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 	protected function _applyPostPageLogic($object, $type = 'post')
 	{
 		if ($object->isBlogListingPage()) {
-			$this->_addRelNextPrev($object, __METHOD__);
+			//$this->_addRelNextPrev($object, __METHOD__);
 		}
 		
 		$meta = new Varien_Object(array(
@@ -367,7 +367,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 	 */
 	public function processRouteWordpressTermView($term)
 	{
-		$this->_addRelNextPrev($object, __METHOD__);
+		//$this->_addRelNextPrev($object, __METHOD__);
 
 		$this->_applyMeta(array(
 			'title' => $this->getData('title_tax_' . $term->getTaxonomyType()),
@@ -419,7 +419,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 			$this->_redirect(Mage::helper('wordpress')->getBlogRoute());
 		}
 
-		$this->_addRelNextPrev($object, __METHOD__);
+		//$this->_addRelNextPrev($object, __METHOD__);
 		
 		$meta = new Varien_Object(array(
 			'title' => $this->getTitleArchiveWpseo(),
@@ -452,7 +452,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 			$this->_redirect(Mage::helper('wordpress')->getBlogRoute());
 		}
 
-		$this->_addRelNextPrev($object, __METHOD__);
+		//$this->_addRelNextPrev($object, __METHOD__);
 		
 		$meta = new Varien_Object(array(
 			'title' => $this->getTitleAuthorWpseo(),
@@ -479,7 +479,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 	 */
 	public function processRouteWordpressSearchIndex($object = null)
 	{
-		$this->_addRelNextPrev($object, __METHOD__);
+		//$this->_addRelNextPrev($object, __METHOD__);
 		
 		$meta = new Varien_Object(array(
 			'title' => $this->getTitleSearchWpseo(),
