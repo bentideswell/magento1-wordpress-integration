@@ -210,7 +210,9 @@ class Fishpig_Wordpress_Model_User extends Fishpig_Wordpress_Model_Abstract
 	 */
 	public function getGravatarUrl($size = 50)
 	{
-		return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->getUserEmail()))) . "?d=" . urlencode( $this->_getDefaultGravatarImage() ) . "&s=" . $size;
+		$protocol = Mage::app()->getStore()->isCurrentlySecure() ? 'https://' : 'http://';
+		
+		return $protocol . "www.gravatar.com/avatar/" . md5(strtolower(trim($this->getUserEmail()))) . "?d=" . urlencode( $this->_getDefaultGravatarImage() ) . "&s=" . $size;
 	}
 	
 	/**
