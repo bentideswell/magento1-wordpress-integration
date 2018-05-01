@@ -284,15 +284,17 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 
 			foreach($modules as $module) {
 				// Check whether module has model's defined
-				if (!Mage::getConfig()->getNode('global/models/' . $module)) {
-					continue;
-				}
+				$modelClassPrefix = (string)Mage::getConfig()->getNode('global/models/' . $module . '/class');
 
-				if (!($observer = Mage::getSingleton($module . '/observer'))) {
+				if (!$modelClassPrefix) {
 					continue;
 				}
 				
-				if ($code = $observer->getAssets($bodyHtml)) {
+				if (!is_file(Mage::getModuleDir('', str_replace('_Model', '', $modelClassPrefix)) . DS . 'Model' . DS . 'Observer.php')) {
+					continue;
+				}
+
+				if ($code = Mage::getSingleton($module . '/observer')->getAssets($bodyHtml)) {
 					$code = $this->_cleanAssetArray($code);
 
 					foreach((array)$code as $asset) {
