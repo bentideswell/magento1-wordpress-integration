@@ -33,31 +33,7 @@
 	<adminhtml_system_config_edit>
 		<reference name="content">
 			<block type="adminhtml/template" name="wp.integration.tests"  before="-" template="wordpress/integration-tests.phtml">
-				<block type="wordpress/adminhtml_extend" name="fishpig.extend" as="extend">
-					<action method="setModule"><module>Fishpig_Wordpress</module></action>
-					<action method="setMedium"><medium>System Configuration</medium></action>
-					<action method="setLimit"><limit>6</limit></action>
-					<action method="setPreferred">
-						<pref>
-							<Fishpig_Wordpress_Addon_Multisite />
-							<Fishpig_Wordpress_Addon_Root />
-							<Fishpig_Wordpress_Addon_VisualComposer />
-							<Fishpig_Wordpress_Addon_AMP />
-							<Fishpig_Wordpress_Addon_BBPress />
-							<Fishpig_Wordpress_Addon_CPT />
-							<Fishpig_Wordpress_Addon_ACF />
-							<Fishpig_Wordpress_Addon_CS />
-							<Fishpig_Wordpress_Addon_GravityForms />
-							<Fishpig_Wordpress_Addon_ContactForm7 />
-							<Fishpig_Wordpress_Addon_EventsCalendar />
-							<Fishpig_Wordpress_Addon_RevolutionSlider />
-							<Fishpig_Wordpress_Addon_Tablepress />
-							<Fishpig_Wordpress_Addon_IntegratedSearch />
-							<Fishpig_Bolt />
-							<Fishpig_Opti />
-						</pref>
-					</action>
-				</block>
+				<block type="adminhtml/template" name="fishpig.extend" as="extend" template="wordpress/extend.phtml" />
 			</block>
 		</reference>
 		<reference name="before_body_end">
