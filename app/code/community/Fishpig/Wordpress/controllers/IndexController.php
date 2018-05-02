@@ -188,7 +188,8 @@ class Fishpig_Wordpress_IndexController extends Fishpig_Wordpress_Controller_Abs
 				throw new Exception('No WP Core modules installed.');
 			}
 			
-			$coreModule = array_shift(array_keys((array)$coreModules));
+			$coreModules = array_keys((array)$coreModules);
+			$coreModule  = array_shift();
 
 			Mage::helper($coreModule . '/core')->isActive();
 
