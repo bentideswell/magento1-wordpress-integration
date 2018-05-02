@@ -44,7 +44,7 @@ class Fishpig_Wordpress_Helper_Shortcode_Gallery extends Fishpig_Wordpress_Helpe
 
 				if ($args->getPostId()) {
 					if ($args->getPostId() !== $params['object']->getId()) {
-						$post = Mage::getModel('catalog/post')->load($args->getPostId());
+						$post = Mage::getModel('wordpress/post')->load($args->getPostId());
 					}
 				}
 				
@@ -66,7 +66,7 @@ class Fishpig_Wordpress_Helper_Shortcode_Gallery extends Fishpig_Wordpress_Helpe
 				$html = $this->_createBlock('wordpress/template')
 					->setImageCollection($images)
 					->setColumns($args->getColumns())
-					->setPost($post ? $post : Mage::registry('wordpress_post'))
+					->setPost(isset($post) && $post ? $post : Mage::registry('wordpress_post'))
 					->setSize($args->getSize())
 					->setLink($args->getLink())
 					->setGalleryIt(($it+1))
