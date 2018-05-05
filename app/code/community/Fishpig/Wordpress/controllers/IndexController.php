@@ -189,7 +189,7 @@ class Fishpig_Wordpress_IndexController extends Fishpig_Wordpress_Controller_Abs
 			}
 			
 			$coreModules = array_keys((array)$coreModules);
-			$coreModule  = array_shift();
+			$coreModule  = array_shift($coreModules);
 
 			Mage::helper($coreModule . '/core')->isActive();
 
