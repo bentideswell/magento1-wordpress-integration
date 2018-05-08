@@ -46,7 +46,6 @@ class Fishpig_Wordpress_Helper_System extends Fishpig_Wordpress_Helper_Abstract
 				$this->applyTest('_validateHomeUrl');
 				$this->applyTest('_validatePath');
 				$this->applyTest('_validateTheme');
-				$this->applyTest('_validatePlugins', array());
 				$this->applyTest('_validatePermalinks');
 				$this->applyTest('_validateHtaccess');
 				$this->applyTest('_validateL10nPermissions');
@@ -163,62 +162,6 @@ class Fishpig_Wordpress_Helper_System extends Fishpig_Wordpress_Helper_Abstract
 		}
 		
 		return true;
-	}
-	
-	/**
-	 * Validate the plugins/extensions
-	 *
-	 * @param Varien_Object $params
-	 * @return void
-	 */
-	protected function _validatePlugins(Varien_Object $params)
-	{
-		$file = Mage::getModuleDir('etc', 'Fishpig_Wordpress') . DS . 'fishpig.xml';
-
-		if (!is_file($file)) {
-			return $this;
-		}
-		
-		$xml = simplexml_load_file($file);
-		$results = $params->getResults();
-		
-		foreach((array)$xml->fishpig->extensions as $moduleName => $data) {
-			$this->applyTest('_validatePlugin', array_merge(
-				(array)$data, 
-				array('current_version' => (string)Mage::getConfig()->getNode()->modules->$moduleName->version)
-			));
-		}
-		
-		$params->setResults($results);
-		
-		return $this;
-	}
-	
-	/**
-	 * Validate a single plugin
-	 *
-	 * @param Varien_Object $params
-	 * @return void
-	 */
-	protected function _validatePlugin(Varien_Object $params)
-	{
-		if ($params->getCurrentVersion() && version_compare($params->getNewVersion(), $params->getCurrentVersion(), '>')) {
-			throw Fishpig_Wordpress_Exception::warning($params->getName(), $this->__('You have version %s installed. Update to %s.', 
-				$params->getCurrentVersion(), 
-				sprintf('<a href="%s" target="_blank">%s</a>', $params->getUrl(), $params->getNewVersion())
-			));
-		}
-		
-		if ($params->getId() && !$params->getCurrentVersion()) {
-			if (Mage::helper('wordpress')->isPluginEnabled($params->getId())) {
-				throw Fishpig_Wordpress_Exception::warning(
-					$params->getName(),
-					$this->__('Extension required for plugin to work. ') . $this->__('Install %s', sprintf('<a href="%s" target="_blank">extension</a>.', $params->getUrl()))
-				);
-			}
-		}
-		
-		return $this;
 	}
 
 	/**
