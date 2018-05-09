@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+09/05/2018 - 4.5.0.25
+- Fixed issue where jQuery wasn't included when Shortcodes & Widgets add-on module enabled
+
 20/04/2018 - 4.5.0.12
 - Fixed issue with og:title on homepage and fp:app_id
 

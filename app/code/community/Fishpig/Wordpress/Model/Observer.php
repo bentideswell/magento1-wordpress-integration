@@ -341,7 +341,6 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 	 */
 	protected function _canIncludeJquery()
 	{
-		return false;
 		return Mage::getStoreConfigFlag('wordpress/misc/include_jquery');
 	}
 	
@@ -352,7 +351,6 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 	 */
 	protected function _canIncludeUnderscore()
 	{
-		return false;
 		return Mage::getStoreConfigFlag('wordpress/misc/include_underscore');
 	}
 	
