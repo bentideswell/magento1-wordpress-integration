@@ -706,10 +706,12 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 				$data['pt_plural'] = $postType->getName();
 			}
 
-			$data['currenttime'] = Mage::helper('wordpress')->formatTime(date('Y-m-d H:i:s'));
-			$data['currentdate'] = Mage::helper('wordpress')->formatDate(date('Y-m-d H:i:s'));
+			$data['currenttime']  = Mage::helper('wordpress')->formatTime(date('Y-m-d H:i:s'));
+			$data['currentdate']  = Mage::helper('wordpress')->formatDate(date('Y-m-d H:i:s'));
+			$data['currentday']   = date('l');
 			$data['currentmonth'] = date('F');
-			$data['currentyear'] = date('Y');
+			$data['currentyear']  = date('Y');
+
 			$data['sep'] = '|';
 
 			if ($sep = $this->getData('separator')) {

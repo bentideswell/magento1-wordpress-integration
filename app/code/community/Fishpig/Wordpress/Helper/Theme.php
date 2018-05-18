@@ -125,6 +125,19 @@ class Fishpig_Wordpress_Helper_Theme extends Fishpig_Wordpress_Helper_Abstract
 	}
 	
 	/*
+	 * Enable the FishPig theme in WordPress
+	 *
+	 * @return $this
+	 */
+	public function enable()
+	{
+		Mage::helper('wordpress')->setWpOption('template', self::THEME_NAME);
+		Mage::helper('wordpress')->setWpOption('stylesheet', self::THEME_NAME);
+		
+		return $this;
+	}
+
+	/*
 	 * Get the version from the file $f
 	 *
 	 * @param string $file

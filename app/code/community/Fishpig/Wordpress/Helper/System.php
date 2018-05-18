@@ -139,9 +139,13 @@ class Fishpig_Wordpress_Helper_System extends Fishpig_Wordpress_Helper_Abstract
 			);
 		}
 		else if (!$helper->isEnabled()) {
-			throw Fishpig_Wordpress_Exception::error('Themes', 
+			$helper->enable();
+			
+			if (!$helper->isEnabled()) {
+				throw Fishpig_Wordpress_Exception::error('Themes', 
 				stripslashes(Mage::helper('wordpress')->__('The FishPig theme is installed but not enabled. Login to the WordPress Admin and enable the FishPig theme.'))
-			);			
+				);			
+			}
 		}
 		
 		return true;

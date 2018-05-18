@@ -165,6 +165,35 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 		return false;
 	}
 	
+	/*
+	 * Update a WP Option value in the DB
+	 *
+	 * @param  string $key
+	 * @param  string $value
+	 * @return $this
+	 */
+	public function setWpOption($key, $value)
+	{
+		$db = $this instanceof Fishpig_Wordpress_Helper_App
+			? $this->getDbConnection()
+			: Mage::helper('wordpress/app')->getDbConnection();
+			
+		if (!$db) {
+			return $this;
+		}
+		
+		// Remove it from cache
+		$this->_cache('wp_option_' . $key, null);
+		
+		$db->update(
+			Mage::getSingleton('core/resource')->getTableName('wordpress/option'),
+			array('option_value' => $value),
+			$db->quoteInto('option_name=?', $key)
+		);
+		
+		return $this;
+	}
+	
 	/**
 	  * Logs an error to the Wordpress error log
 	  *
@@ -208,6 +237,10 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 	protected function _cache($key, $value)
 	{
 		self::$_cache[$key] = $value;
+		
+		if ($value === null) {
+			unset(self::$_cache[$key]);
+		}
 		
 		return $this;
 	}

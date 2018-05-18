@@ -8,6 +8,13 @@
  
 class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 {
+	/*
+	 * Stop init from being executed multiple times
+	 *
+	 * @var bool
+	 */
+	protected $_isInit = false;
+	
 	/**
 	 * App errors that occur while integrating
 	 *
@@ -93,10 +100,20 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	public function init()
 	{
+		if ($this->_isInit) {
+			return $this;
+		}
+		
+		$this->_isInit = true;
+
 		try {
-			Mage::helper('wordpress/theme')->install();
+			$themeHelper = Mage::helper('wordpress/theme');
 			
-			if (!Mage::helper('wordpress/theme')->isEnabled()) {
+			if ($themeHelper->install()) {
+				$themeHelper->enable();
+			}
+			
+			if (!$themeHelper->isEnabled()) {
 				throw new Exception('Unable to install FishPig theme in WordPress.');
 			}
 		}
