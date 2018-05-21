@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+21/05/2018 - 4.5.0.27
+- Fix for auto updating when using GIT
+
 18/05/2018 - 4.5.0.26
 - Auto enable the FishPig theme to simplify installation process.
 

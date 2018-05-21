@@ -273,6 +273,8 @@ class Fishpig_Wordpress_Helper_System_Update extends Mage_Core_Helper_Abstract
 	 */
 	public function isGit()
 	{
-		return is_dir(dirname(dirname(dirname(dirname(dirname(dirname(realpath(Mage::getModuleDir('etc', 'Fishpig_Wordpress')))))))) . DS . '.git');
+		$moduleDir = dirname(dirname(dirname(dirname(dirname(dirname(realpath(Mage::getModuleDir('etc', 'Fishpig_Wordpress'))))))));
+
+		return is_dir($moduleDir . DS . '.git') && !is_file($moduleDir . DS . 'app' . DS . 'Mage.php');
 	}
 }

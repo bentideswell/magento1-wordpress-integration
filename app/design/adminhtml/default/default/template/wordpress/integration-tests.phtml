@@ -30,7 +30,7 @@
 						<span>
 							<?php echo $this->__('Magento WordPress Integration extension update available.') ?>
 							<?php if (Mage::helper('wordpress/system_update')->isGit()): ?>
-								<?php echo $this->__('Run \'git pull\' to update to version %s.', '<span id="wp-version"></span>') ?>
+								<?php echo $this->__('It looks like you\'re using GIT and Modman so you should run \'git pull\' to update to version %s.', '<span id="wp-version"></span>') ?>
 							<?php else: ?>
 								<a href="<?php echo $this->getUrl('*/wordpress/update') ?>"><?php echo $this->__('Update to version %s automatically.', '<span id="wp-version"></span>') ?></a>
 							<?php endif; ?>
