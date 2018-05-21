@@ -5,6 +5,9 @@
  * @author Ben Tideswell <ben@fishpig.co.uk>
  */
 
+21/05/2018 - 4.5.0.28
+- Fixed issue that caused WP assets to be injected even if config forbids it or if not fully integrated.
+
 21/05/2018 - 4.5.0.27
 - Fix for auto updating when using GIT
 

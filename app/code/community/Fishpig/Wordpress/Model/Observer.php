@@ -238,7 +238,9 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			return $this;
 		}
 		
-		if (Mage::helper('wordpress')->isApiRequest()) {
+		$helper = Mage::helper('wordpress');
+		
+		if ($helper->isApiRequest() || !$helper->isEnabled() || !$helper->isFullyIntegrated()) {
 			return $this;
 		}
 
