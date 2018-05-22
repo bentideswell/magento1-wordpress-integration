@@ -107,14 +107,16 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		$this->_isInit = true;
 
 		try {
-			$themeHelper = Mage::helper('wordpress/theme');
-			
-			if ($themeHelper->install()) {
-				$themeHelper->enable();
-			}
-			
-			if (!$themeHelper->isEnabled()) {
-				throw new Exception('Unable to install FishPig theme in WordPress.');
+			if (Mage::helper('wordpress')->isFullyIntegrated()) {
+				$themeHelper = Mage::helper('wordpress/theme');
+				
+				if ($themeHelper->install()) {
+					$themeHelper->enable();
+				}
+				
+				if (!$themeHelper->isEnabled()) {
+					throw new Exception('Unable to install FishPig theme in WordPress.');
+				}
 			}
 		}
 		catch (Exception $e) {

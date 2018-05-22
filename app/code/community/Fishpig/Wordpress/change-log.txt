@@ -1,9 +1,12 @@
 /**
  * @category Fishpig
- * @package Fishpig_Wordpress
- * @url https://fishpig.co.uk/magento/wordpress-integration/
- * @author Ben Tideswell <ben@fishpig.co.uk>
+ * @package  Fishpig_Wordpress
+ * @url      https://fishpig.co.uk/magento/wordpress-integration/
+ * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+
+22/05/2018 - 4.5.0.29
+- Fixed issue that stops theme being installed and enable when full integration is disabled.
 
 21/05/2018 - 4.5.0.28
 - Fixed issue that caused WP assets to be injected even if config forbids it or if not fully integrated.
