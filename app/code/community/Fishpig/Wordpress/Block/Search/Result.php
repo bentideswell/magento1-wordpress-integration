@@ -36,7 +36,7 @@ class Fishpig_Wordpress_Block_Search_Result extends Fishpig_Wordpress_Block_Post
 	 *
 	 * @return array
 	 */
-	protected function _getParsedSearchString()
+	public function _getParsedSearchString()
 	{
 		$words = explode(' ', $this->getSearchTerm());
 		

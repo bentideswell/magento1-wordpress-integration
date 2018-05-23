@@ -346,7 +346,7 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 	 * @param array $fields - fields to search
 	 * @param string $operator
 	 */
-	public function addSearchStringFilter(array $words, array $fields)
+	public function addSearchStringFilter(array $words, array $fields = array('post_title' => 5, 'post_content' => 1))
 	{
 		if (count($words) > 0) {
 			$db = $this->getConnection();

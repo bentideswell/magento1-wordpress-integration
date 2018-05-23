@@ -25,6 +25,13 @@ class Fishpig_Wordpress_Block_Post_List extends Fishpig_Wordpress_Block_Post_Abs
 		return $this->_getPostCollection();
 	}
 	
+	public function setPostCollection($collection)
+	{
+		$this->_postCollection = $collection;
+		
+		return $this;
+	}
+
 	/**
 	 * Generates and returns the collection of posts
 	 *
