@@ -764,4 +764,9 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 		
 		return $this;
 	}
+	
+	public function getCrumbs()
+	{
+		return $this->getTypeInstance()->getCrumbs($this);
+	}
 }

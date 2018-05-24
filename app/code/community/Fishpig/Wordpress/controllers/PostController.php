@@ -39,7 +39,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 	public function preDispatch()
 	{
 		parent::preDispatch();
-		
+
 		$this->_handlePostedComment();
 		
 		$post = $this->getEntityObject();
@@ -81,12 +81,18 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
                 
 		$isHomepage = (bool)$this->getRequest()->getParam('is_homepage');
 		
+		if (Mage::helper('wordpress')->isAddonInstalled('Root') && !$isHomepage) {
+			if (Mage::helper('wp_addon_root')->isEnabled() && !Mage::helper('wp_addon_root')->canReplaceHomepage()) {
+				$isHomepage = true;
+			}
+		}
+
 		if ($post->isHomepagePage() && !$isHomepage) {
 			if (Mage::getUrl('', array('_current' => true, '_use_rewrite' => true)) !== Mage::helper('wordpress')->getUrl()) {
 				return $this->_redirectUrl(Mage::helper('wordpress')->getUrl());
 			}
 		}
-		
+
 		if ($post->getTypeInstance()->isHierarchical()) {
 			$buffer = $post->getParentPost();
 	
@@ -131,7 +137,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 		if ($post->getTypeInstance()->hasArchive()) {
 			$this->addCrumb($post->getPostType() . '_archive', array('label' => $post->getTypeInstance()->getName(), 'link' => $post->getTypeInstance()->getArchiveUrl()));
 		}
-		
+
 		if ($isHomepage) {
 			$post->setCanonicalUrl(Mage::helper('wordpress')->getUrl());
 

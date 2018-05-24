@@ -232,7 +232,29 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 		$this->_applyPostPageLogic($page, 'page');
 				
 		if ((Mage::helper('wordpress')->isAddonInstalled('Root') && Mage::getStoreConfig('wordpress/integration/at_root'))) {
+			if (Mage::helper('wp_addon_root')->canReplaceHomepage() && $page->isHomepage()) {
+				$this->getAction()->removeCrumb('home');
+			}
+			
 			$this->getAction()->removeCrumb('blog');
+			
+			$buffer = $page;
+			
+			$tree = array();
+			
+			while($buffer) {
+				$tree[] = $buffer;				
+				$buffer = $buffer->getParentPost();				
+			}
+	
+			if ($tree = array_reverse($tree)) {
+				foreach($tree as $buffer) {
+					$this->getAction()->addCrumb('page_' . $buffer->getId(), array(
+						'label' => $buffer->getPostTitle(),
+						'link' => $buffer->getPermalink(),
+					));
+				}
+			}
 		}
 
 		return $this;

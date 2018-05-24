@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+24/05/2018 - 4.5.0.31
+- Fixed issue with breadcrumbs and Root
+
 22/05/2018 - 4.5.0.29
 - Fixed issue that stops theme being installed and enable when full integration is disabled.
 
