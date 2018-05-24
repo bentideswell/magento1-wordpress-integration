@@ -83,7 +83,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 		
 		if (Mage::helper('wordpress')->isAddonInstalled('Root') && !$isHomepage) {
 			if (Mage::helper('wp_addon_root')->isEnabled() && !Mage::helper('wp_addon_root')->canReplaceHomepage()) {
-				$isHomepage = true;
+#				$isHomepage = true;
 			}
 		}
 
@@ -142,6 +142,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 			$post->setCanonicalUrl(Mage::helper('wordpress')->getUrl());
 
 			if (Mage::helper('wordpress')->getBlogRoute() === '') {
+
 				$this->_crumbs = array();
 			}
 			else {
