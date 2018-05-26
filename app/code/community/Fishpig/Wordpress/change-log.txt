@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+26/05/2018 - 4.5.0.33
+- Updated ZIP URL in auto updating feature.
+
 24/05/2018 - 4.5.0.32
 - Fixed issue with breadcrumbs and Root
 

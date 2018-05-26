@@ -9,8 +9,9 @@ class Fishpig_Wordpress_Helper_System_Update extends Mage_Core_Helper_Abstract
 	 *
 	 * @const string
 	 */
-	const MODULE_SOURCE = 'https://github.com/bentideswell/magento1-wordpress-integration/archive/master.zip';
-	
+#	const MODULE_SOURCE = 'https://github.com/bentideswell/magento1-wordpress-integration/archive/master.zip';
+	const MODULE_SOURCE = 'https://codeload.github.com/bentideswell/magento1-wordpress-integration/zip/master';
+
 	/*
 	 * Run the auto update process
 	 *
