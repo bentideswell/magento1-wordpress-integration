@@ -48,7 +48,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 			return $this->_forward('index', 'index', 'wordpress');
 		}
 
-		if ($post->getTypeInstance()->getCustomRoute()) {
+		if ($post->getTypeInstance() && $post->getTypeInstance()->getCustomRoute()) {
 			list($module, $controller, $action) = explode('/', $post->getTypeInstance()->getCustomRoute());
 			
 			return $this->_forward($action, $controller, $module);
