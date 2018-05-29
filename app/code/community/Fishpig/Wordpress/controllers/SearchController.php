@@ -71,15 +71,25 @@ class Fishpig_Wordpress_SearchController extends Fishpig_Wordpress_Controller_Ab
 		
 		$this->_initLayout();
 
-		$helper = $this->getRouterHelper();
-
+		$helper     = $this->getRouterHelper();
 		$searchTerm = Mage::helper('wordpress')->escapeHtml($helper->getSearchTerm());
 		
 		$this->_title($this->__("Search results for: '%s'", $searchTerm));
 		
-		$this->addCrumb('search_label', array('link' => '', 'label' => $this->__('Search')));
-		$this->addCrumb('search_value', array('link' => '', 'label' => $searchTerm));
-		
 		$this->renderLayout();
 	}
+	
+	/*
+	 * Get the breadcrumbs for the entity
+	 *
+	 * @param  array $objects
+	 * @return array
+	 */
+	protected function _getEntityCrumbs(array &$objects)
+	{
+		$objects['search_label'] = array('link' => '', 'label' => $this->__('Search'));
+		$objects['search_value'] = array('link' => '', 'label' => Mage::helper('wordpress')->escapeHtml($this->getRouterHelper()->getSearchTerm()));
+		
+		return $objects;
+	}		
 }

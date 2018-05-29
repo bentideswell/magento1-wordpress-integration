@@ -78,11 +78,6 @@ class Fishpig_Wordpress_TermController extends Fishpig_Wordpress_Controller_Abst
 		}
 		
 		while($branch = array_shift($tree)) {
-			$this->addCrumb('term_' . $branch->getId(), array(
-				'link' => ($tree ? $branch->getUrl() : null), 
-				'label' => $branch->getName())
-			);
-
 			$this->_title($branch->getName());
 		}
 		
@@ -112,5 +107,41 @@ class Fishpig_Wordpress_TermController extends Fishpig_Wordpress_Controller_Abst
 		Mage::register('wordpress_term', $term);
 
 		return $term;
+	}
+	
+	/*
+	 * Get the breadcrumbs for the entity
+	 *
+	 * @param  array $objects
+	 * @return void
+	 */
+	protected function _getEntityCrumbs(array &$objects)
+	{
+		$term = $this->getEntityObject();
+		
+		$objects['term_' . $term->getId()] = array(
+			'link'  => '',
+			'label' => $term->getName(),
+		);
+
+		return $objects;		
+		/*
+					$tree = array($term);
+		$buffer = $term;
+		
+		while($buffer = $buffer->getParentTerm()) {
+			array_unshift($tree, $buffer);
+		}
+		
+		while($branch = array_shift($tree)) {
+			$this->addCrumb('term_' . $branch->getId(), array(
+				'link' => ($tree ? $branch->getUrl() : null), 
+				'label' => $branch->getName())
+			);
+
+			$this->_title($branch->getName());
+		}
+		
+		*/
 	}
 }

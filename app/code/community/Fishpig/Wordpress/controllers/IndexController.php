@@ -199,4 +199,20 @@ class Fishpig_Wordpress_IndexController extends Fishpig_Wordpress_Controller_Abs
 			return $this->_forward('noRoute');
 		}
 	}
+	
+	/*
+	 * Get the breadcrumbs for the entity
+	 *
+	 * @param  array $objects
+	 * @return void
+	 */
+	protected function _getEntityCrumbs(array &$objects)
+	{
+		if ($this->getEntityObject() instanceof Fishpig_Wordpress_Model_Post) {
+			$this->getEntityObject()->getTypeInstance()->getCrumbs($this->getEntityObject(), $objects);
+		}
+		else {
+			$objects['blog_home']['link'] = '';
+		}
+	}
 }

@@ -341,4 +341,74 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 
 		return is_file($customTemplate) ? $customTemplateFile : false;
 	}	
+	
+	/*
+	 * Get the crumbs for $post
+	 *
+	 * @param  Fishpig_Wordpress_Model_Post $post
+	 * @param  array $objects
+	 * @return array
+	 */
+	public function getCrumbs($post, &$objects)
+	{
+		$tokens = explode('/', trim($this->getSlug(), '/'));
+
+		foreach($tokens as $token) {
+			if ($token === $this->getPostType()) {
+				if (!$this->isDefault() && $this->hasArchive()) {
+					$objects['post_type'] = array('link' => $this->getArchiveUrl(), 'label' => $this->getName());
+				}
+			}
+			else if (substr($token, 0, 1) === '%' && substr($token, -1) === '%') {
+				if ($taxonomy = Mage::helper('wordpress/app')->getTaxonomy(substr($token, 1, -1))) {
+					if ($term = $post->getParentTerm($taxonomy->getTaxonomyType())) {
+						$objects[$taxonomy->getTaxonomyType()] = array(
+							'link' => $term->getUrl(),
+							'label' => $term->getName(),
+						);
+					}
+				}
+			}
+			else if (strlen($token) > 1 && substr($token, 0, 1) !== '.') {
+				$parent = Mage::getModel('wordpress/post')->setPostType('page')->load($token, 'post_name');
+
+				if ($parent->getId()) {
+		    	$objects['parent_post_' . $parent->getId()] = array(
+		    		'link' => $parent->getUrl(),
+		    		'label' => $parent->getPostTitle(),
+		    	);
+				}
+				else {
+					$objects['static_string_' . $token] = array(
+						'link' => $token,
+						'label' => $token,
+					);		
+				}
+			}
+		}
+		
+		if ($this->isHierarchical()) {
+			$parent = $post;
+			
+			while(($parent = $parent->getParentPost()) !== false) {
+		    $objects['parent_post_' . $parent->getId()] = array(
+	    		'link' => $parent->getUrl(),
+	    		'label' => $parent->getPostTitle(),
+	    	);
+			}
+		}
+		
+  	$objects['post'] = array(
+  		'link' => '',
+  		'label' => $post->getPostTitle(),
+  	);
+
+		if ($post->isHomepagePage()) {
+			unset($objects['blog_home']);
+			unset($objects['home']);
+			unset($objects['post']);
+		}
+
+		return $objects ? $objects : false;
+	}
 }

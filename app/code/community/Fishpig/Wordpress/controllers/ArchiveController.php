@@ -42,8 +42,6 @@ class Fishpig_Wordpress_ArchiveController extends Fishpig_Wordpress_Controller_A
 		$this->_initLayout();
 
 		$this->_title($archive->getName());
-		$this->addCrumb('archive_label', array('label' => $this->__('Archives')));
-		$this->addCrumb('archive', array('label' => $archive->getName()));
 
 		$this->renderLayout();
 	}
@@ -75,5 +73,17 @@ class Fishpig_Wordpress_ArchiveController extends Fishpig_Wordpress_Controller_A
 		}
 
 		return false;
+	}
+	
+	/*
+	 * Get the breadcrumbs for the entity
+	 *
+	 * @param  array $objects
+	 * @return void
+	 */
+	protected function _getEntityCrumbs(array &$objects)
+	{
+		$objects['archive_label'] = array('label' => Mage::helper('wordpress')->__('Archives'));
+		$objects['archive'] = array('label' => $this->getEntityObject()->getName());
 	}
 }

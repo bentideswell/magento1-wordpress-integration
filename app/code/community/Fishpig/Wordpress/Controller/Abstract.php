@@ -13,15 +13,7 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 	 *
 	 * @var string
 	 */
-	 protected $_feedBlock = false;
-	
-	/**
-	 * Storage for breadcrumbs
-	 * These are added to the breadcrumbs block before rendering the page
-	 *
-	 * @var array
-	 */
-	protected $_crumbs = array();
+	protected $_feedBlock = false;
 	
 	/**
 	 * Used to do things en-masse
@@ -142,8 +134,8 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 	 * @param string $output = ''
 	 * @return $this
 	 */
-    public function renderLayout($output='')
-    {
+  public function renderLayout($output='')
+  {
 		Mage::dispatchEvent('wordpress_render_layout_before', array('object' => $this->getEntityObject(), 'action' => $this));
 		
 		if (($headBlock = $this->getLayout()->getBlock('head')) !== false) {
@@ -167,17 +159,11 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 				$headBlock->setRobots('noindex,nofollow');
 			}
 		}
-
-		$crumbCount = count($this->_crumbs);
 		
-		if ($crumbCount > 0 && ($block = $this->getLayout()->getBlock('breadcrumbs')) !== false) {
-			foreach($this->_crumbs as $crumbName => $crumb) {
-				if (--$crumbCount === 0 && isset($crumb[0]['link'])) {
-					unset($crumb[0]['link']);
-				}
-				
-				if ($crumb[0]['title']) {
-					$block->addCrumb($crumbName, $crumb[0], $crumb[1]);
+		if ($crumbs = $this->getCrumbs()) {	
+			if (($block = $this->getLayout()->getBlock('breadcrumbs')) !== false) {
+				foreach($crumbs as $crumbName => $crumb) {
+					$block->addCrumb($crumbName, $crumb);
 				}
 			}
 		}
@@ -189,6 +175,37 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 		return parent::renderLayout($output);
 	}
 
+	/*
+	 * Get the breadrcrumbs for the current request
+	 *
+	 * @return array
+	 */
+	public function getCrumbs()
+	{	
+		$objects = array();
+
+		$objects['home'] = array(
+			'link' => Mage::getUrl(),
+			'label' => __('Home'),
+		);
+		
+		$objects['blog_home'] = array(
+			'link' => Mage::helper('wordpress')->getUrl(),
+			'label' => Mage::helper('wordpress')->getTopLinkLabel(),
+		);
+
+		// $objects is passed by reference
+		$this->_getEntityCrumbs($objects);
+		
+		$transport = new Varien_Object(array('crumbs' => $objects));
+
+		Mage::dispatchEvent('wordpress_breadcrumbs_get_after', array('controller' => $this, 'transport' => $transport, 'object' => $this->getEntityObject()));
+		
+		$objects = $transport->getCrumbs();
+		
+		return $objects;
+	}
+	
 	/**
 	 * Loads layout and performs initialising tasls
 	 *
@@ -200,19 +217,6 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 		}
 
 		$this->_title()->_title(Mage::helper('wordpress')->getWpOption('blogname'));
-
-		$this->addCrumb('home', array('link' => Mage::getUrl(), 'label' => $this->__('Home')));
-		
-		if (!$this->isFrontPage()) {
-			$toplinkUrl = Mage::helper('wordpress')->getTopLinkUrl();
-			
-			if ($toplinkUrl !== Mage::getUrl()) {
-				$this->addCrumb('blog', array('link' => $toplinkUrl, 'label' => $this->__(Mage::helper('wordpress')->getTopLinkLabel())));
-			}
-		}
-		else {
-			$this->addCrumb('blog', array('label' => $this->__(Mage::helper('wordpress')->getTopLinkLabel())));
-		}
 		
 		if ($rootBlock = $this->getLayout()->getBlock('root')) {
 			$rootBlock->addBodyClass('is-blog');
@@ -222,60 +226,6 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 		Mage::dispatchEvent($this->getFullActionName() . '_init_layout_after', array('object' => $this->getEntityObject(), 'controller' => $this));
 
 		return $this;
-	}
-	
-	/**
-	 * Adds a crumb to the breadcrumb trail
-	 *
-	 * @param string $crumbName
-	 * @param array $crumbInfo
-	 * @param string $after
-	 */
-	public function addCrumb($crumbName, array $crumbInfo, $after = false)
-	{
-		if (!isset($crumbInfo['title'])) {
-			$crumbInfo['title'] = $crumbInfo['label'];
-		}
-		
-		$this->_crumbs[$crumbName] = array($crumbInfo, $after);
-		
-		return $this;
-	}
-
-	/**
-	 * Remove a breadcrumb by it's name
-	 *
-	 * @param string $crumbName
-	 * @return $this
-	 */
-	public function removeCrumb($crumbName)
-	{
-		if (isset($this->_crumbs[$crumbName])) {
-			unset($this->_crumbs[$crumbName]);
-		}
-		
-		return $this;
-	}
-	
-	/**
-	 * Retrieve a breadcrumb
-	 *
-	 * @param string $crumbName
-	 * @return array
-	 */
-	public function getCrumb($crumbName)
-	{
-		return isset($this->_crumbs[$crumbName]) ? $this->_crumbs[$crumbName] : false;
-	}
-	
-	/**
-	 * Get the breadcrumbs array
-	 *
-	 * @return array
-	 */
-	public function getCrumbs()
-	{
-		return $this->_crumbs;	
 	}
 	
 	/**
@@ -482,5 +432,16 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 		Mage::helper('wordpress')->log("You need to update your Magento WordPress Integration add-on extensions.");
 		
 		return $this;
+	}
+	
+	/*
+	 * Get the breadcrumbs for the entity
+	 *
+	 * @param  array $objects
+	 * @return void
+	 */
+	protected function _getEntityCrumbs(array &$objects)
+	{
+	
 	}
 }

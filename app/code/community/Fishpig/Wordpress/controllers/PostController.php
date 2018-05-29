@@ -20,6 +20,10 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 		return $this->_initPost();
 	}
 
+	/*
+	 *
+	 *
+	 */
 	protected function _isPreview()
 	{
 		if ($this->_isPreview === null) {
@@ -69,7 +73,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 	public function viewAction()
 	{
 		$post = $this->getEntityObject();
-
+		
 		$layoutHandles = array(
 			'wordpress_post_view',
 			'wordpress_' . $post->getPostType() . '_view',
@@ -134,57 +138,17 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 			}
 		}
 
-		if ($post->getTypeInstance()->hasArchive()) {
-			$this->addCrumb($post->getPostType() . '_archive', array('label' => $post->getTypeInstance()->getName(), 'link' => $post->getTypeInstance()->getArchiveUrl()));
-		}
 
 		if ($isHomepage) {
 			$post->setCanonicalUrl(Mage::helper('wordpress')->getUrl());
-
-			if (Mage::helper('wordpress')->getBlogRoute() === '') {
-
-				$this->_crumbs = array();
-			}
-			else {
-				array_pop($this->_crumbs);
-			}
 		}
 		else if ($post->getTypeInstance()->isHierarchical()) {
-			$posts = array();
 			$buffer = $post;
 	
 			while ($buffer) {
 				$this->_title(strip_tags($buffer->getPostTitle()));
-				$posts[] = $buffer;
 				$buffer = $buffer->getParentPost();
 			}
-
-			$posts = array_reverse($posts);
-			
-			// Remove current post from end array
-			array_pop($posts);
-			
-			foreach($posts as $buffer) {
-				$this->addCrumb('post_' . $buffer->getId(), array('label' => $buffer->getPostTitle(), 'link' => $buffer->getUrl()));
-			}
-		}
-		else if ($taxonomy = $post->getTypeInstance()->getAnySupportedTaxonomy('category')) {
-			if ($term = $post->getParentTerm($taxonomy->getTaxonomyType())) {
-				$terms = array();
-	
-				while($term) {
-					array_unshift($terms, $term);
-					$term = $term->getParentTerm();
-				}
-				
-				foreach($terms as $term) {
-					$this->addCrumb('post_' . $term->getTaxonomyType() . '_' . $term->getId(), array('label' => $term->getName(), 'link' => $term->getUrl()));
-				}
-			}
-		}
-		
-		if (!$isHomepage) {
-			$this->addCrumb('post', array('label' => $post->getPostTitle()));
 		}
 		
 		// Revisions don't have the template meta, grab it from parent
@@ -329,5 +293,16 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 	public function feedAction()
 	{
 		return $this->commentsFeedAction();
+	}
+	
+	/*
+	 * Get the breadcrumbs for the entity
+	 *
+	 * @param  array $objects
+	 * @return void
+	 */
+	protected function _getEntityCrumbs(array &$objects)
+	{
+		$this->getEntityObject()->getTypeInstance()->getCrumbs($this->getEntityObject(), $objects);
 	}
 }

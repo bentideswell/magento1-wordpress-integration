@@ -36,8 +36,6 @@ class Fishpig_Wordpress_AuthorController extends Fishpig_Wordpress_Controller_Ab
 		$this->_initLayout();
 	
 		$this->_title($author->getDisplayName());
-		$this->addCrumb('author_nolink', array('label' => $this->__('Author')));
-		$this->addCrumb('author', array('link' => $author->getUrl(), 'label' => $author->getDisplayName()));
 
 		$this->renderLayout();
 	}
@@ -59,8 +57,6 @@ class Fishpig_Wordpress_AuthorController extends Fishpig_Wordpress_Controller_Ab
 		$this->_initLayout();
 	
 		$this->_title($author->getDisplayName());
-		$this->addCrumb('author_nolink', array('label' => $this->__('Author')));
-		$this->addCrumb('author', array('link' => $author->getUrl(), 'label' => $author->getDisplayName()));
 
 		$this->renderLayout();
 	}
@@ -85,5 +81,19 @@ class Fishpig_Wordpress_AuthorController extends Fishpig_Wordpress_Controller_Ab
 		}
 		
 		return false;
+	}
+	
+	/*
+	 * Get the breadcrumbs for the entity
+	 *
+	 * @param  array $objects
+	 * @return void
+	 */
+	protected function _getEntityCrumbs(array &$objects)
+	{
+		$author = $this->getEntityObject();
+		
+		$objects['author_nolink'] = array('label' => $this->__('Author'));
+		$objects['author'] = array('link' => $author->getUrl(), 'label' => $author->getDisplayName());
 	}
 }
