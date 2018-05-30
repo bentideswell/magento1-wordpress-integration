@@ -42,7 +42,7 @@ class Fishpig_Wordpress_TermController extends Fishpig_Wordpress_Controller_Abst
 		
 		$taxonomy = $term->getTaxonomyInstance();
 		
-		if ($taxonomy->getCustomRoute()) {
+		if ($taxonomy && $taxonomy->getCustomRoute()) {
 			list($module, $controller, $action) = explode('/', $taxonomy->getCustomRoute());
 			
 			return $this->_forward($action, $controller, $module);

@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+29/05/2018 - 4.5.1.1
+- Fixed issue with custom route for terms
+
 28/05/2018 - 4.5.1.0
 - Added new breadcrumb system.
 
