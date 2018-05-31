@@ -4,6 +4,8 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+31/05/2018 - 4.5.1.2
+- Fixed a bug that caused shortcodes to try to be rendered on CMS pages even when module is not fully integrated.
 
 29/05/2018 - 4.5.1.1
 - Fixed issue with custom route for terms
