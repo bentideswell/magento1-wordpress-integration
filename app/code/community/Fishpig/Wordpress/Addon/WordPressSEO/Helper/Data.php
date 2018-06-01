@@ -147,8 +147,6 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 			}
 		}
 
-#		$this->_updateBreadcrumb('blog', $this->getBreadcrumbsHome());
-
 		/**
 		 * Open Graph Tags
 		 */
@@ -458,7 +456,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 			'url' => $archive->getUrl(),
 		));
 		
-		$this->_updateBreadcrumb('archive_label', $this->getBreadcrumbsArchiveprefix());
+#		$this->_updateBreadcrumb('archive_label', $this->getBreadcrumbsArchiveprefix());
 		
 		return $this;
 	}
@@ -515,7 +513,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 			'url' => Mage::getUrl('*/*/*', array('_current' => true, '_use_rewrite' => true)),
 		));
 		
-		$this->_updateBreadcrumb('search_label', $this->getBreadcrumbsSearchprefix());
+#		$this->_updateBreadcrumb('search_label', $this->getBreadcrumbsSearchprefix());
 		
 		return $this;		
 	}

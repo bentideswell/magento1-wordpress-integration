@@ -167,23 +167,6 @@ abstract class Fishpig_Wordpress_Helper_Plugin_Seo_Abstract extends Fishpig_Word
 		return array();
 	}
 
-	protected function _updateBreadcrumb($name, $label, $link = null)
-	{
-		if (($label = trim($label)) !== '') {
-			if (($crumb = $this->getAction()->getCrumb($name)) !== false) {
-				$crumb[0]['label'] = $label;
-				
-				if (!is_null($link)) {
-					$crumb[0]['link'] = $link;				
-				}
-				
-				$this->getAction()->addCrumb($name, $crumb[0], $crumb[1]);
-			}
-		}
-		
-		return $this;
-	}
-
 	/**
 	 * Retrieve the head block from the layout object
 	 *
