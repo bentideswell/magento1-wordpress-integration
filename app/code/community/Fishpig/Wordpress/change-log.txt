@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+08/06/2018 - 4.5.1.5
+- Removed code from Yoast add-on
+
 01/06/2018 - 4.5.1.4
 - Fix for breadcrumbs missing methods.
 
