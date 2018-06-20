@@ -759,7 +759,15 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 			$GLOBALS['post'] = $this->getWpPostObject();			
 		}
 		else {
-			$GLOBALS['post'] = json_decode(json_encode(array('ID' => $this->getId())));
+			$post = array();
+			
+			foreach($this->getData() as $key => $value) {
+				if (!is_object($value) && !is_array($value)) {
+					$post[$key] = $value;
+				}
+			}
+
+			$GLOBALS['post'] = json_decode(json_encode($post));
 		}
 		
 		return $this;

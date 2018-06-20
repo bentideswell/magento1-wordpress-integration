@@ -24,6 +24,8 @@ class Fishpig_Wordpress_Block_Post_View extends Fishpig_Wordpress_Block_Post_Abs
 	 */
 	protected function _beforeToHtml()
 	{
+		$this->getPost()->setAsGlobal();
+		
 		if ($this->getChild('comments')) {
 			$this->getChild('comments')->setPost($this->getPost());
 		}
