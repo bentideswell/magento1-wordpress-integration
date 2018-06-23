@@ -5,6 +5,8 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+23/06/2018 - 4.5.1.7
+- Moved $post->setAsGlobal() from View block to post controller
 08/06/2018 - 4.5.1.5
 - Removed code from Yoast add-on
 

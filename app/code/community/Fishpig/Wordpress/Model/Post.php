@@ -760,7 +760,7 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 		}
 		else {
 			$post = array();
-			
+
 			foreach($this->getData() as $key => $value) {
 				if (!is_object($value) && !is_array($value)) {
 					$post[$key] = $value;
