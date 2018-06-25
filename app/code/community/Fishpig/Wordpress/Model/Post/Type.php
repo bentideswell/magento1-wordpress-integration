@@ -351,9 +351,13 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 	 */
 	public function getCrumbs($post, &$objects)
 	{
-		$tokens = explode('/', trim($this->getSlug(), '/'));
-
+		$tokens = preg_split("/(%[a-zA-Z0-9_]{1,}%)/", trim(trim($this->getSlug(), '/')), -1, PREG_SPLIT_DELIM_CAPTURE);
+		
 		foreach($tokens as $token) {
+			if (!($token = trim($token, '/'))) {
+				continue;
+			}
+
 			if ($token === $this->getPostType()) {
 				if (!$this->isDefault() && $this->hasArchive()) {
 					$objects['post_type'] = array('link' => $this->getArchiveUrl(), 'label' => $this->getName());
