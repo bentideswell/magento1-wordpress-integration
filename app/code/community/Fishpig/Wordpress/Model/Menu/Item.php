@@ -198,4 +198,64 @@ class Fishpig_Wordpress_Model_Menu_Item extends Fishpig_Wordpress_Model_Post
 		return Mage::getResourceModel('wordpress/menu_item_collection')
 			->addParentItemIdFilter($this->getId());
 	}
+	
+	/*
+	 * Get menu item title
+	 *
+	 * @return string
+	 */
+	public function getTitle()
+	{
+		return $this->getData('post_excerpt');
+	}
+	
+	/*
+	 * Get menu item description
+	 *
+	 * @return string
+	 */
+	public function getDescription()
+	{
+		return $this->getData('post_content');
+	}
+
+	/*
+	 * Get an array of custom CSS classes
+	 *
+	 * @return string
+	 */
+	public function getCssClass()
+	{
+		if (!$this->hasCssClass()) {
+			if ($classString = $this->getMetaValue('_menu_item_classes')) {
+				if (!is_array($classString)) {
+					$classString = unserialize($classString);
+				}
+				
+				$this->setCssClass(trim(implode(' ', $classString)));
+			}
+		}
+		
+		return $this->getData('css_class');
+	}
+	
+	/*
+	 * Get the item target parameter
+	 *
+	 * @return string
+	 */
+	public function getTarget()
+	{
+		return $this->getMetaValue('_menu_item_target');
+	}
+	
+	/*
+	 * Get the link relationship
+	 *
+	 * @return string
+	 */
+	public function getLinkRelationship()
+	{
+		return $this->getMetaValue('_menu_item_xfn');
+	}
 }

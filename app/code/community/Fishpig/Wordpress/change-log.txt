@@ -4,6 +4,8 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+29/06/2018 - 4.5.1.9
+- Added Fishpig_Wordpress_Model_Menu::getMenuTreeArray() to get an array of menu items
 
 25/06/2018 - 4.5.1.8
 - Fixed bug that caused incorrect breadcrumbs when using strings in permalinks such as .html.

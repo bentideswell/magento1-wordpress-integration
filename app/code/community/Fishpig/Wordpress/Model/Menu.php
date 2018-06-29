@@ -16,6 +16,14 @@ class Fishpig_Wordpress_Model_Menu extends Fishpig_Wordpress_Model_Term
 	protected $_eventPrefix      = 'wordpress_menu';
 	protected $_eventObject      = 'menu';
 	
+	
+	/**
+	 * Cache to stop menu being generated multiple times
+	 *
+	 * @var array
+	**/
+	protected $_menuCache	 = null;
+	
 	public function _construct()
 	{
 		$this->_init('wordpress/menu');
@@ -48,26 +56,26 @@ class Fishpig_Wordpress_Model_Menu extends Fishpig_Wordpress_Model_Term
 	 *
 	 * @return Fishpig_Wordpress_Model_Resource_Post_Collection
 	 */    
-    protected function _getObjectResourceModel()
-    {
-	    return Mage::getResourceModel('wordpress/menu_item_collection')
-	    	->addParentItemIdFilter(0);
-    }
+  protected function _getObjectResourceModel()
+  {
+    return Mage::getResourceModel('wordpress/menu_item_collection')
+    	->addParentItemIdFilter(0);
+  }
     
-    /**
-     * Inject links into $node
-     *
-     * @param Varien_Data_Tree_Node $node
-     * @return bool
-     */
-    public function applyToTreeNode($node)
-    {
+  /**
+   * Inject links into $node
+   *
+   * @param Varien_Data_Tree_Node $node
+   * @return bool
+   */
+  public function applyToTreeNode($node)
+  {
 		if (count($items = $this->getMenuItems()) > 0) {
 			return $this->_injectLinks($items, $node);
 		}
 		
 		return false;
-    }
+   }
     
 	/**
 	 * Inject links into the top navigation
@@ -116,5 +124,92 @@ class Fishpig_Wordpress_Model_Menu extends Fishpig_Wordpress_Model_Term
 		}
 		
 		return true;
+	}
+	
+	/*
+	 * Gets a simple array of the menu
+	 * For the actual menu item objects, use getMenuTreeObjects
+	 *
+	 * @return array|false
+	 */
+	public function getMenuTreeArray()
+	{
+		if ($tree = $this->getMenuTreeObjects()) {
+			$menu = array();
+			
+			foreach($tree as $node) {
+				$menu[] = $this->_getMenuTreeArray($node);
+			}
+			
+			return $menu;
+		}
+		
+		return false;
+	}
+	
+	/*
+	 *
+	 */
+	protected function _getMenuTreeArray($node)
+	{
+		$data = array(
+			'id' => 'wp-' . $node->getId(),
+			'label' => $node->getLabel(),
+			'url' => $node->getUrl(),
+			'css_class' => $node->getCssClass(),
+			'title' => $node->getTitle(),
+			'description' => $node->getDescription(),
+			'target' => $node->getTarget(),
+		);
+		
+		$children = $node->getChildrenItems();
+
+		if (count($children) > 0) {
+			$data['children'] = array();
+			
+			foreach($children as $child) {
+				$data['children'][] = $this->_getMenuTreeArray($child);
+			}
+		}
+		
+		return $data;
+	}
+	
+	/**
+	 *
+	**/
+	public function getMenuTreeObjects()
+	{
+		if (null !== $this->_menuCache) {
+			return $this->_menuCache;
+		}
+		
+		$this->_menuCache = false;
+		
+		$items = $this->getMenuItems();
+		
+		if (count($items) > 0) {
+			foreach($items as $item) {
+				$this->_menuCache[] = $this->_getMenuTreeObjects($item);
+			}
+		}
+		
+		return $this->_menuCache;
+	}
+	
+	/**
+	 *
+	**/
+	protected function _getMenuTreeObjects($item)
+	{
+		$children = $item->getChildrenItems();
+
+		if (count($children) > 0) {
+			foreach($children as $child) {
+				$this->_getMenuTreeObjects($child);
+			}
+		}
+		
+		return $item;
 	}
 }
