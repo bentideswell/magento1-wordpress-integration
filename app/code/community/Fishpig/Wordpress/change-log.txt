@@ -4,6 +4,10 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+
+03/07/2018 - 4.5.1.10
+- Added WP theme modification to add WP rewrite for the preview action. 
+
 29/06/2018 - 4.5.1.9
 - Added Fishpig_Wordpress_Model_Menu::getMenuTreeArray() to get an array of menu items
 

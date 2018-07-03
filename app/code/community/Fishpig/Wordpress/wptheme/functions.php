@@ -54,6 +54,16 @@ remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'wp_print_styles', 'print_emoji_styles' ); 
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
+add_action('init', 'fishpig_rewrite_add_rewrites');
+
+function fishpig_rewrite_add_rewrites() {
+	add_rewrite_rule(
+	  '^wordpress/post/preview/?$',
+	  'index.php',
+	  'top'
+	);
+}
+
 if (!function_exists('fishpig_comment')):
 function fishpig_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
