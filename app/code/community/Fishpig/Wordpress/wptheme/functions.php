@@ -64,6 +64,17 @@ function fishpig_rewrite_add_rewrites() {
 	);
 }
 
+/* Stop WP guessing URLs */
+function fp_remove_404_redirect($redirect_url) {
+	if (is_404()) {
+		return false;
+	}
+	
+	return $redirect_url;
+}
+
+add_filter('redirect_canonical', 'fp_remove_404_redirect');
+
 if (!function_exists('fishpig_comment')):
 function fishpig_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
