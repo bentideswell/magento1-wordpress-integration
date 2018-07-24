@@ -393,13 +393,16 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 		
 		if ($this->isHierarchical()) {
 			$parent = $post;
+			$buffer = array();
 			
 			while(($parent = $parent->getParentPost()) !== false) {
-		    $objects['parent_post_' . $parent->getId()] = array(
+		    $buffer['parent_post_' . $parent->getId()] = array(
 	    		'link' => $parent->getUrl(),
 	    		'label' => $parent->getPostTitle(),
 	    	);
 			}
+
+			$objects = array_merge($objects, array_reverse($buffer));
 		}
 		
   	$objects['post'] = array(

@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+24/07/2018 - 4.5.1.12
+- Fixed breadcrumbs issue for hierarchical posts (eg. pages).
+
 23/07/2018 - 4.5.1.11
 - Update for the WP theme to prevent odd redirects.
 
