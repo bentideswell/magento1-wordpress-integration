@@ -13,7 +13,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 *
 	 * @var bool
 	 */
-	protected $_isInit = false;
+	static protected $_isInit = array();
 	
 	/**
 	 * App errors that occur while integrating
@@ -100,11 +100,11 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	public function init()
 	{
-		if ($this->_isInit) {
+		if (isset(self::$_isInit[$this->_getStoreId()])) {
 			return $this;
 		}
 		
-		$this->_isInit = true;
+		self::$_isInit[$this->_getStoreId()] = true;
 
 		try {
 			if (Mage::helper('wordpress')->isFullyIntegrated()) {

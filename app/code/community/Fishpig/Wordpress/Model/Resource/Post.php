@@ -80,9 +80,15 @@ class Fishpig_Wordpress_Model_Resource_Post extends Fishpig_Wordpress_Model_Reso
 	public function preparePosts($posts)
 	{
 		foreach($posts as $post) {
+			$permalink = $post->getData('permalink');
+			
+			if (is_array($permalink)) {
+				continue;
+			}
+			
 			$post->setData(
 				'permalink',
-				$this->completePostSlug($post->getData('permalink'), $post->getId(), $post->getTypeInstance())
+				$this->completePostSlug($permalink, $post->getId(), $post->getTypeInstance())
 			);
 		}
 		
