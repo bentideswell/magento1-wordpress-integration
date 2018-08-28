@@ -392,9 +392,9 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 				}
 
 				$this->_applyOpenGraph(array(
-					'title' => $meta->getWpseoTitle(),
-					'description' => $meta->getWpseoDesc(),
-					'url' => $term->getCanonicalUrl(),
+					'title' => $meta->getData('wpseo_opengraph-title'),
+					'description' => $meta->getData('wpseo_opengraph-description'),
+					'image' => $meta->getData('wpseo_opengraph-image'),
 				));
 			}
 		}
