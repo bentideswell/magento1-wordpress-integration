@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+28/08/2018 - 4.5.1.16
+- Respect trailing slash
+
 28/08/2018 - 4.5.1.15
 - Fixed Open Graph title and description on term pages.
 

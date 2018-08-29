@@ -63,8 +63,26 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 		else {
 			$url = $this->getWpOption('home') . '/' . ltrim($extra, '/');
 		}
+
+		if (!$this->hasTrailingSlash()) {
+			$url = rtrim($url, '/');
+		}
 	
 		return htmlspecialchars($url);
+	}
+	
+	/*
+	 * Determine whether to use a trailing slash on URLs
+	 *
+	 * @return bool
+	 */
+	public function hasTrailingSlash()
+	{
+		if ($permalinkStructure = $this->getWpOption('permalink_structure')) {
+			return substr($permalinkStructure, -1) === '/';
+		}
+		
+		return false;
 	}
 	
 	/**
