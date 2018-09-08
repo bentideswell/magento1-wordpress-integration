@@ -250,15 +250,17 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 					->getBody();
 
 		if (Mage::helper('wordpress')->isAddonInstalled('PluginShortcodeWidget')) {
-			// WPBakery Frontend Editor
-			$isWPBakeryFrontendEditor = isset($_GET['vc_editable']);
-			if ($isWPBakeryFrontendEditor) {
+			// Visual Editors
+			$isVisualEditorMode = isset($_GET['vc_editable'])
+				|| (Mage::registry('wordpress_post') && Mage::registry('wordpress_post')->getMetaValue('_elementor_edit_mode') === 'builder');
+
+			if ($isVisualEditorMode) {
 				$bodyHtml = preg_replace('/<script[^>]{0,}>.*<\/script>/sU', '', $bodyHtml);
 			}
 		
 			$assets = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer')->getAssets($bodyHtml);
 
-			if (!$isWPBakeryFrontendEditor) {
+			if (!$isVisualEditorMode) {
 				if (!$this->_canIncludeJquery()) {
 					foreach($assets as $key => $value) {
 						if (strpos($value, '/wp-includes/js/jquery/jquery.js') || strpos($value, '/wp-includes/js/jquery/jquery-migrate.min.js')) {
