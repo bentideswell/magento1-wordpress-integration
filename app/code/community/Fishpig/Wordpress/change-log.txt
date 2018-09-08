@@ -4,6 +4,10 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+ 
+08/09/2018 - 4.5.1.17
+- Added support for the WPBakery Page Builder frontend editor
+
 28/08/2018 - 4.5.1.16
 - Respect trailing slash
 

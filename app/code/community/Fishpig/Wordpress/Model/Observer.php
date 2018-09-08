@@ -249,25 +249,29 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 				->getResponse()
 					->getBody();
 
-#   Add support for WPBakery Frontend Editor
-#   Not stable yet
-#		$bodyHtml = preg_replace('/<script[^>]{0,}>.*<\/script>/sU', '', $bodyHtml);
-		
 		if (Mage::helper('wordpress')->isAddonInstalled('PluginShortcodeWidget')) {
+			// WPBakery Frontend Editor
+			$isWPBakeryFrontendEditor = isset($_GET['vc_editable']);
+			if ($isWPBakeryFrontendEditor) {
+				$bodyHtml = preg_replace('/<script[^>]{0,}>.*<\/script>/sU', '', $bodyHtml);
+			}
+		
 			$assets = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer')->getAssets($bodyHtml);
 
-			if (!$this->_canIncludeJquery()) {
-				foreach($assets as $key => $value) {
-					if (strpos($value, '/wp-includes/js/jquery/jquery.js') || strpos($value, '/wp-includes/js/jquery/jquery-migrate.min.js')) {
-						unset($assets[$key]);
+			if (!$isWPBakeryFrontendEditor) {
+				if (!$this->_canIncludeJquery()) {
+					foreach($assets as $key => $value) {
+						if (strpos($value, '/wp-includes/js/jquery/jquery.js') || strpos($value, '/wp-includes/js/jquery/jquery-migrate.min.js')) {
+							unset($assets[$key]);
+						}
 					}
 				}
-			}
-			
-			if (!$this->_canIncludeUnderscore()) {
-				foreach($assets as $key => $value) {
-					if (strpos($value, '/wp-includes/js/underscore.min.js') !== false) {
-						unset($assets[$key]);
+				
+				if (!$this->_canIncludeUnderscore()) {
+					foreach($assets as $key => $value) {
+						if (strpos($value, '/wp-includes/js/underscore.min.js') !== false) {
+							unset($assets[$key]);
+						}
 					}
 				}
 			}
