@@ -250,9 +250,10 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 					->getBody();
 
 		if (Mage::helper('wordpress')->isAddonInstalled('PluginShortcodeWidget')) {
+			$pswObserver = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer');
+
 			// Visual Editors
-			$isVisualEditorMode = isset($_GET['vc_editable'])
-				|| (Mage::registry('wordpress_post') && Mage::registry('wordpress_post')->getMetaValue('_elementor_edit_mode') === 'builder');
+			$isVisualEditorMode = method_exists($pswObserver, 'isVisualEditorMode') && $pswObserver->isVisualEditorMode();
 
 			if ($isVisualEditorMode) {
 				$bodyHtml = preg_replace('/<script[^>]{0,}>.*<\/script>/sU', '', $bodyHtml);
