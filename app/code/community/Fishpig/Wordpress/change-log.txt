@@ -4,6 +4,10 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+ 
+29/09/2018 - 4.5.1.20
+- Fixed issue with More tag when using Shortcodes & Widgets add-on module.
+
 08/09/2018 - 4.5.1.18
 - Fixed Elementor support
 

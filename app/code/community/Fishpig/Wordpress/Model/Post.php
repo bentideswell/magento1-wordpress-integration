@@ -155,6 +155,7 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 		if ($this->hasMoreTag()) {
 			$content = $this->getPostContent();
 
+
 			if (preg_match('/<!--more (.*)-->/', $content, $matches)) {
 				$anchor = $matches[1];
 				$split = $matches[0];
@@ -162,6 +163,10 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 			else {
 				$split = '<!--more-->';
 				$anchor = $this->_getTeaserAnchor();
+			}
+			
+			if (strpos($content, $split) === false) {
+				return $content;	
 			}
 			
 			$excerpt = trim(substr($content, 0, strpos($content, $split)));
