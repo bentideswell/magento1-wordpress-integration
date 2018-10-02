@@ -153,7 +153,7 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 	protected function _getPostTeaser($includeSuffix = true)
 	{
 		if ($this->hasMoreTag()) {
-			$content = $this->getPostContent();
+			$content = $this->getPostContent('post_excerpt');
 
 
 			if (preg_match('/<!--more (.*)-->/', $content, $matches)) {
@@ -358,12 +358,14 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 	 *
 	 * @return string
 	 */
-	public function getPostContent()
+	public function getPostContent($context = null)
 	{
 		if (!$this->hasProcessedPostContent()) {
 			$transport = new Varien_Object();
-
-			Mage::dispatchEvent('wordpress_get_post_content', array('transport' => $transport, 'post' => $this));
+			
+			if ($context !=='post_excerpt') {
+				Mage::dispatchEvent('wordpress_get_post_content', array('transport' => $transport, 'post' => $this));
+			}
 			
 			if ($transport->getPostContent()) {
 				$this->setProcessedPostContent($transport->getPostContent());
