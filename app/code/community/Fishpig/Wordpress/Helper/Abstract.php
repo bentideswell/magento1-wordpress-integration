@@ -34,10 +34,11 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 		
 		if ($this->isFullyIntegrated()) {
 			$params = array(
-				'_direct' 	=> ltrim($this->getBlogRoute() . '/' . ltrim($extra, '/'), '/'),
-				'_secure' 	=> false,
-				'_nosid' 	=> true,
-				'_store'		=> Mage::app()->getStore()->getId(),
+				'_direct' => ltrim($this->getBlogRoute() . '/' . ltrim($extra, '/'), '/'),
+				'_secure' => false,
+				'_nosid'  => true,
+				'_store'  => Mage::app()->getStore()->getId(),
+				'_query'  => array(),
 			);
 			
 			if (Mage::app()->getStore()->getCode() == 'admin') {
