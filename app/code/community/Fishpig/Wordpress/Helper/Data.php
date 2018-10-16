@@ -15,31 +15,20 @@ class Fishpig_Wordpress_Helper_Data extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	public function getTopLinkUrl()
 	{
-		try {
-			if ($this->isEnabled()) {
-				if ($this->isFullyIntegrated()) {
-					if ($this->_isCached('toplink_url')) {
-						return $this->_cached('toplink_url');
-					}
-					
-					$transport = new Varien_Object(array('toplink_url' => $this->getUrl()));
-					
-					Mage::dispatchEvent('wordpress_get_toplink_url', array('transport' => $transport));
-
-					$this->_cache('toplink_url', $transport->getToplinkUrl());
-					
-					return $transport->getToplinkUrl();
-				}
-
-				return $this->getWpOption('home');
-			}
-		}
-		catch (Exception $e) {
-			$this->log('Magento & WordPress are not correctly integrated (see entry below).');
-			$this->log($e->getMessage());
+		if (!$this->isEnabled()) {
+			return false;
 		}
 		
-		return false;
+		if ($configUrl = Mage::getStoreConfig('wordpress/toplink/url')) {
+			return Mage::getSingleton('core/url')->getUrl('', array(
+				'_direct' => ltrim($configUrl, '/'),
+				'_nosid'  => true,
+				'_store'  => Mage::app()->getStore()->getId(),
+				'_query'  => array(),
+			));
+		}
+
+		return $this->getUrl();
 	}
 	
 	/**
@@ -49,11 +38,11 @@ class Fishpig_Wordpress_Helper_Data extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	public function getTopLinkPosition()
 	{
-		if ($this->isEnabled()) {
-			return (int)Mage::getStoreConfig('wordpress/toplink/position');
+		if (!$this->isEnabled()) {
+			return false;
 		}
 		
-		return false;
+		return (int)Mage::getStoreConfig('wordpress/toplink/position');
 	}
 	
 	/**
@@ -64,21 +53,11 @@ class Fishpig_Wordpress_Helper_Data extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	public function getTopLinkLabel()
 	{
-		if ($this->isEnabled()) {
-			if ($this->_isCached('toplink_label')) {
-				return $this->_cached('toplink_label');
-			}
-					
-			$transport = new Varien_Object(array('toplink_label' => Mage::getStoreConfig('wordpress/toplink/label')));
-			
-			Mage::dispatchEvent('wordpress_get_toplink_label', array('transport' => $transport));
-
-			$this->_cache('toplink_label', $transport->getToplinkLabel());
-			
-			return $transport->getToplinkLabel();
+		if (!$this->isEnabled()) {
+			return false;
 		}
 		
-		return false;
+		return Mage::getStoreConfig('wordpress/toplink/label');
 	}
 	
 	/**

@@ -250,10 +250,19 @@
 									<show_in_store>1</show_in_store>
 									<depends><enabled>1</enabled></depends>
         				</label>
+        				<url>
+        					<label>URL</label>
+        					<comment>This is added to the Magento base URL</comment>
+        					<sort_order>53</sort_order>
+									<frontend_type>text</frontend_type>
+									<show_in_default>1</show_in_default>
+									<show_in_store>1</show_in_store>
+									<depends><enabled>1</enabled></depends>
+        				</url>
         				<position>
             				<label>Position</label>
             				<frontend_type>text</frontend_type>
-            				<sort_order>53</sort_order>
+            				<sort_order>54</sort_order>
             				<show_in_default>1</show_in_default>
             				<show_in_store>1</show_in_store>
 										<depends><enabled>1</enabled></depends>
