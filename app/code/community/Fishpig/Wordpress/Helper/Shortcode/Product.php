@@ -56,6 +56,9 @@ class Fishpig_Wordpress_Helper_Shortcode_Product extends Fishpig_Wordpress_Helpe
 					
 					if ($params->getIds()) {
 						$collection->addAttributeToFilter('entity_id', array('in' => $params->getIds()));
+						
+						// Order by IDS value
+						$collection->getSelect()->order('FIELD(e.entity_id, ' . implode(', ', $params->getIds()) . ')');
 					}
 					else if ($params->getAttribute() && ($params->getValue() || $params->getValueId())) {
 						if ($params->getValue()) {

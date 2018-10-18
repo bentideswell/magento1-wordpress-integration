@@ -360,7 +360,9 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 	 */
 	public function getPostContent($context = null)
 	{
-		if (!$this->hasProcessedPostContent()) {
+		$key = 'post_content' . md5(__METHOD__ . (string)$context);
+		
+		if (!$this->hasData($key)) {
 			$transport = new Varien_Object();
 			
 			if ($context !=='post_excerpt') {
@@ -368,16 +370,17 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 			}
 			
 			if ($transport->getPostContent()) {
-				$this->setProcessedPostContent($transport->getPostContent());
+				$this->setData($key, $transport->getPostContent());
 			}
 			else {
-				$this->setProcessedPostContent(
+				$this->setData(
+					$key, 
 					Mage::helper('wordpress/filter')->applyFilters($this->_getData('post_content'))
 				);
 			}
 		}
 		
-		return $this->_getData('processed_post_content');
+		return $this->_getData($key);
 	}
 
 	/**

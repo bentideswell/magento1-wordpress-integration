@@ -4,6 +4,8 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+18/10/2018 - 4.5.1.24
+- Added ordering to product shortcode. Products will now be ordered by the ids parameter.
 
 03/10/2018 - 4.5.1.22 
 - Fixed issue with URLs adding current query string to all blog URLs.
