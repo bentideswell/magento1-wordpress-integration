@@ -53,6 +53,7 @@ abstract class Fishpig_Wordpress_Block_Sidebar_Widget_Abstract extends Fishpig_W
 					foreach($data[$this->getWidgetIndex()] as $field => $value) {
 					
 						if ($this->_fixOptionKeys) {
+							echo __LINE__;exit;
 							$field = preg_replace('/([A-Z]{1})([A-Z]{1,})/e', "'$1' . strtolower('$2');", $field);
 							$field = preg_replace('/([A-Z]{1})/e', "'_' . strtolower('$1');", $field);
 						}

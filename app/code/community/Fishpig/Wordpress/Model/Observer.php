@@ -237,9 +237,14 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 		if (!$this->_observerCanRun(__METHOD__)) {
 			return $this;
 		}
-		
+
+		// Only try to get assets if WP has been included
+		if (!defined('ABSPATH')) {
+			return $this;	
+		}
+
 		$helper = Mage::helper('wordpress');
-		
+
 		if ($helper->isApiRequest() || !$helper->isEnabled() || !$helper->isFullyIntegrated()) {
 			return $this;
 		}
