@@ -14,13 +14,6 @@ abstract class Fishpig_Wordpress_Block_Sidebar_Widget_Abstract extends Fishpig_W
 	 * @return string
 	 */
 	abstract public function getDefaultTitle();
-	
-	/**
-	 * Flag used to determine whether to fix option keys
-	 *
-	 * @var bool
-	 */
-	protected $_fixOptionKeys = false;
     
 	/**
 	 * Retrieve the default title
@@ -51,13 +44,6 @@ abstract class Fishpig_Wordpress_Block_Sidebar_Widget_Abstract extends Fishpig_W
 				
 				if (isset($data[$this->getWidgetIndex()])) {
 					foreach($data[$this->getWidgetIndex()] as $field => $value) {
-					
-						if ($this->_fixOptionKeys) {
-							echo __LINE__;exit;
-							$field = preg_replace('/([A-Z]{1})([A-Z]{1,})/e', "'$1' . strtolower('$2');", $field);
-							$field = preg_replace('/([A-Z]{1})/e', "'_' . strtolower('$1');", $field);
-						}
-						
 						$this->setData($field, $value);
 					}
 				}
