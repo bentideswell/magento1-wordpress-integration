@@ -166,6 +166,20 @@ function fishpig_preview_post_link($pl, $post) {
 	return $pl . '&fishpig=' . time();
 }
 
+// Ensure 404 isn't set 
+add_filter(
+	'status_header', 
+	function($status_header, $code, $description, $protocol) {
+		if ((int)$code === 404) {
+			return '';
+		}
+		
+		return $status_header;
+	}, 
+	10, 
+	4
+);
+
 /* Include local.php*/
 $localFile = __DIR__ . DIRECTORY_SEPARATOR . 'local.php';
 

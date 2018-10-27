@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+27/10/2018 - 4.5.2.0
+- Fixed 404 issue
+
 26/10/2018 - 4.5.1.26
 - Legacy code removed to add full PHP 7.2 support.
  
