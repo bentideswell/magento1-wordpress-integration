@@ -69,6 +69,8 @@ implements Mage_Widget_Block_Interface
 				->setPageSize($this->getNumber())
 				->setCurPage(1);
 	
+			$this->getCategory();
+
 			if ($categoryId = $this->getCategoryId()) {
 				if (strpos($categoryId, ',') !== false) {
 					$categoryId = explode(',', trim($categoryId, ','));
@@ -127,6 +129,9 @@ implements Mage_Widget_Block_Interface
 				if ($category->getId()) {
 					$this->setCategory($category)->setCategoryId($category->getId());
 				}
+			}
+			else if ($category = Mage::registry('wordpress_term')) {
+				$this->setCategory($category)->setCategoryId($category->getId());
 			}
 		}
 		

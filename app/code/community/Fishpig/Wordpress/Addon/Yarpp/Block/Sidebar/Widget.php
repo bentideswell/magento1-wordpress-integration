@@ -260,4 +260,12 @@ class Fishpig_Wordpress_Addon_Yarpp_Block_Sidebar_Widget extends Fishpig_Wordpre
 		
 		return array();
 	}		
+	
+	/*
+	 *
+	 */
+	public function getOrder()
+	{
+		return str_replace('post_date', 'date', parent::getOrder());
+	}	
 }

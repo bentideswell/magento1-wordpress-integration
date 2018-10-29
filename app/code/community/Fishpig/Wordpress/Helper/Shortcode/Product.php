@@ -36,7 +36,9 @@ class Fishpig_Wordpress_Helper_Shortcode_Product extends Fishpig_Wordpress_Helpe
 						$params->setIds(array($params->getId()));
 					}
 					else if ($params->getSku()) {
-						$params->setIds(array(Mage::getResourceModel('catalog/product')->getIdBySku($params->getSku())));
+						if ($id = Mage::getResourceModel('catalog/product')->getIdBySku($params->getSku())) {
+							$params->setIds(array($id));
+						}
 					}
 					else if ($params->getIds()) {
 						$params->setIds(explode(',', $params->getIds()));
@@ -50,8 +52,10 @@ class Fishpig_Wordpress_Helper_Shortcode_Product extends Fishpig_Wordpress_Helpe
 								$ids[] = $id;
 							}
 						}
-
-						$params->setIds($ids);
+						
+						if ($ids) {
+							$params->setIds($ids);
+						}
 					}
 					
 					if ($params->getIds()) {
