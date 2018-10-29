@@ -28,10 +28,10 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 	{
 		if ($this->_isPreview === null) {
 			$this->_isPreview = (int)$this->getRequest()->getParam('preview_id') > 0
-				|| $this->getRequest()->getParam('preview', false) !== false
-				|| $this->getRequest()->getActionName() === 'preview';
+				|| $this->getRequest()->getActionName() === 'preview'
+				|| strpos(implode('-', array_keys($this->getRequest()->getParams())), 'preview') !== false;
 		}
-		
+
 		return $this->_isPreview;
 	}
 	

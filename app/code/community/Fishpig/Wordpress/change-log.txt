@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+29/10/2018 - 4.5.2.3
+- Fixed issue with editing Posts with Elementor
+
 27/10/2018 - 4.5.2.0
 - Fixed 404 issue
 
