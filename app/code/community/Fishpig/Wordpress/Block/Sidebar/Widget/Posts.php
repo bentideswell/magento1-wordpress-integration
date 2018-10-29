@@ -123,6 +123,7 @@ implements Mage_Widget_Block_Interface
 	{
 		if (!$this->hasCategory()) {
 			$this->setCategory(false);
+			
 			if ($this->getCategoryId()) {
 				$category = Mage::getModel('wordpress/term')->setTaxonomy('category')->load($this->getCategoryId());
 
@@ -131,7 +132,9 @@ implements Mage_Widget_Block_Interface
 				}
 			}
 			else if ($category = Mage::registry('wordpress_term')) {
-				$this->setCategory($category)->setCategoryId($category->getId());
+				if ($category->getTaxonomy() === 'category') {
+					$this->setCategory($category)->setCategoryId($category->getId());
+				}
 			}
 		}
 		

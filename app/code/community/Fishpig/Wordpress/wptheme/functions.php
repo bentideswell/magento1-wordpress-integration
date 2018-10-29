@@ -18,7 +18,9 @@ if (!function_exists('fishpig_setup')) {
 			'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
 		));
 		
-		show_admin_bar(false);
+		if (function_exists('show_admin_bar')) {
+			show_admin_bar(false);
+		}
 	}
 }
 
