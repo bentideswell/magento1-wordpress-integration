@@ -74,7 +74,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 	{
 		$post = $this->getEntityObject();
 		
-		$post->setAsGlobal();
+#		$post->setAsGlobal();
 				
 		$layoutHandles = array(
 			'wordpress_post_view',

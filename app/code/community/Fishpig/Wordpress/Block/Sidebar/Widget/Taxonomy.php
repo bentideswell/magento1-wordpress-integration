@@ -15,17 +15,12 @@ class Fishpig_Wordpress_Block_Sidebar_Widget_Taxonomy extends Fishpig_Wordpress_
 	 */
 	public function getTerms()
 	{
-		$collection = Mage::getResourceModel('wordpress/term_collection')
-			->addTaxonomyFilter($this->getTaxonomy());
+		$collection = Mage::getResourceModel('wordpress/term_collection')->addTaxonomyFilter($this->getTaxonomy());
 
-		$collection->getSelect()
-			->reset('order')
-			->order('name ASC');
+		$collection->getSelect()->order('name ASC');
 			
-			$collection->addParentIdFilter($this->getParentId())
-				->addHasObjectsFilter();
+		$collection->addParentIdFilter($this->getParentId())->addHasObjectsFilter();
 
-		
 		return $collection;
 	}
 	

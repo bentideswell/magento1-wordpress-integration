@@ -1,30 +1,26 @@
 <?php
-/**
+/*
  * @category    Fishpig
  * @package     Fishpig_Wordpress
  * @license     http://fishpig.co.uk/license.txt
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
-
-class Fishpig_Wordpress_Block_Sidebar_Widget_Posts extends Fishpig_Wordpress_Block_Sidebar_Widget_Abstract
-implements Mage_Widget_Block_Interface
+class Fishpig_Wordpress_Block_Sidebar_Widget_Posts extends Fishpig_Wordpress_Block_Sidebar_Widget_Abstract implements Mage_Widget_Block_Interface
 {
-	/**
+	/*
 	 * Cache for post collection
 	 *
 	 * @var Fishpig_Wordpress_Model_Resource_Post_Collection
 	 */
 	protected $_collection = null;
 	
-	/**
+	/*
 	 * Set the posts collection
 	 *
 	 */
 	protected function _beforeToHtml()
 	{
 		parent::_beforeToHtml();
-
-		$this->setPosts($this->_getPostCollection());
 		
 		if (!$this->getTemplate()) {
 			$this->setTemplate('wordpress/sidebar/widget/posts.phtml');
@@ -32,8 +28,17 @@ implements Mage_Widget_Block_Interface
 
 		return $this;
 	}
+
+	/*
+	 *
+	 *
+	 */
+	public function getPosts()
+	{
+		return $this->_getPostCollection();
+	}
 	
-	/**
+	/*
 	 * Control the number of posts displayed
 	 *
 	 * @param int $count
@@ -44,7 +49,7 @@ implements Mage_Widget_Block_Interface
 		return $this->setNumber($count);
 	}
 	
-	/**
+	/*
 	 * Retrieve the number of posts to display
 	 * If the pager is enabled, this is posts per page
 	 *
@@ -55,7 +60,7 @@ implements Mage_Widget_Block_Interface
 		return $this->_getData('number') ? $this->_getData('number') : 5;
 	}
 	
-	/**
+	/*
 	 * Adds on cateogry/author ID filters
 	 *
 	 * @return Fishpig_Wordpress_Model_Mysql4_Post_Collection
@@ -100,7 +105,7 @@ implements Mage_Widget_Block_Interface
 		return $this->_collection;
 	}
 	
-	/**
+	/*
 	 * Retrieve the default title
 	 *
 	 * @return string
@@ -114,7 +119,7 @@ implements Mage_Widget_Block_Interface
 		return $this->__('Recent Posts');
 	}
 	
-	/**
+	/*
 	 * Retrieve the category model used to filter the posts
 	 *
 	 * @return Fishpig_Wordpress_Model_Post_Category|false
@@ -141,7 +146,7 @@ implements Mage_Widget_Block_Interface
 		return $this->_getData('category');
 	}
 	
-	/**
+	/*
 	 * Retrieve the category ID
 	 *
 	 * return int|null
@@ -155,7 +160,7 @@ implements Mage_Widget_Block_Interface
 		return $this->_getData('cat');	
 	}
 	
-	/**
+	/*
 	 * Retrieve the ID used for the list
 	 * This is necessary so multiple instances can be used
 	 *
@@ -172,7 +177,7 @@ implements Mage_Widget_Block_Interface
 		return $this->_getData('list_id');
 	}
 	
-	/**
+	/*
 	 * Added to support 'Category Posts Widget' WP plugin
 	 *
 	 */
@@ -181,7 +186,7 @@ implements Mage_Widget_Block_Interface
 		return $this->_getData('comment_num') == 'on';
 	}
 	
-	/**
+	/*
 	 * Determine whether we can display the date
 	 *
 	 * @return bool
@@ -191,7 +196,7 @@ implements Mage_Widget_Block_Interface
 		return $this->_getData('date') == 'on';
 	}
 	
-	/**
+	/*
 	 * Determine whether we can display the excerpt
 	 *
 	 * @return bool
@@ -201,7 +206,7 @@ implements Mage_Widget_Block_Interface
 		return $this->getData('excerpt') == 'on';
 	}
 	
-	/**
+	/*
 	 * Determine whether we can display the image
 	 *
 	 * @return bool
@@ -211,7 +216,7 @@ implements Mage_Widget_Block_Interface
 		return $this->getData('thumb') === 'on';
 	}
 	
-	/**
+	/*
 	 * Determine whether we can display the title link
 	 *
 	 * @return bool
@@ -221,7 +226,7 @@ implements Mage_Widget_Block_Interface
 		return $this->getData('title_link') == 'on';
 	}
 	
-	/**
+	/*
 	 * Retrieve the excerpt length
 	 *
 	 * @return null|int
@@ -235,7 +240,7 @@ implements Mage_Widget_Block_Interface
 		return null;
 	}
 	
-	/**
+	/*
 	 * Retrieve a string indicating the number of comments
 	 *
 	 * @param Fishpig_Wordpress_Model_Post $post

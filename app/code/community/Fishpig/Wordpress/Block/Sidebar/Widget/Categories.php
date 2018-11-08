@@ -20,9 +20,7 @@ class Fishpig_Wordpress_Block_Sidebar_Widget_Categories extends Fishpig_Wordpres
 			->addParentIdFilter($this->getParentId())
 			->addHasObjectsFilter();
 
-		$collection->getSelect()
-			->reset('order')
-			->order('name ASC');
+		$collection->getSelect()->order('name ASC');
 
 		return $collection;
 	}
