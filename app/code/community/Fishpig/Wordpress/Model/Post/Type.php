@@ -351,7 +351,8 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 	 */
 	public function getCrumbs($post, &$objects)
 	{
-		$tokens = preg_split("/(%[a-zA-Z0-9_]{1,}%)/", trim(trim($this->getSlug(), '/')), -1, PREG_SPLIT_DELIM_CAPTURE);
+		$slug   = trim(trim($this->getSlug(), '/'));
+		$tokens = preg_split("/(%[a-zA-Z0-9_]{1,}%)/", $slug, -1, PREG_SPLIT_DELIM_CAPTURE);
 		
 		foreach($tokens as $token) {
 			if (!($token = trim($token, '/'))) {
@@ -384,7 +385,7 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 				}
 				else {
 					$objects['static_string_' . $token] = array(
-						'link' => $token,
+						'link' => Mage::helper('wordpress')->getUrl(substr($slug, 0, strpos($slug, $token)+strlen($token))),
 						'label' => $token,
 					);		
 				}
