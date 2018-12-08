@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
  
+08/12/2018 - 4.5.2.7
+- Improved product shortcode rendering to fix a fatal error when an invalid ID is entered.
+
 08/12/2018 - 4.5.2.6
 - Fixed issue that broke Magento blocks (eg. {{block type...}}) in posts and pages when using Shortcodes & Widgets.
 

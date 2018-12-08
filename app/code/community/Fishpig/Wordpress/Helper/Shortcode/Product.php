@@ -41,7 +41,16 @@ class Fishpig_Wordpress_Helper_Shortcode_Product extends Fishpig_Wordpress_Helpe
 						}
 					}
 					else if ($params->getIds()) {
-						$params->setIds(explode(',', $params->getIds()));
+						$params->setIds(
+							explode(
+								',', 
+								preg_replace(
+									'/[,]{2,}/', 
+									',', 
+									trim($params->getIds(), ',')
+								)
+							)
+						);
 					}
 					else if ($params->getSkus()) {
 						$ids = array();
@@ -62,7 +71,7 @@ class Fishpig_Wordpress_Helper_Shortcode_Product extends Fishpig_Wordpress_Helpe
 						$collection->addAttributeToFilter('entity_id', array('in' => $params->getIds()));
 						
 						// Order by IDS value
-						$collection->getSelect()->order('FIELD(e.entity_id, ' . implode(', ', $params->getIds()) . ')');
+						$collection->getSelect()->order('FIELD(e.entity_id, \'' . implode('\', \'', $params->getIds()) . '\')');
 					}
 					else if ($params->getAttribute() && ($params->getValue() || $params->getValueId())) {
 						if ($params->getValue()) {
