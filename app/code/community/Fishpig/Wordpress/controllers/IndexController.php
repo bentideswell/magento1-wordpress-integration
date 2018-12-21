@@ -175,30 +175,6 @@ class Fishpig_Wordpress_IndexController extends Fishpig_Wordpress_Controller_Abs
 	{
 		return $this->getResponse()->setRedirect($url)->sendResponse();
 	}
-
-	/**
-	 *
-	 */
-	public function wpjsonAction()
-	{
-		try {
-			$coreModules = Mage::app()->getConfig()->getNode('wordpress/core/modules');
-			
-			if (!$coreModules) {
-				throw new Exception('No WP Core modules installed.');
-			}
-			
-			$coreModules = array_keys((array)$coreModules);
-			$coreModule  = array_shift($coreModules);
-
-			Mage::helper($coreModule . '/core')->isActive();
-
-			exit;
-		}
-		catch (Exception $e) {
-			return $this->_forward('noRoute');
-		}
-	}
 	
 	/*
 	 * Get the breadcrumbs for the entity

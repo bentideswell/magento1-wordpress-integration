@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
  
+21/12/2018 - 4.5.2.8
+- Update to fishpig WP theme to change REST API URL to work in WordPress 5.0.
+
 08/12/2018 - 4.5.2.7
 - Improved product shortcode rendering to fix a fatal error when an invalid ID is entered.
 
