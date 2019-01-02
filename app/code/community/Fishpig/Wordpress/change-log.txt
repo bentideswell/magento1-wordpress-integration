@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+02/01/2019 - 4.6.0.0
+- Fixed REST API issue that started happening with the Gutenberg editor and WordPress 5.0.
+
 02/01/2019 - 4.5.2.9
 - Fixed issue with NOINDEX on post types that aren't post.
 

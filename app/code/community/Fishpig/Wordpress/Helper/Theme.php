@@ -1,11 +1,10 @@
 <?php
-/**
+/*
  * @category    Fishpig
  * @package     Fishpig_Wordpress
  * @license     http://fishpig.co.uk/license.txt
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
-
 class Fishpig_Wordpress_Helper_Theme extends Fishpig_Wordpress_Helper_Abstract
 {
 	/*
@@ -54,7 +53,7 @@ class Fishpig_Wordpress_Helper_Theme extends Fishpig_Wordpress_Helper_Abstract
 				throw new Exception('Unable to create the theme in WordPress.');
 			}
 		}
-		
+
 		if (!is_file($themeDirectory . 'style.css')) {
 			$this->_installThemeFiles();
 		}
@@ -107,7 +106,9 @@ class Fishpig_Wordpress_Helper_Theme extends Fishpig_Wordpress_Helper_Abstract
 			array_shift($files);
 
 			foreach($files as $file) {
-				@copy($sourceDirectory . $file, $themeDirectory . $file);
+				if ($file !== 'local.php') {
+					@copy($sourceDirectory . $file, $themeDirectory . $file);
+				}
 			}
 		}
 		
@@ -131,7 +132,7 @@ class Fishpig_Wordpress_Helper_Theme extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	public function enable()
 	{
-		Mage::helper('wordpress')->setWpOption('template', self::THEME_NAME);
+		Mage::helper('wordpress')->setWpOption('template',   self::THEME_NAME);
 		Mage::helper('wordpress')->setWpOption('stylesheet', self::THEME_NAME);
 		
 		return $this;
