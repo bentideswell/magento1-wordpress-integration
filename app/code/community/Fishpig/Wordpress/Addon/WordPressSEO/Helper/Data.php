@@ -269,19 +269,19 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 
 		$noIndex = (int)$object->getMetaValue('_yoast_wpseo_meta-robots-noindex');
 
-		if ($noIndex === 0) {
+		/*if ($noIndex === 0) {
 			$robots['index'] = '';
 		}
-		else if ($noIndex === 1) {
+		else */if ($noIndex === 1) {
 			$robots['noindex'] = '';
 		}
 		else if ($noIndex === 2) {
 			$robots['index'] = '';
 		}
-		else if ($this->getNoindexPost()) {
+		else if ((int)$this->getData('noindex_' . $object->getPostType()) === 1) {
 			$robots['noindex'] = '';
 		}
-		
+
 		if ($object->getMetaValue('_yoast_wpseo_meta-robots-nofollow')) {
 			$robots['nofollow'] = '';
 		}

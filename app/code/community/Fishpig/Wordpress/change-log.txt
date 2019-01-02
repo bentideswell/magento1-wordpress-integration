@@ -4,7 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
- 
+02/01/2019 - 4.5.2.9
+- Fixed issue with NOINDEX on post types that aren't post.
+
 21/12/2018 - 4.5.2.8
 - Update to fishpig WP theme to change REST API URL to work in WordPress 5.0.
 
