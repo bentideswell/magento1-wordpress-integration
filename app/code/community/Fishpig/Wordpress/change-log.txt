@@ -4,6 +4,11 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+
+03/01/2018 - 4.6.0.1
+- Improved theme update detection system.
+- Added Template option for all post types. Previously was only available for pages.
+
 02/01/2019 - 4.6.0.0
 - Fixed REST API issue that started happening with the Gutenberg editor and WordPress 5.0.
 

@@ -108,6 +108,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 
 		try {
 			if (Mage::helper('wordpress')->isFullyIntegrated()) {
+
 				$themeHelper = Mage::helper('wordpress/theme');
 				
 				if ($themeHelper->install()) {

@@ -45,74 +45,39 @@ class Fishpig_Wordpress_Helper_Theme extends Fishpig_Wordpress_Helper_Abstract
 	 */
 	public function install()
 	{
-		$themeDirectory = $this->getThemeDirectory();
-		$sourceDirectory = $this->getSourceDirectory();
-		
-		if (!is_dir($themeDirectory)) {
-			if (!$this->_installTheme()) {
-				throw new Exception('Unable to create the theme in WordPress.');
+		$targetDir     = $this->getThemeDirectory();
+		$sourceDir     = $this->getSourceDirectory();
+		$sourceCssFile = $sourceDir . '/style.css';
+		$targetCssFile = $targetDir . '/style.css';
+
+		if (is_file($targetCssFile) && md5_file($sourceCssFile) === md5_file($targetCssFile)) {
+			return true;
+		}
+
+		if (!is_dir($sourceDir)) {
+			throw new Exception('Theme source directory does not exist at ' . $sourceDir);
+		}
+
+		if (!is_dir($targetDir)) {
+			@mkdir($targetDir, 0755, true);
+
+			if (!is_dir($targetDir)) {
+				throw new Exception('Unable to create theme directory at ' . $targetDir);
 			}
 		}
-
-		if (!is_file($themeDirectory . 'style.css')) {
-			$this->_installThemeFiles();
-		}
-		else if (version_compare($this->_getVersion($sourceDirectory . 'style.css'), $this->_getVersion($themeDirectory . 'style.css'), '>')) {
-			$this->_installThemeFiles();
-		}
-		
-		return is_dir($themeDirectory);
-	}
-
-	/*
-	 * install the theme
-	 *
-	 * @return $this
-	 */
-	protected function _installTheme()
-	{
-		$themeDirectory = $this->getThemeDirectory();		
-		$sourceDirectory = $this->getSourceDirectory();
-
-		if (!is_dir($sourceDirectory)) {
-			throw new Exception('Theme source directory does not exist at ' . $sourceDirectory);
-		}
-
-		if (!is_dir($themeDirectory)) {
-			@mkdir($themeDirectory, 0755, true);
 			
-			if (!is_dir($themeDirectory)) {
-				throw new Exception('Unable to create theme directory at ' . $themeDirectory);
-			}
-			
-			$this->_installThemeFiles();
-		}
-		
-		return is_dir($themeDirectory);
-	}
-	
-	/*
-	 * Copy theme files from source to target
-	 *
-	 * @return $this
-	 */
-	protected function _installThemeFiles()
-	{
-		$themeDirectory = $this->getThemeDirectory();		
-		$sourceDirectory = $this->getSourceDirectory();
-		
-		if ($files = scandir($sourceDirectory)) {
+		if ($files = scandir($sourceDir)) {
 			array_shift($files);
 			array_shift($files);
 
 			foreach($files as $file) {
 				if ($file !== 'local.php') {
-					@copy($sourceDirectory . $file, $themeDirectory . $file);
+					@copy($sourceDir . $file, $targetDir . $file);
 				}
 			}
 		}
-		
-		return $this;
+
+		return is_file($targetCssFile);
 	}
 	
 	/**
