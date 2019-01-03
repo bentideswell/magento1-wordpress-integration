@@ -5,7 +5,10 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
-03/01/2018 - 4.6.0.1
+03/01/2019 - 4.6.0.2
+- Improved REST API URL generation.
+
+03/01/2019 - 4.6.0.1
 - Improved theme update detection system.
 - Added Template option for all post types. Previously was only available for pages.
 
