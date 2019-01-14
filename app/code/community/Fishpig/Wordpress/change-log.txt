@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+14/01/2018 - 4.6.0.3
+- Fixed Auto login bug on Nginx servers that produce lower case HTTP headers
+
 03/01/2019 - 4.6.0.2
 - Improved REST API URL generation.
 

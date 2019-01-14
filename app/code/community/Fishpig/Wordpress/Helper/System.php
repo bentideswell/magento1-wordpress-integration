@@ -337,7 +337,7 @@ class Fishpig_Wordpress_Helper_System extends Fishpig_Wordpress_Helper_Abstract
 		));
 
 		if ($result !== false) {
-			if (strpos($result, 'Location: ') === false) {
+			if (stripos($result, 'Location: ') === false) {
 				throw new Exception('WordPress Auto Login Failed: ' . substr($result, 0, strpos($result, "\r\n\r\n")));
 			}
 	
