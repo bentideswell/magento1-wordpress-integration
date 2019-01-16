@@ -15,7 +15,7 @@ class Fishpig_Wordpress_SearchController extends Fishpig_Wordpress_Controller_Ab
 	 * @const string
 	 */
 	const BROKEN_URL_PARAM_NAME = 'redirect_broken_url';
-	
+
 	/**
 	 * If Integrated search is installed, redirect if enabled
 	 *

@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+16/01/2019 - 4.6.0.4
+- Added pagination validation. This stops random pagination URLs (eg. page/123456) from displaying the last page of results.
+
 14/01/2018 - 4.6.0.3
 - Fixed Auto login bug on Nginx servers that produce lower case HTTP headers
 

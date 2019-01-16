@@ -264,6 +264,16 @@ class Fishpig_Wordpress_Model_Resource_Post_Collection extends Fishpig_Wordpress
 		return count($this->_postTypes) > 0;
 	}
 
+	/**
+	 *
+	 *
+	 * @return array
+	 */
+	public function getPostTypeFilter()
+	{
+		return $this->_postTypes;
+	}
+	
 	/*
 	 * Adds a published filter to collection
 	 *

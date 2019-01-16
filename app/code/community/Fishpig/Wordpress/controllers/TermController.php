@@ -13,8 +13,15 @@ class Fishpig_Wordpress_TermController extends Fishpig_Wordpress_Controller_Abst
 	 *
 	 * @var string
 	 */
-	 protected $_feedBlock = 'term_view';
-	 
+	protected $_feedBlock = 'term_view';
+	
+	/*
+	 * Enable pagination validation
+	 *
+	 * @var bool
+	 */ 
+	protected $_canValidatePagination = true;
+	
 	/**
 	 * Used to do things en-masse
 	 * eg. include canonical URL
@@ -80,10 +87,9 @@ class Fishpig_Wordpress_TermController extends Fishpig_Wordpress_Controller_Abst
 		while($branch = array_shift($tree)) {
 			$this->_title($branch->getName());
 		}
-		
+
 		$this->renderLayout();
 	}
-
 
 	/**
 	 * Initialise the term model
@@ -124,24 +130,6 @@ class Fishpig_Wordpress_TermController extends Fishpig_Wordpress_Controller_Abst
 			'label' => $term->getName(),
 		);
 
-		return $objects;		
-		/*
-					$tree = array($term);
-		$buffer = $term;
-		
-		while($buffer = $buffer->getParentTerm()) {
-			array_unshift($tree, $buffer);
-		}
-		
-		while($branch = array_shift($tree)) {
-			$this->addCrumb('term_' . $branch->getId(), array(
-				'link' => ($tree ? $branch->getUrl() : null), 
-				'label' => $branch->getName())
-			);
-
-			$this->_title($branch->getName());
-		}
-		
-		*/
+		return $objects;
 	}
 }

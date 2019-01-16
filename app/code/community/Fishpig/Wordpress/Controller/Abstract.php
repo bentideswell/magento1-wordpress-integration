@@ -216,6 +216,11 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 			$this->loadLayout();
 		}
 
+		if ($this->_validatePagination() === false) {
+			header('Location: ' . $this->getEntityObject()->getUrl());
+			exit;
+		}
+		
 		$this->_title()->_title(Mage::helper('wordpress')->getWpOption('blogname'));
 		
 		if ($rootBlock = $this->getLayout()->getBlock('root')) {
@@ -224,6 +229,48 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 		
 		Mage::dispatchEvent('wordpress_init_layout_after', array('object' => $this->getEntityObject(), 'controller' => $this));
 		Mage::dispatchEvent($this->getFullActionName() . '_init_layout_after', array('object' => $this->getEntityObject(), 'controller' => $this));
+		
+		return $this;
+	}
+	
+	/*
+	 * Validate pagination so that only valid pages are displayed
+	 *
+	 * @return $this|bool
+	 */
+	protected function _validatePagination()
+	{
+		if (!isset($this->_canValidatePagination) || !$this->_canValidatePagination) {
+			return $this;
+		}
+
+		if (($currentPage = (int)$this->getRequest()->getParam('page')) > 1) {
+			$childBlocks = $this->getLayout()->getBlock('content')->getChild('');
+			$connection  = Mage::getSingleton('core/resource')->getConnection('core_read');
+			
+			foreach($childBlocks as $alias => $childBlock) {
+				if ($childBlock instanceof Fishpig_Wordpress_Block_Post_List_Wrapper_Abstract) {
+					if ($postListBlock = $childBlock->getPostListBlock()) {
+						if ($pagerBlock = $postListBlock->getPagerBlock()) {
+							$postsPerPage = $pagerBlock->getPostsPerPage();
+							$sqlQuery = clone $childBlock->getPostCollection()->getSelect();
+
+							$sqlQuery->reset(Zend_Db_Select::COLUMNS)
+								->columns(array('post_count' => new Zend_Db_Expr('COUNT(ID)')));
+
+							if ($postTypeFilter = $childBlock->getPostCollection()->getPostTypeFilter()) {
+								$sqlQuery->where('post_type IN (?)', $postTypeFilter);
+							}
+
+							$postCount = (int)$connection->fetchOne($sqlQuery);
+							$pageCount = $postCount <= $postsPerPage ? 1 : ceil($postCount/$postsPerPage);							
+
+							return $currentPage <= $pageCount;
+						}
+					}
+				}
+			}
+		}
 
 		return $this;
 	}
@@ -343,7 +390,7 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 		$this->setFlag('', self::FLAG_NO_DISPATCH, true);
 		
 		$e = new Mage_Core_Controller_Varien_Exception();
-	
+
 		throw $e->prepareForward($action, $controller, $module, $params);
 	}
 	

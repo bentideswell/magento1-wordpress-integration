@@ -18,9 +18,18 @@ class Fishpig_Wordpress_Block_Post_List_Pager extends Mage_Page_Block_Html_Pager
 
 		$this->setPageVarName('page');
 
-		$this->updatePageSize((int)$this->helper('wordpress')->getWpOption('posts_per_page', 10));
+		$this->updatePageSize($this->getPostsPerPage());
 		
 		$this->setFrameLength(5);
+	}
+	
+	/*
+	 *
+	 * @return int
+	 */
+	public function getPostsPerPage()
+	{
+		return (int)$this->helper('wordpress')->getWpOption('posts_per_page', 10);
 	}
 	
 	/**

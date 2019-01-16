@@ -8,6 +8,13 @@
 
 class Fishpig_Wordpress_AuthorController extends Fishpig_Wordpress_Controller_Abstract
 {
+	/*
+	 * Enable pagination validation
+	 *
+	 * @var bool
+	 */ 
+	protected $_canValidatePagination = true;
+	
 	/**
 	 * Used to do things en-masse
 	 * eg. include canonical URL

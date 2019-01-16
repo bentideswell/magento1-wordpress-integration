@@ -14,6 +14,13 @@ class Fishpig_Wordpress_IndexController extends Fishpig_Wordpress_Controller_Abs
 	 * @var string
 	 */
 	protected $_feedBlock = 'homepage';
+
+	/*
+	 * Enable pagination validation
+	 *
+	 * @var bool
+	 */ 
+	protected $_canValidatePagination = true;
 	
 	/**
 	 * Used to do things en-masse

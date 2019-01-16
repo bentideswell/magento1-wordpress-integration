@@ -19,7 +19,7 @@ abstract class Fishpig_Wordpress_Block_Post_List_Wrapper_Abstract extends Fishpi
 			$collection->addIsViewableFilter()->addOrder('post_date', 'desc');
 			
 			$this->setPostCollection($collection);
-			
+
 			$collection->setFlag('after_load_event_name', $this->_getPostCollectionEventName() . '_after_load');
 			$collection->setFlag('after_load_event_block', $this);
 

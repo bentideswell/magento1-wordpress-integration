@@ -15,6 +15,13 @@ class Fishpig_Wordpress_ArchiveController extends Fishpig_Wordpress_Controller_A
 	 */
 	protected $_feedBlock = 'archive_view';
 	
+	/*
+	 * Enable pagination validation
+	 *
+	 * @var bool
+	 */ 
+	protected $_canValidatePagination = true;
+	
 	/**
 	 * Used to do things en-masse
 	 * eg. include canonical URL
