@@ -137,6 +137,7 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
   public function renderLayout($output='')
   {
 		Mage::dispatchEvent('wordpress_render_layout_before', array('object' => $this->getEntityObject(), 'action' => $this));
+		Mage::dispatchEvent($this->getFullActionName() . '_render_layout_before', array('object' => $this->getEntityObject(), 'action' => $this));
 		
 		if (($headBlock = $this->getLayout()->getBlock('head')) !== false) {
 			if ($entity = $this->getEntityObject()) {
@@ -168,6 +169,9 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 			}
 		}
 		
+		Mage::dispatchEvent('wordpress_render_layout_after', array('object' => $this->getEntityObject(), 'action' => $this));
+		Mage::dispatchEvent($this->getFullActionName() . '_render_layout_after', array('object' => $this->getEntityObject(), 'action' => $this));
+
 		$this->_renderTitles();
 
 		Mage::helper('wordpress/social')->addCodeToHead();

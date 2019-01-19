@@ -4,6 +4,8 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+19/01/2018 - 4.6.0.5
+- Added some new controller events to support HrefLangTags.com in Multisite
 
 16/01/2019 - 4.6.0.4
 - Added pagination validation. This stops random pagination URLs (eg. page/123456) from displaying the last page of results.
