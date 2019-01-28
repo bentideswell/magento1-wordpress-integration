@@ -45,8 +45,8 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 				if ($storeCode = Mage::app()->getRequest()->getParam('store')) {
 					$params['_store'] = $storeCode;
 				}
-				else {
-					$params['_store'] = $this->getDefaultStore(Mage::app()->getRequest()->getParam('website', null))->getId();
+				else if ($defaultStore = $this->getDefaultStore(Mage::app()->getRequest()->getParam('website', null))) {
+					$params['_store'] = $defaultStore->getId();
 				}
 			}
 			

@@ -168,7 +168,7 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 				}
 			}
 		}
-		
+
 		Mage::dispatchEvent('wordpress_render_layout_after', array('object' => $this->getEntityObject(), 'action' => $this));
 		Mage::dispatchEvent($this->getFullActionName() . '_render_layout_after', array('object' => $this->getEntityObject(), 'action' => $this));
 
