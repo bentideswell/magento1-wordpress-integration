@@ -250,7 +250,7 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 
 		if (($currentPage = (int)$this->getRequest()->getParam('page')) > 1) {
 			$childBlocks = $this->getLayout()->getBlock('content')->getChild('');
-			$connection  = Mage::getSingleton('core/resource')->getConnection('core_read');
+			$connection  = Mage::helper('wordpress/app')->getDbConnection();
 			
 			foreach($childBlocks as $alias => $childBlock) {
 				if ($childBlock instanceof Fishpig_Wordpress_Block_Post_List_Wrapper_Abstract) {
