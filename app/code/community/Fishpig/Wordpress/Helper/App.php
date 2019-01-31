@@ -465,8 +465,8 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		$storeId = $this->getStore()->getId();
 		
 		if (!isset(self::$_blogId[$storeId])) {
-			self::$_blogId[$storeId] = Mage::getStoreConfigFlag('wordpress/mu/enabled') 
-				? (int)Mage::getStoreConfig('wordpress/mu/blog_id', $this->getStore()->getId()) 
+			self::$_blogId[$storeId] = Mage::getStoreConfigFlag('wordpress/mu/enabled', $storeId) 
+				? (int)Mage::getStoreConfig('wordpress/mu/blog_id', $storeId)
 				: 1;
 		}
 
