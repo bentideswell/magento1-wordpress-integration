@@ -164,8 +164,6 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 		$this->_cache($cacheKey, $default);
 
 		try {
-			
-			echo Mage::getSingleton('core/resource')->getTableName('wordpress/option');exit;
 			$select = $db->select()
 				->from(Mage::getSingleton('core/resource')->getTableName('wordpress/option'), 'option_value')
 				->where('option_name = ?', $key)
