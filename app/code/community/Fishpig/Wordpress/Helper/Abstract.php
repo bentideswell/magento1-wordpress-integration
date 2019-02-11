@@ -73,6 +73,21 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 	}
 	
 	/*
+	 * Get a URL with the front value
+	 *
+	 *
+	 * @return string
+	 */
+	public function getUrlWithFront($extra = null, array $params = array())
+	{
+		if ($front = Mage::helper('wordpress/app')->getPostType('post')->getFront()) {
+			$extra = $front . '/' . ltrim($extra, '/');
+		}
+		
+		return $this->getUrl($extra, $params);
+	}
+	
+	/*
 	 * Determine whether to use a trailing slash on URLs
 	 *
 	 * @return bool

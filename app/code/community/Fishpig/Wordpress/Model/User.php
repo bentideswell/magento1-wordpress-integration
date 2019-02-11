@@ -59,7 +59,7 @@ class Fishpig_Wordpress_Model_User extends Fishpig_Wordpress_Model_Abstract
 	public function getUrl()
 	{
 		if (!$this->hasUrl()) {
-			$this->setUrl(Mage::helper('wordpress')->getUrl('author/' . urlencode($this->getUserNicename())) . '/');
+			$this->setUrl(Mage::helper('wordpress')->getUrlWithFront('author/' . urlencode($this->getUserNicename())) . '/');
 		}
 		
 		return $this->_getData('url');

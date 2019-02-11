@@ -51,19 +51,32 @@ class Fishpig_Wordpress_Model_Post_Type extends Mage_Core_Model_Abstract
 		if ($this->isHierarchical()) {
 			$structure = str_replace('%postname%', '%postnames%', $structure);
 		}
-		
 
 		if ((int)$this->getData('rewrite/with_front') === 1) {
-			$postPermalink = Mage::helper('wordpress/app')->getPostType('post')->getPermalinkStructure();
-			
-			if (substr($postPermalink, 0, 1) !== '%') {
-				$front = trim(substr($postPermalink, 0, strpos($postPermalink, '%')), '/');
-				
+			if ($front = $this->getFront()) {
 				$structure = $front . '/' . $structure;
 			}
 		}
 
 		return $structure;
+	}
+	
+	/*
+	 *
+	 *
+	 * @return string
+	 */
+	public function getFront()
+	{
+		if ($this->getPostType() === 'post') {		
+			$postPermalink = Mage::helper('wordpress/app')->getPostType('post')->getPermalinkStructure();
+
+			if (substr($postPermalink, 0, 1) !== '%') {
+				return trim(substr($postPermalink, 0, strpos($postPermalink, '%')), '/');
+			}
+		}
+		
+		return '';
 	}
 	
 	/**

@@ -15,7 +15,7 @@ class Fishpig_Wordpress_Block_Sidebar_Widget_Search extends Fishpig_Wordpress_Bl
 	 */
 	public function getFormActionUrl()
 	{
-		return $this->helper('wordpress')->getUrl(
+		return $this->helper('wordpress')->getUrlWithFront(
 			$this->helper('wordpress/router')->getSearchRoute()
 		) . '/';
 	}

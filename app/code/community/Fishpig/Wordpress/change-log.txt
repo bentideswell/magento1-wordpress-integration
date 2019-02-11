@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+11/02/2019 - 4.6.0.10
+- Added support for 'front' when using Root.
+
 19/01/2018 - 4.6.0.5
 - Added some new controller events to support HrefLangTags.com in Multisite
 

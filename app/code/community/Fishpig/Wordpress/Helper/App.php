@@ -232,7 +232,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		
 		return $this;
 	}
-
+	
 	/**
 	 * Initialise the post type data
 	 *

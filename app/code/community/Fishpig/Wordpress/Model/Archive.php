@@ -54,7 +54,7 @@ class Fishpig_Wordpress_Model_Archive extends Varien_Object
 	 */
 	public function getUrl()
 	{
-		return rtrim(Mage::helper('wordpress')->getUrl($this->getId()), '/') . '/';
+		return rtrim(Mage::helper('wordpress')->getUrlWithFront($this->getId()), '/') . '/';
 	}
 	
 	/**

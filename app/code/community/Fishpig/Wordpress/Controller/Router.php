@@ -161,13 +161,19 @@ class Fishpig_Wordpress_Controller_Router extends Mage_Core_Controller_Varien_Ro
 		if (strpos($uri, 'ajax/') === 0) {
 			$this->_getAjaxRoutes($uri);
 		}
+
+		if ($front = Mage::helper('wordpress/app')->getPostType('post')->getFront()) {
+			$front .= '\/';
+		}
 		
 #		$this->addRoute(array('/^wp-json\/(.*)$/' => array('json_route_data')), '*/index/wpjson');
-		$this->addRoute(array('/^author\/([^\/]{1,})/' => array('author')), '*/author/view');
-		$this->addRoute(array('/^([1-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})$/' => array('year', 'month')), '*/archive/view');
-		$this->addRoute(array('/^([1-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})$/' => array('year', 'month')), '*/archive/view');
-		$this->addRoute(array('/^([1-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})\/([0-3]{1}[0-9]{1})$/' => array('year', 'month', 'day')), '*/archive/view');
-		$this->addRoute(array('/^search\/(.*)$/' => array('s')), '*/search/index');
+		$this->addRoute(array('/^' . $front . 'author\/([^\/]{1,})/' => array('author')), '*/author/view');
+		$this->addRoute(array('/^' . $front . '([1-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})$/' => array('year', 'month')), '*/archive/view');
+		$this->addRoute(array('/^' . $front . '([1-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})$/' => array('year', 'month')), '*/archive/view');
+		$this->addRoute(array('/^' . $front . '([1-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})\/([0-3]{1}[0-9]{1})$/' => array('year', 'month', 'day')), '*/archive/view');
+
+		$this->addRoute(array('/^' . $front . 'search\/(.*)$/' => array('s')), '*/search/index');
+		$this->addRoute(array('/^' . $front . 'search$/' => array('s')), '*/search/index');
 		$this->addRoute('search', '*/search/index', array('redirect_broken_url' => 1)); # Fix broken search URLs
 		$this->addRoute('/^index.php/i', '*/index/forward');
 		$this->addRoute('/^wp-content\/(.*)/i', '*/index/forwardFile');
