@@ -248,6 +248,7 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 			return $this;
 		}
 
+		
 		if (($currentPage = (int)$this->getRequest()->getParam('page')) > 1) {
 			$childBlocks = $this->getLayout()->getBlock('content')->getChild('');
 			$connection  = Mage::helper('wordpress/app')->getDbConnection();
@@ -260,6 +261,7 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 							$sqlQuery = clone $childBlock->getPostCollection()->getSelect();
 
 							$sqlQuery->reset(Zend_Db_Select::COLUMNS)
+								->reset(Zend_Db_Select::ORDER)
 								->columns(array('post_count' => new Zend_Db_Expr('COUNT(ID)')));
 
 							if ($postTypeFilter = $childBlock->getPostCollection()->getPostTypeFilter()) {
