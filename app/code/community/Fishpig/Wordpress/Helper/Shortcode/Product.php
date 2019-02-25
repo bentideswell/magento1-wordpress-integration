@@ -74,30 +74,32 @@ class Fishpig_Wordpress_Helper_Shortcode_Product extends Fishpig_Wordpress_Helpe
 						$collection->getSelect()->order('FIELD(e.entity_id, \'' . implode('\', \'', $params->getIds()) . '\')');
 					}
 					else if ($params->getAttribute() && ($params->getValue() || $params->getValueId())) {
-						if ($params->getValue()) {
-							$attribute = Mage::getSingleton('eav/config')->getAttribute('catalog_product', $params->getAttribute());
+						$attribute = Mage::getSingleton('eav/config')->getAttribute('catalog_product', $params->getAttribute());
 							
-							if (!$attribute->getSourceModel()) {
-								$params->setValueId($params->getValue());
+						if ($attribute->getId()) {
+							if ($params->getValue()) {
+								if (!$attribute->getSourceModel()) {
+									$params->setValueId($params->getValue());
+								}
+								else if ($optionId = $attribute->getSource()->getOptionId($params->getValue())) {
+									$params->setValueId($optionId);
+								}
 							}
-							else if ($optionId = $attribute->getSource()->getOptionId($params->getValue())) {
-								$params->setValueId($optionId);
+							
+							if ($params->getValueId()) {
+								$collection->addAttributeToFilter($attribute->getAttributeCode(), $params->getValueId());
 							}
-						}
-						
-						if ($params->getValueId()) {
-							$collection->addAttributeToFilter($attribute->getAttributeCode(), $params->getValueId());
-						}
-						else {
-							throw new Exception('Invalid value/value_id set for attribute in the product shortcode.');
-						}
-						
-						if ($params->getOrder()) {
-							$collection->setOrder($params->getOrder(), ($params->getDir() ? $params->getDir() : 'asc'));
-						}
-						
-						if ($params->getLimit()) {
-							$collection->setPageSize((int)$params->getLimit());
+							else {
+								throw new Exception('Invalid value/value_id set for attribute in the product shortcode.');
+							}
+
+							if ($params->getOrder()) {
+								$collection->setOrder($params->getOrder(), ($params->getDir() ? $params->getDir() : 'asc'));
+							}
+							
+							if ($params->getLimit()) {
+								$collection->setPageSize((int)$params->getLimit());
+							}
 						}
 					}
 					else if (!$params->getIds()) {
