@@ -279,6 +279,16 @@ class Fishpig_Wordpress_Controller_Router extends Mage_Core_Controller_Varien_Ro
 	 */
 	public function setRoutePath($path, array $params = array())
 	{
+		$transport = new Varien_Object(array(
+			'path' => $path,
+			'params' => $params,
+		));
+		
+		Mage::dispatchEvent('wordpress_router_set_route_path', array('transport' => $transport));
+		
+		$path = $transport->getPath();
+		$params = $transport->getParams();
+		
 		if (is_string($path)) {
 			// Legacy
 			$path = explode('/', $path);
@@ -287,7 +297,6 @@ class Fishpig_Wordpress_Controller_Router extends Mage_Core_Controller_Varien_Ro
 				'module' => $path[0] === '*' ? 'wordpress' : $path[0],
 				'controller' => $path[1],
 				'action' => $path[2],
-			
 			);
 		}
 

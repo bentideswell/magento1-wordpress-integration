@@ -161,9 +161,16 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 			$template = $post->getMetaValue('_wp_page_template');
 		}
 		
+		$isFullWidth = false;
+		
 		if ($template) {
 			$template = str_replace(array('template-', '.php'), '', $template);
 			
+			if (in_array($template, array('elementor_header_footer', 'full-width'))) {
+				$isFullWidth = true;
+				$template = '1column';
+			}
+
 			if (in_array($template, array('1column', '2columns-left', '2columns-right', '3columns'))) {
 				if ($root = $this->getLayout()->getBlock('root')) {
 					$root->setTemplate('page/' . $template . '.phtml');
@@ -178,7 +185,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 		}
 
 		if ($rootBlock = $this->getLayout()->getBlock('root')) {
-			$rootBlock->addBodyClass('wordpress-' . $post->getPostType() . '-' . $post->getId());
+			$rootBlock->addBodyClass('wordpress-' . $post->getPostType() . '-' . $post->getId() . ($isFullWidth ? ' blog-full-width' : ''));
 		}
 
 		$this->renderLayout();

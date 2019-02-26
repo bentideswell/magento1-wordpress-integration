@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+26/02/2019 - 4.6.0.14
+- Added support for Elementor Templates (Required Shortcodes & Widgets).
+
 25/02/2019 - 4.6.0.12
 - Fixed issue that broke the products shortcode when using the attribute and value arguments.
 
