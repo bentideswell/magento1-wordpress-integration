@@ -279,6 +279,15 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 				return $post;
 			}
 		}
+		else if (($pageId = $this->getRequest()->getParam('elementor-preview')) && $isPreview) {
+			$post = Mage::getModel('wordpress/post')->load($pageId);
+
+			if ($post->getId()) {
+				Mage::register('wordpress_post', $post);
+
+				return $post;
+			}
+		}
 		else if ($postId = $this->getRequest()->getParam('id')) {
 			$post = Mage::getModel('wordpress/post')
 				->setPostType($this->getRequest()->getParam('post_type', '*'))
