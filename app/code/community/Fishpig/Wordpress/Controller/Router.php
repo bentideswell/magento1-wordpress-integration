@@ -31,23 +31,21 @@ class Fishpig_Wordpress_Controller_Router extends Mage_Core_Controller_Varien_Ro
 	public function initControllerObserver(Varien_Event_Observer $observer)
 	{
 		try {
-#			Mage::helper('wordpress/app')->init();
-			
 			if ($this->isEnabled()) {
 				$routerClass = get_class($this);
 		
-		   	    $observer->getEvent()
-		   	    	->getFront()
-		   	    		->addRouter('wordpress', new $routerClass);
+				$observer->getEvent()
+					->getFront()
+						->addRouter('wordpress', new $routerClass);
 			}
 			
 			return true;
-	   	}
-	   	catch (Exception $e) {
-		   	Mage::helper('wordpress')->log($e);
-	   	}
+		}
+		catch (Exception $e) {
+			Mage::helper('wordpress')->log($e);
+		}
 
-   	    return false;
+		return false;
 	}
 	
 	/**
@@ -59,20 +57,6 @@ class Fishpig_Wordpress_Controller_Router extends Mage_Core_Controller_Varien_Ro
     public function initControllerBeforeObserver(Varien_Event_Observer $observer)
     {
 	    return $this;
-	    /*
-    	if (Mage::getDesign()->getArea() === 'frontend') {
-	    	$node = Mage::getConfig()->getNode('global/events/controller_front_init_routers/observers');
-    	
-	    	if (isset($node->blog)) {
-		    	unset($node->blog);
-
-		    	Mage::getConfig()->setNode('modules/AW_Blog/active', 'false', true);
-		    	Mage::getConfig()->setNode('frontend/routers/blog', null, true);
-		    }
-        }
-        */
-
-        return false;
     }
  
  	/**
@@ -113,6 +97,8 @@ class Fishpig_Wordpress_Controller_Router extends Mage_Core_Controller_Varien_Ro
 			$this->addRouteCallback(array($this, '_getSimpleRoutes'));
 			$this->addRouteCallback(array($this, '_getPostRoutes'));
 			$this->addRouteCallback(array($this, '_getTaxonomyRoutes'));
+
+			Mage::dispatchEvent('wordpress_match_routes_before_again', array('router' => $this, 'uri' => $uri));
 
 			if (($route = $this->_matchRoute($uri)) !== false) {
 				return $this->setRoutePath($route['path'], $route['params']);

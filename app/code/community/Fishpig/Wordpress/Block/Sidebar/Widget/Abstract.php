@@ -209,4 +209,14 @@ abstract class Fishpig_Wordpress_Block_Sidebar_Widget_Abstract extends Fishpig_W
 		
 		return $out;
 	}
+	
+	/**
+	 *
+	 *
+	 * @return int
+	 */
+	public function getWidgetId()
+	{
+		return (int)$this->getWidgetIndex();
+	}
 }
