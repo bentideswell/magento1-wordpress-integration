@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+27/03/2019 - 4.6.1.0
+- Rewritten FishPig theme
+
 12/03/2019 - 4.6.0.18
 - Yoast SEO robots tag bug fix.
 
