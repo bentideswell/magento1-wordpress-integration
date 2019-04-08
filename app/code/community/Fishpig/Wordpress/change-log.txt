@@ -4,6 +4,10 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+
+08/04/2019 - 4.6.1.5
+- Updated the WordPress theme to fix an issue with the main sidebar.
+
 08/04/2019 - 4.6.1.4
 - Fixed issue with $term->getCount(). If you pass true as the first parameter (eg. $term->getCount(true)) this now takes into account the count value for child terms too and gives a true value. This fixes issues where terms with no posts that have child terms that do have posts now correctly state the number of posts if true is passed.
 
