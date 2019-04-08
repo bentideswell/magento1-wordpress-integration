@@ -90,22 +90,12 @@ class Fishpig_Wordpress_Model_Term extends Fishpig_Wordpress_Model_Abstract
 	 *
 	 * @return Fishpig_Wordpress_Model_Mysql4_Post_Collection
 	 */    
-    public function getPostCollection()
-    {
+  public function getPostCollection()
+  {
 		return parent::getPostCollection()
 			->addIsViewableFilter()
 			->addTermIdFilter($this->getChildIds(), $this->getTaxonomy());
-    }
-      
-	/**
-	 * Retrieve the numbers of items that belong to this term
-	 *
-	 * @return int
-	 */
-	public function getItemCount()
-	{
-		return $this->getCount();
-	}
+  }
 	
 	/**
 	 * Retrieve the parent ID
@@ -181,9 +171,38 @@ class Fishpig_Wordpress_Model_Term extends Fishpig_Wordpress_Model_Abstract
 	 *
 	 * @return int
 	 */
-	public function getPostCount()
+	public function getPostCount($deep = false)
 	{
-		return (int)$this->getCount();
+		return $this->getCount($deep);
+	}
+	   
+	/**
+	 * Retrieve the numbers of items that belong to this term
+	 *
+	 * @return int
+	 */
+	public function getItemCount($deep = false)
+	{
+		return $this->getCount($deep);
+	}
+
+	/*
+	 * If $deep = true, child counts are taken into account
+	 *
+	 * @param  bool $deep = false
+	 * @return int
+	 */
+	public function getCount($deep = false)
+	{
+		if (!$deep) {
+			return (int)$this->_getData('count');
+		}
+		
+		if (!$this->hasDeepCount()) {
+			$this->setDeepCount($this->getResource()->getDeepPostCount($this));
+		}
+		
+		return (int)$this->_getData('deep_count');
 	}
 	
 	/**

@@ -2,10 +2,8 @@
 /**
  * @category    Fishpig
  * @package     Fishpig_Wordpress
- * @license     http://fishpig.co.uk/license.txt
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
-
 class Fishpig_Wordpress_Block_Sidebar_Widget_Categories extends Fishpig_Wordpress_Block_Sidebar_Widget_Abstract
 {
 	/**
@@ -17,19 +15,20 @@ class Fishpig_Wordpress_Block_Sidebar_Widget_Categories extends Fishpig_Wordpres
 	{
 		$collection = Mage::getResourceModel('wordpress/term_collection')
 			->addTaxonomyFilter($this->getTaxonomy())
-			->addParentIdFilter($this->getParentId())
-			->addHasObjectsFilter();
+			->addParentIdFilter($this->getParentId());
 
 		$collection->getSelect()->order('name ASC');
 
 		return $collection;
 	}
 	
+	/*
+	 *
+	 *
+	 */
 	public function getTaxonomy()
 	{
-		return $this->_getData('taxonomy')
-			? $this->_getData('taxonomy')
-			: 'category';
+		return $this->_getData('taxonomy') ? $this->_getData('taxonomy') : 'category';
 	}
 	
 	/**

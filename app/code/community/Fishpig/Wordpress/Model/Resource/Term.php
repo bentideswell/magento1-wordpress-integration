@@ -100,4 +100,54 @@ class Fishpig_Wordpress_Model_Resource_Term extends Fishpig_Wordpress_Model_Reso
 		
 		return array($parentId);
 	}
+
+	/*
+	 *
+	 *
+	 *
+	 */
+	public function getDeepPostCount(Fishpig_Wordpress_Model_Term $term)
+	{
+		$allIds = array($term->getId());
+		
+		if ($childIds = $this->getAllChildTermIds($allIds)) {
+			$allIds = array_merge($allIds, $childIds);
+		}
+		
+		$read = $this->_getReadAdapter();
+		
+		return (int)$read->fetchOne($read->select()
+			->distinct()
+			->from(array('rel' => $this->getTable('wordpress/term_relationship')), array('count' => new Zend_Db_Expr('COUNT(object_id)')))
+			->join(
+				array('tax' => $this->getTable('wordpress/term_taxonomy')),
+				$read->quoteInto('tax.term_taxonomy_id = rel.term_taxonomy_id AND taxonomy = ?', $term->getTaxonomy()),
+				null
+			)
+			->where('tax.term_id IN (?)', $allIds)
+		);
+	}
+
+	/*
+	 *
+	 *
+	 *
+	 */
+	public function getAllChildTermIds($parentIds)
+	{
+		$childIds = $this->_getReadAdapter()->fetchCol(
+			$this->_getReadAdapter()
+				->select()
+					->from($this->getTable('wordpress/term_taxonomy'), 'term_id')
+					->where('parent IN (?)', $parentIds)
+		);
+		
+		if ($childIds) {
+			if ($childChildIds = $this->getAllChildTermIds($childIds)) {
+				$childIds = array_merge($childIds, $childChildIds);
+			};
+		}
+		
+		return $childIds;
+	}
 }
