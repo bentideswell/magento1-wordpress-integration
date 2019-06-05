@@ -265,6 +265,9 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			}
 		
 			$assets = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer')->getAssets($bodyHtml);
+      
+      # Ensure assets are unique			
+			$assets = array_unique($assets);
 
 			if (!$isVisualEditorMode) {
 				if (!$this->_canIncludeJquery()) {
@@ -324,7 +327,10 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			if (count($assets) === 0) {
 				return $this;
 			}
-	
+
+      # Ensure assets are unique			
+			$assets = array_unique($assets);
+			
 			$baseUrl = Mage::helper('wordpress')->getBaseUrl();
 			$jsTemplate = '<script type="text/javascript" src="%s"></script>';
 
