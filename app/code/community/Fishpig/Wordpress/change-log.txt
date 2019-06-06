@@ -5,6 +5,9 @@
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
 
+06/06/2019 - 4.6.1.7
+- Updated FishPig WordPress theme
+
 05/06/2019 - 4.6.1.6
 - Fixed issue with duplicate assets being carried over from WordPress.
 

@@ -28,7 +28,9 @@ class Fishpig_Wordpress_Helper_Filter extends Fishpig_Wordpress_Helper_Abstract
 	public function applyFilters($content)
 	{
 		if (Mage::getStoreConfigFlag('wordpress/misc/autop')) {
-			$content = $this->addParagraphsToString($content);
+      if (strpos((string)$content, '<!-- wp:' ) === false) {
+  			$content = $this->addParagraphsToString($content);
+  		}
 		}
 
 		$content = $this->doShortcode($content);
