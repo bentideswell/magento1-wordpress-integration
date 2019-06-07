@@ -295,7 +295,7 @@ class FishPig_Theme
    */	
 	public function onFilterWPHeaders($headers)
 	{
-  	if (isset($headers['Content-Type'])) {
+  	if (isset($headers['Content-Type']) && strpos($headers['Content-Type'], 'text/html') !== false) {
     	unset($headers['Content-Type']);
     }
     
