@@ -53,12 +53,8 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 			$url = Mage::getSingleton('core/url')->getUrl('', $params);
 			
 			// Remove store code if 'Force Single Store' is set in configuration
-			if (Mage::getStoreConfigFlag('wordpress/integration/force_single_store')) {
-				$storeCode = Mage::getSingleton('core/url')->getStore()->getCode();
-				
-				if (strpos($url, '/' . $storeCode . '/') !== false) {
-					$url = str_replace('/' . $storeCode . '/', '/', $url);
-				}
+			if ($this->forceSingleStore()) {
+  			$url = $this->trimStoreCodeFromUrl($url);
 			}
 		}
 		else {
@@ -70,6 +66,34 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 		}
 	
 		return htmlspecialchars($url);
+	}
+	
+	
+	/**
+	 * Determine whether to force single store
+	 *
+	 * @return bool
+	 */
+	public function forceSingleStore()
+	{
+		return Mage::getStoreConfigFlag('wordpress/integration/force_single_store', Mage::helper('wordpress/app')->getStore()->getId());
+	}
+	
+	/**
+   *
+   *
+   * @param  string $url
+   * @return string
+   */
+	public function trimStoreCodeFromUrl($url)
+	{
+		$storeCode = Mage::getSingleton('core/url')->getStore()->getCode();
+		
+		if (strpos($url, '/' . $storeCode . '/') !== false) {
+			$url = str_replace('/' . $storeCode . '/', '/', $url);
+		}
+    
+    return $url;
 	}
 	
 	/*

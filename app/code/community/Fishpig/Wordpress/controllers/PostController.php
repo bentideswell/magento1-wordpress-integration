@@ -93,9 +93,17 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 			}
 		}
 
-		if ($post->isHomepagePage() && !$isHomepage) {
-			if (Mage::getUrl('', array('_current' => true, '_use_rewrite' => true)) !== Mage::helper('wordpress')->getUrl()) {
-				return $this->_redirectUrl(Mage::helper('wordpress')->getUrl());
+		if ($post->isHomepagePage() && !$isHomepage) {  		
+  		$magentoUrl = Mage::getUrl('', array('_current' => true, '_use_rewrite' => true));
+
+  		if (Mage::helper('wordpress')->forceSingleStore()) {
+    		$magentoUrl = Mage::helper('wordpress')->trimStoreCodeFromUrl($magentoUrl);
+  		}
+  		
+  		$wpUrl = Mage::helper('wordpress')->getUrl();
+
+			if ($magentoUrl !== $wpUrl) {
+				return $this->_redirectUrl($wpUrl);
 			}
 		}
 

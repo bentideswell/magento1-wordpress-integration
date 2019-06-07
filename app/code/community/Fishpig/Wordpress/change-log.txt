@@ -4,6 +4,8 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+07/06/2019 - 4.6.1.8
+- Fixed issue with redirect loop when custom page is WordPress homepage and ignore store code (force single store) is enabled.
 
 06/06/2019 - 4.6.1.7
 - Updated FishPig WordPress theme

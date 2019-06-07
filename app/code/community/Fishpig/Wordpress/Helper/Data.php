@@ -200,16 +200,6 @@ class Fishpig_Wordpress_Helper_Data extends Fishpig_Wordpress_Helper_Abstract
 	}
 	
 	/**
-	 * Determine whether to force single store
-	 *
-	 * @return bool
-	 */
-	public function forceSingleStore()
-	{
-		return Mage::getStoreConfigFlag('wordpress/integration/force_single_store', Mage::helper('wordpress/app')->getStore()->getId());
-	}
-	
-	/**
 	 * Determine whether Fishpig_WordpressMu can run
 	 *
 	 * @return bool
