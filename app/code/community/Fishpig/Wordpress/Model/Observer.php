@@ -254,6 +254,12 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 				->getResponse()
 					->getBody();
 
+    // If developer mode, allow to remove all Magento JS automatically for debugging
+    // Only allowed in developer mode
+		if (Mage::getIsDeveloperMode() && (int)Mage::app()->getRequest()->getParam('fishpig_wordpress_visual_editor_mode') === 1) {
+			$bodyHtml = preg_replace('/<script[^>]{0,}>.*<\/script>/sU', '', $bodyHtml);
+		}
+		
 		if (Mage::helper('wordpress')->isAddonInstalled('PluginShortcodeWidget')) {
 			$pswObserver = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer');
 
@@ -348,7 +354,7 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			$observer->getEvent()
 				->getFront()
 					->getResponse()
-						->setBody(str_replace('</body>', PHP_EOL . PHP_EOL . implode('', $assets) . '</body>', $bodyHtml));
+						->setBody(str_replace('</body>', PHP_EOL . PHP_EOL . implode(PHP_EOL, $assets) . '</body>', $bodyHtml));
 		}
 
 		return $this;
