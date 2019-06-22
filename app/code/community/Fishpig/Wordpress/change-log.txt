@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+22/06/2019 - 4.6.1.11
+- Updated WordPress theme to slim down assets injected.
+
 07/06/2019 - 4.6.1.9
 - Updated FishPig WordPress theme
 

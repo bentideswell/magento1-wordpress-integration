@@ -189,6 +189,11 @@ class FishPig_Theme
 				'after_title' => '</h2>',
 			));
 		}
+		
+
+    global $wp_widget_factory;
+    
+    remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 	}
 
 	/*
@@ -371,7 +376,24 @@ class FishPig_Theme
 			}
 		);
 	}
-	
+
+	/*
+   *
+   *
+   *
+   */
+	public function onActionWPFooter()
+	{
+    wp_deregister_script('wp-embed');
+    
+  	// Divi
+    if (isset($_GET['et_fb'])) {
+      wp_dequeue_style('wp-auth-check');
+      wp_dequeue_script('wp-auth-check');
+      remove_action('wp_print_footer_scripts', 'et_fb_output_wp_auth_check_html', 5);
+    }
+	}
+
 	/*
 	 *
 	 *
@@ -390,21 +412,6 @@ class FishPig_Theme
 	public function isMagento2()
 	{
 		return (int)$this->getMagentoData('version') === 2;
-	}
-	
-	/*
-   *
-   *
-   *
-   */
-	public function onActionWPFooter()
-	{
-  	// Divi
-    if (isset($_GET['et_fb'])) {
-      wp_dequeue_style('wp-auth-check');
-      wp_dequeue_script('wp-auth-check');
-      remove_action('wp_print_footer_scripts', 'et_fb_output_wp_auth_check_html', 5);
-    }
 	}
 }
 
