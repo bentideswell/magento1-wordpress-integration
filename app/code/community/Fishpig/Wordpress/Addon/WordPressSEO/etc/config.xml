@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Fishpig_Wordpress_Addon_WordPressSEO>
-			<version>1.3.1.3</version>
+			<version>1.3.1.4</version>
 			<fishpig>
 				<id>wordpress-seo</id>
 				<name>WordPress SEO</name>

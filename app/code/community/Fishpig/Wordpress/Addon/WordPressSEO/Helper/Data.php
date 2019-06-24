@@ -252,9 +252,10 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 		));
 
 		if (($value = trim($object->getMetaValue('_yoast_wpseo_title'))) !== '') {
-			$data = $this->getRewriteData();
-			$data['title'] = $value;
-			$this->setRewriteData($data);
+  		$meta->setTitle($value);
+#			$data = $this->getRewriteData();
+#			$data['title'] = $value;
+#			$this->setRewriteData($data);
 		}
 		
 		if (($value = trim($object->getMetaValue('_yoast_wpseo_metadesc'))) !== '') {
