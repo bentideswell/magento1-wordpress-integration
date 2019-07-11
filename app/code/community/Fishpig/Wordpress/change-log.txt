@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+11/07/2019 - 4.6.1.16
+- Added version to composer.json file
+
 11/07/2019 - 4.6.1.15
 - Updated FishPig WordPress theme
 
