@@ -360,14 +360,16 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
 	 */
 	public function getPostContent($context = null)
 	{
-  	$content = $this->getData('post_content');
-  	
-  	if (strpos($content, '<!-- wp:') !== false || strpos($content, 'wp-block-embed') !== false) {
-    	if ($renderedContent = $this->getMetaValue('_post_content_rendered')) {
-      	return $renderedContent;
-      }
-  	}
-  	
+    if (!Mage::helper('wordpress')->isAddonInstalled('PluginShortcodeWidget')) {
+    	$content = $this->getData('post_content');
+    	
+    	if (strpos($content, '<!-- wp:') !== false || strpos($content, 'wp-block-embed') !== false) {
+      	if ($renderedContent = $this->getMetaValue('_post_content_rendered')) {
+        	return $renderedContent;
+        }
+    	}
+    }
+    
 		$key = 'post_content' . md5(__METHOD__ . (string)$context);
 		
 		if (!$this->hasData($key)) {
