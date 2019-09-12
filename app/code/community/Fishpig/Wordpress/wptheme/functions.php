@@ -48,6 +48,11 @@ class FishPig_Theme
 		
 		$this->cleanOldFiles();
 		$this->includeLocalPhpFile();
+
+		// We have Yoast so lets disable some redirects
+    if (isset($GLOBALS['wpseo_rewrite'])) {
+      remove_filter('request', array($GLOBALS['wpseo_rewrite'], 'request'));
+    }
 	}
 
 	/*
@@ -449,6 +454,7 @@ class FishPig_Theme
 	 */
 	public function onAdminInit()
 	{
+  	/*
 		register_setting( 'reading', 'custom_404_page_id', 'esc_attr' );
 		
 		add_settings_field(
@@ -466,6 +472,7 @@ class FishPig_Theme
 			}),
 			'reading'
 		);
+		*/
 		
 		return $this;
 	}
