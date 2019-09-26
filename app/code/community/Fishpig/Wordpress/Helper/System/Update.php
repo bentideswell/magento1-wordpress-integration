@@ -36,15 +36,21 @@ class Fishpig_Wordpress_Helper_System_Update extends Mage_Core_Helper_Abstract
 	
 			$files = array();
 			$magentoBaseDir = Mage::getBaseDir();
-			
+
 			// Loop through files and change to source => target
 			foreach($fileBuffer as $file) {
-				$files[$file] = $magentoBaseDir . substr($file, strlen($unzippedDir));
+  			$baseFilename = substr($file, strlen($unzippedDir)+1);;
+  			
+        if (strpos($baseFilename, '/') === false && is_file($file)) {
+          continue;
+        }
+        
+				$files[$file] = $magentoBaseDir . '/' . $baseFilename;
 			}
-			
+
 			// Loop through and check permissions
 			$permErrors = array();
-			
+
 			foreach($files as $source => $target) {
 				if (file_exists($target) && !is_writable($target)) {
 					$permErrors[] = substr($target, strlen($magentoBaseDir)+1);

@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+26/09/2019 - 4.6.1.20
+- Improved auto update system so that it no longer overwrites your .gitignore file
+
 12/09/2019 - 4.6.1.19
 - Updated WordPress FishPig theme to fix Yoast redirect issue.
 
