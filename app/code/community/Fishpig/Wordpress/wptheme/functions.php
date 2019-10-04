@@ -232,20 +232,28 @@ class FishPig_Theme
 	public function preRenderPostContent($post_id)
 	{
   	try {
-    	$content = get_the_content(null, null, $post_id);
-    	
-    	if (function_exists('do_blocks')) {
-      	$content = do_blocks($content);
-    	}
+    	$post    = get_post($post_id);
+      $content = apply_filters('the_content', $post->post_content);
+
+#    	if (function_exists('do_blocks')) {
+#      	$content = do_blocks($content);
+#    	}
 
     	if (!empty($GLOBALS['wp_embed'])) {
         $content = $GLOBALS['wp_embed']->autoembed($content);
       }
-          
+      
+      // Auto include the related products shortcode
+      if (class_exists('FishPig_RelatedProducts')) {
+        if ((int)get_option('fprp_autoinclude', 1) === 1) {
+          $content .= '[related_products]';
+        }
+      }
+      
       update_post_meta($post_id, '_post_content_rendered', $content);
     }
     catch (Exception $e) {
-      
+
     }
 	}
 	

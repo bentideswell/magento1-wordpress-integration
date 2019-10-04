@@ -14,7 +14,7 @@
 			</div>
 		<?php endif; ?>
 		<div class="block-content">
-			<a href="<?php echo $this->getLink() ?>"<?php if ($this->getLinktarget()): ?> target="<?php echo $this->getLinktarget() ?>"<?php endif; ?>>
+			<a href="<?php echo $this->getLinkUrl() ?>"<?php if ($this->getLinktarget()): ?> target="<?php echo $this->getLinktarget() ?>"<?php endif; ?>>
 				<img src="<?php echo $this->getImageUrl() ?>" alt="<?php echo $this->getAlt() ?>" style="max-width: 100%;" />
 			</a>
 			<?php if ($this->getDescription()): ?>
