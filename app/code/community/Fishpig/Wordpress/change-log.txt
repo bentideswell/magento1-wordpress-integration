@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+15/10/2019 - 4.6.1.22
+- Added option table name and prefix to cache key for options.
+
 04/10/2019 - 4.6.1.21
 - Updated FishPig theme.
 

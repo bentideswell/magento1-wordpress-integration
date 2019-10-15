@@ -194,7 +194,9 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 			return false;
 		}
 		
-		$cacheKey = 'wp_option_' . $key;
+		$table = Mage::getSingleton('core/resource')->getTableName('wordpress/option');
+		
+		$cacheKey = $table . '_' . $key;
 		
 		if ($this->_isCached($cacheKey)) {
 			return $this->_cached($cacheKey);
@@ -204,7 +206,7 @@ class Fishpig_Wordpress_Helper_Abstract extends Mage_Core_Helper_Abstract
 
 		try {
 			$select = $db->select()
-				->from(Mage::getSingleton('core/resource')->getTableName('wordpress/option'), 'option_value')
+				->from($table, 'option_value')
 				->where('option_name = ?', $key)
 				->limit(1);
 

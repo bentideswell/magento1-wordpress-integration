@@ -369,7 +369,7 @@ class Fishpig_Wordpress_Model_Post extends Fishpig_Wordpress_Model_Abstract
         }
     	}
     }
-    
+
 		$key = 'post_content' . md5(__METHOD__ . (string)$context);
 		
 		if (!$this->hasData($key)) {
