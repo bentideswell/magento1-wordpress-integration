@@ -1,7 +1,7 @@
 {
   "name": "fishpig/magento1-wordpress-integration",
   "type": "magento-module",
-  "version": "4.6.1.22",
+  "version": "4.6.1.23",
   "homepage": "https://fishpig.co.uk/magento/wordpress-integration/",
   "description": "Magento WordPress Integration module for Magento 1 CE and Magento 1 EE.",
   "authors": [

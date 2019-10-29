@@ -317,7 +317,9 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 					continue;
 				}
 
-				if ($code = Mage::getSingleton($module . '/observer')->getAssets($bodyHtml)) {
+        $observerModel = Mage::getSingleton($module . '/observer');
+
+				if (method_exists($observerModel, 'getAssets') && ($code = $observerModel->getAssets($bodyHtml))) {
 					$code = $this->_cleanAssetArray($code);
 
 					foreach((array)$code as $asset) {
