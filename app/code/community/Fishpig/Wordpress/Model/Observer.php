@@ -353,10 +353,24 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 		}
 
 		if ($assets) {
+  		/* Move all <link stylesheet tags to the top */
+      $linkAssets = array();
+
+      foreach($assets as $it => $asset) {
+        if (strpos($asset, '<link') !== false && strpos($asset, '<script') === false) {
+          $linkAssets[] = $asset;
+          unset($assets[$it]);
+        }
+      }
+      
+      if (count($linkAssets) > 0) {
+        $assets = $linkAssets + $assets;
+      }
+
 			$observer->getEvent()
 				->getFront()
 					->getResponse()
-						->setBody(str_replace('</body>', PHP_EOL . PHP_EOL . implode(PHP_EOL, $assets) . '</body>', $bodyHtml));
+						->setBody(str_replace('</body>', PHP_EOL . implode(PHP_EOL, $assets) . PHP_EOL . '</body>', $bodyHtml));
 		}
 
 		return $this;

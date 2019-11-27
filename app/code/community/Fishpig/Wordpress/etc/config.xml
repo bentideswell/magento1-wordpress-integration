@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Fishpig_Wordpress>
-      <version>4.6.1.23</version>
+      <version>4.6.1.24</version>
     </Fishpig_Wordpress>
   </modules>
   <global>

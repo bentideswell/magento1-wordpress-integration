@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+27/11/2019 - 4.6.1.24
+- Moved Stylesheet's from WP above scripts to fix animation issue
+
 29/10/2019 - 4.6.1.23
 - Fixed issue with Observer.php and CS. Undefined method getAssets.
 
