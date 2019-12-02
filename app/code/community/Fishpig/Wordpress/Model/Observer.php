@@ -364,7 +364,7 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
       }
       
       if (count($linkAssets) > 0) {
-        $assets = $linkAssets + $assets;
+        $assets = array_merge($linkAssets, $assets);
       }
 
 			$observer->getEvent()
