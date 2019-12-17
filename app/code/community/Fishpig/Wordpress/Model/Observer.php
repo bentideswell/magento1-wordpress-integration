@@ -254,8 +254,8 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 				->getResponse()
 					->getBody();
 
-    // If developer mode, allow to remove all Magento JS automatically for debugging
-    // Only allowed in developer mode
+        // If developer mode, allow to remove all Magento JS automatically for debugging
+        // Only allowed in developer mode
 		if (Mage::getIsDeveloperMode() && (int)Mage::app()->getRequest()->getParam('fishpig_wordpress_visual_editor_mode') === 1) {
 			$bodyHtml = preg_replace('/<script[^>]{0,}>.*<\/script>/sU', '', $bodyHtml);
 		}
@@ -272,7 +272,7 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 		
 			$assets = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer')->getAssets($bodyHtml);
       
-      # Ensure assets are unique			
+            # Ensure assets are unique			
 			$assets = array_unique($assets);
 
 			if (!$isVisualEditorMode) {

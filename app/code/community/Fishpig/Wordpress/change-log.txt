@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+17/12/2019 - 4.6.1.26
+- Updated FishPig WordPress theme
+
 02/12/2019 - 4.6.1.25
 - Fixed an error that was introduced in version 4.6.1.24 (previous release) that caused a jQuery error.
 
