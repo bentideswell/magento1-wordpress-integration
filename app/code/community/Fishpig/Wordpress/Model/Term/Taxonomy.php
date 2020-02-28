@@ -106,6 +106,10 @@ class Fishpig_Wordpress_Model_Term_Taxonomy extends Varien_Object
 		return trim($this->getData('rewrite/slug'), '/');
 	}
 	
+	/**
+     * @param string $slug
+     * @return $this
+     */
 	public function setSlug($slug)
 	{
 		if (!isset($this->_data['rewrite'])) {
@@ -115,6 +119,14 @@ class Fishpig_Wordpress_Model_Term_Taxonomy extends Varien_Object
 		$this->_data['rewrite']['slug'] = $slug;
 		
 		return $this;
+	}
+	
+	/**
+     * @return bool
+     */
+	public function withFront()
+	{
+        return (int)$this->getData('rewrite/with_front') === 1;
 	}
 	
 	/**

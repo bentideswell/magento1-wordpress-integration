@@ -124,7 +124,17 @@ class Fishpig_Wordpress_Model_Term extends Fishpig_Wordpress_Model_Abstract
 	 */
 	public function getUrl()
 	{
-		return Mage::helper('wordpress')->getUrl($this->getUri() . '/');
+    	$method = $this->withFront() ? 'getUrlWithFront' : 'getUrl';
+
+		return Mage::helper('wordpress')->$method($this->getUri() . '/');
+	}
+	
+	/**
+     * @return bool
+     */
+	public function withFront()
+	{
+        return $this->getTaxonomyInstance() ? (int)$this->getTaxonomyInstance()->withFront() === 1 : false;
 	}
 	
 	/**

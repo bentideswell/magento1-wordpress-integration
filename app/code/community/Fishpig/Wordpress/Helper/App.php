@@ -403,6 +403,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 					'rewrite' => array(
 						'hierarchical' => true,
 						'slug' => $bases['category'],
+						'with_front' => true,
 					),
 					'_builtin' => true,
 				)),
@@ -417,6 +418,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 					'hierarchical' => false,
 					'rewrite' => array(
 						'slug' => $bases['post_tag'],
+						'with_front' => true,
 					),
 					'_builtin' => true,
 				))

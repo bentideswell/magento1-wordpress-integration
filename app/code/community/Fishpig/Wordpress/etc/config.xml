@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <config>
-  <modules>
-    <Fishpig_Wordpress>
-      <version>4.6.1.26</version>
-    </Fishpig_Wordpress>
-  </modules>
-  <global>
+    <modules>
+        <Fishpig_Wordpress>
+            <version>4.6.1.27</version>
+        </Fishpig_Wordpress>
+    </modules>
+    <global>
 		<events>
-      <controller_front_init_before>
-        <observers>
+            <controller_front_init_before>
+                <observers>
 					<wordpress>
 						<type>singleton</type>
 						<class>Fishpig_Wordpress_Controller_Router</class>
 						<method>initControllerBeforeObserver</method>
 					</wordpress>
-         </observers>
-       </controller_front_init_before>
+                </observers>
+            </controller_front_init_before>
             <controller_front_init_routers>
                 <observers>
 					<wordpress>
@@ -39,13 +39,6 @@
 			<wordpress>
 				<class>Fishpig_Wordpress_Block</class>
 			</wordpress>
-			<!--
-			<cms>
-				<rewrite>
-					<page>Fishpig_Wordpress_Block_Cms_Page</page>
-				</rewrite>
-			</cms>
-			-->
 		</blocks>
 		<models>
 			<core>
