@@ -150,6 +150,7 @@ class FishPig_Theme
 	public function onFilterThemeTemplates($page_templates, $wp_theme, $post)
 	{
 		return array(
+			'template-empty' => 'Empty',
 			'template-1column' => '1 Column',
 			'template-2columns-left' => '2 Columns Left',
 			'template-2columns-right' => '2 Columns Right',
@@ -281,7 +282,7 @@ class FishPig_Theme
 	
 		$nonce = substr( hash_hmac( 'sha256', $nonce_tick . '|fishpig|' . $action, $salt ), -12, 10 );
 	
-		wp_remote_get( home_url( '/wordpress/post/invalidate?id=' . $post_id . '&nonce=' . $nonce ) );
+		wp_remote_get(home_url('/wordpress/post/invalidate?id=' . $post_id . '&nonce=' . $nonce . '&time' . time()));
 	}
 
 	/*
