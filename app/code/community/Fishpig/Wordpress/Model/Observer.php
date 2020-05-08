@@ -243,6 +243,10 @@ class Fishpig_Wordpress_Model_Observer extends Varien_Object
 			return $this;	
 		}
 
+        if ((int)Mage::app()->getRequest()->getParam('amp') === 1) {
+            return $this;
+        }
+
 		$helper = Mage::helper('wordpress');
 
 		if ($helper->isApiRequest() || !$helper->isEnabled() || !$helper->isFullyIntegrated()) {

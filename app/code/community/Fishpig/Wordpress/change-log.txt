@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+08/05/2020 - 4.6.1.32
+- Stopped asset inclusion when AMP.
+
 08/05/2020 - 4.6.1.31
 - Fixed category ordering in sidebar widget.
 
