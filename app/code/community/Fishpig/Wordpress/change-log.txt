@@ -4,6 +4,10 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+04/09/2020 - 4.6.1.33
+- Fixed array_merge system.log entry
+- Suppressed errors in attachment model when unserializing.
+
 08/05/2020 - 4.6.1.32
 - Stopped asset inclusion when AMP.
 

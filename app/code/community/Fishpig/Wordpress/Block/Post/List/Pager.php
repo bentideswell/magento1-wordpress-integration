@@ -8,6 +8,11 @@
 
 class Fishpig_Wordpress_Block_Post_List_Pager extends Mage_Page_Block_Html_Pager 
 {
+    /**
+     * @var string
+     */
+    protected $baseUrl;
+    
 	/**
 	 * Construct the pager and set the limits
 	 *
@@ -50,6 +55,40 @@ class Fishpig_Wordpress_Block_Post_List_Pager extends Mage_Page_Block_Html_Pager
 		return $this;
 	}
 
+    /**
+     * @return string
+     */
+    protected function _getBaseUrl()
+    {
+        if ($this->baseUrl === null) {
+    		$baseUrl = $this->getUrl('*/*/*', array(
+    			'_current' => true,
+    			'_escape' => true,
+    			'_use_rewrite' => true,
+    			'_nosid' => true,
+    			'_query' => array('___refresh' => null),
+    		));
+
+            if (strpos($baseUrl, '/search') !== false) {
+                $oBaseUrl = Mage::helper('core/url')->getCurrentUrl();
+
+                if (strpos($oBaseUrl, 'catalogsearch') !== false) {
+                    $baseUrl = $this->getUrl('*/*/*', array(
+                        '_current' => true,
+            			'_escape' => true,
+                        '_nosid' => true,
+                        'page' => null,
+                        '_query' => array('___refresh' => null),
+                    ));
+                }
+            }
+
+            $this->baseUrl = $baseUrl;
+		}
+		
+		return $this->baseUrl;
+    }
+
 	/**
 	 * Return the URL for a certain page of the collection
 	 *
@@ -64,15 +103,7 @@ class Fishpig_Wordpress_Block_Post_List_Pager extends Mage_Page_Block_Html_Pager
 			: '';
 		
 		$slug = ltrim($slug, '/');
-
-		$baseUrl = $this->getUrl('*/*/*', array(
-			'_current' => true,
-			'_escape' => true,
-			'_use_rewrite' => true,
-			'_nosid' => true,
-			'_query' => array('___refresh' => null),
-		));
-		
+        $baseUrl = $this->_getBaseUrl();
 		$queryString = '';
 		
 		if (strpos($baseUrl, '?') !== false) {

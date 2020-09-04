@@ -32,7 +32,7 @@ abstract class Fishpig_Wordpress_Model_Post_Attachment_Abstract extends Fishpig_
 				->where('post_id=?', $this->getId())
 				->limit(1);
 
-			$data = unserialize(Mage::helper('wordpress/app')->getDbConnection()->fetchOne($select));
+			$data = @unserialize(Mage::helper('wordpress/app')->getDbConnection()->fetchOne($select));
 
 			if (is_array($data)) {
 				foreach($data as $key => $value) {

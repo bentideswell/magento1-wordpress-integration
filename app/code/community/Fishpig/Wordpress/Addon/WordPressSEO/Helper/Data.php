@@ -63,9 +63,7 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 
 			$options = Mage::helper('wordpress')->getWpOption('wpseo' . $key);
 			
-			if ($options) {
-				$options = unserialize($options);
-
+			if ($options && ($options = unserialize($options))) {
 				foreach($options as $key => $value) {
 					if (strpos($key, '-') !== false) {
 						unset($options[$key]);
@@ -73,7 +71,9 @@ class Fishpig_Wordpress_Addon_WordPressSEO_Helper_Data extends Fishpig_Wordpress
 					}
 				}
 				
-				$data = array_merge($data, $options);
+				if (is_array($options)) {
+    				$data = array_merge($data, $options);
+                }
 			}
 		}
 
