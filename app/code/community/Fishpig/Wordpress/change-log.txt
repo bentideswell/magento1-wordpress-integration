@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+09/09/2020 - 4.6.1.34
+- Fixed issue that stopped the Empty template from working.
+
 04/09/2020 - 4.6.1.33
 - Fixed array_merge system.log entry
 - Suppressed errors in attachment model when unserializing.

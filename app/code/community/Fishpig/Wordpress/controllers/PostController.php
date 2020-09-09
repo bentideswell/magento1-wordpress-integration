@@ -179,7 +179,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 				$template = '1column';
 			}
 
-			if (in_array($template, array('1column', '2columns-left', '2columns-right', '3columns'))) {
+			if (in_array($template, array('1column', '2columns-left', '2columns-right', '3columns', 'empty'))) {
 				if ($root = $this->getLayout()->getBlock('root')) {
 					$root->setTemplate('page/' . $template . '.phtml');
 				}
