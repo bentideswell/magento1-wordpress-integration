@@ -32,7 +32,10 @@ class FishPig_Theme
 		add_action('widgets_init',               array($this, 'onActionWidgetsInit'));
 		add_action('init',                       array($this, 'onActionInit'));
 		add_filter('redirect_canonical',         array($this, 'onFilterRedirectCanonical'));
-#		add_filter('preview_post_link',          array($this, 'onFilterPreviewPostLink'), 10, 2);
+		add_filter('preview_post_link',          array($this, 'onFilterPreviewPostLink'), 10, 2);
+		add_filter('page_link',                     array($this, 'onPostPageLink'));
+		add_filter('post_link',                     array($this, 'onPostPageLink'));
+		add_filter('vcv:frontend:pageEditable:url', array($this, 'onPostPageLink')); // VisualComposer
 		add_filter('rest_url',                   array($this, 'onFilterRestUrl'));
 		add_filter('status_header',              array($this, 'onFilterStatusHeader'), 10, 4);
         add_filter('wp_headers',                 array($this, 'onFilterWPHeaders'), 10, 4);
@@ -40,7 +43,10 @@ class FishPig_Theme
 	   	add_action('save_post',                  array($this, 'preRenderPostContent'));
 		add_action('admin_menu',                 array($this, 'onAdminMenu'));
 		add_filter('vc_front_render_shortcodes', array($this, 'onVcFrontRenderShortcodes'), 99999);
-		
+		add_filter('wp_calculate_image_srcset',  array($this, 'onWpCalculateImageSrcset'));
+        add_filter('wp_fatal_error_handler_enabled', '__return_false' );
+        add_filter('post_type_link',             array($this, 'onFilterPostTypeLink'), 10, 4);
+
 		if ($this->isMagento2()) {
 			add_action('save_post', array($this, 'invalidateMagento2FPC'));
 			
@@ -285,25 +291,50 @@ class FishPig_Theme
 		wp_remote_get(home_url('/wordpress/post/invalidate?id=' . $post_id . '&nonce=' . $nonce . '&time' . time()));
 	}
 
-	/*
-	 *
-	 *
-	 *
+	/**
+	 * @param string $previewLink
+	 * @param $post
+	 * @return string
 	 */
-	public function onFilterPreviewPostLink($pl, $post)
+	public function onFilterPreviewPostLink($previewLink, $post)
 	{
-		if (strpos($pl, 'nonce') !== false) {
-			if (preg_match('/nonce=([a-z0-9]{10})/', $pl, $matches)) {
-				$pl = str_replace($matches[1], substr(wp_hash(wp_nonce_tick()."|post_preview_{$post->ID}|0|", 'nonce'), -12, 10), $pl);
-			}
-		}
+    	if ($pageForPostsUrl = $this->getPageForPostsUrl()) {
+        	$queryString = substr($previewLink, strpos($previewLink, '?'));
+            $previewLink = $pageForPostsUrl . $queryString;
+    	}
 
-		return $pl . '&fishpig=' . time();
+		return $previewLink . '&fishpig=' . time();
 	}
+	
+    /**
+     *
+     */
+    public function onPostPageLink($postLink)
+    {
+        if (strpos($postLink, 'page_id=') === false && strpos($postLink, '?p=') === false) {
+            return $postLink;
+        }
 
-	/*
-	 *
-	 *
+    	$homeUrl = rtrim(get_option('home'), '/') . '/';
+    	$queryString = substr($postLink, strpos($postLink, '?'));
+        $postLink = $homeUrl . $queryString;
+
+        return $postLink . '&fishpig=' . time() . '&preview=true';
+    }
+
+    /**
+     *
+     */
+    private function getPageForPostsUrl()
+    {
+    	if ($pageForPostsId = (int)get_option('page_for_posts')) {
+            return get_permalink($pageForPostsId);
+    	} 
+    	
+    	return false;
+    }
+
+	/**
 	 *
 	 */
 	public function onFilterRestUrl($rest)
@@ -320,9 +351,7 @@ class FishPig_Theme
 		return get_option('siteurl') . '/index.php/wp-json/' . $extra;
 	}
 
-	/*
-	 *
-	 *
+	/**
 	 *
 	 */
 	public function onFilterStatusHeader($status_header, $code, $description, $protocol)
@@ -435,6 +464,14 @@ class FishPig_Theme
         }
 	}
 
+    /**
+     *
+     */
+    public function onWpCalculateImageSrcset($sources)
+    {
+        return false;
+    }
+    
 	/*
 	 *
 	 *
@@ -477,6 +514,36 @@ class FishPig_Theme
     public function onVcFrontRenderShortcodes($content)
     {
         return '<!--FP-the_content-->' . $content . '<!--/FP-the_content-->';
+    }
+
+    /**
+     *
+     */
+    public function onFilterPostTypeLink($postLink, $post)
+    {
+        if (strpos($postLink, '%') === false) {
+            return $postLink;
+        }
+    
+        if (!preg_match_all('/\/%([^%]+)%\//U', $postLink, $matches)) {
+            return $postLink;
+        }
+    
+        foreach ($matches[1] as $it => $taxonomy) {
+            $token = $matches[0][$it];
+            $change = '/';
+    
+            if ($terms = get_the_terms($post->ID, $taxonomy)) {
+                foreach ($terms as $term) {
+                    $change = '/' . $term->slug . '/';
+                    break;
+                }
+            }
+            
+            $postLink = str_replace($token, $change, $postLink);
+        }
+        
+        return $postLink;
     }
 }
 
