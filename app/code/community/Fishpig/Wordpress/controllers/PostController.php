@@ -102,7 +102,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
   		
   		$wpUrl = Mage::helper('wordpress')->getUrl();
 
-			if ($magentoUrl !== $wpUrl) {
+			if (rtrim($magentoUrl, '/') !== rtrim($wpUrl, '/')) {
 				return $this->_redirectUrl($wpUrl);
 			}
 		}

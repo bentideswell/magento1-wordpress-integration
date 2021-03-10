@@ -4,6 +4,9 @@
  * @url      https://fishpig.co.uk/magento/wordpress-integration/
  * @author   Ben Tideswell <ben@fishpig.co.uk>
  */
+10/03/2021 - 4.6.1.36
+- Added extra support for Beaver Builder
+
 09/03/2021 - 4.6.1.35
 - Updated FishPig theme for WordPress.
 

@@ -99,6 +99,15 @@ abstract class Fishpig_Wordpress_Controller_Abstract extends Mage_Core_Controlle
 			);
 		}
 		
+        if (Mage::helper('wordpress')->isAddonInstalled('PluginShortcodeWidget')) {
+            $observer = Mage::getSingleton('wp_addon_pluginshortcodewidget/observer');
+            $method = 'askWordPressToHandleRequest';
+            
+            if (method_exists($observer, $method)) {
+                $observer->$method();
+            }
+        }
+		
 		return $this;
     }
 
