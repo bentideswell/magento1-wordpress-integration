@@ -94,7 +94,7 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 		}
 
 		if ($post->isHomepagePage() && !$isHomepage) {  		
-  		$magentoUrl = Mage::getUrl('', array('_current' => true, '_use_rewrite' => true));
+  		$magentoUrl = Mage::getUrl('', array('_current' => false, '_use_rewrite' => true, '_query' => null));
 
   		if (Mage::helper('wordpress')->forceSingleStore()) {
     		$magentoUrl = Mage::helper('wordpress')->trimStoreCodeFromUrl($magentoUrl);
