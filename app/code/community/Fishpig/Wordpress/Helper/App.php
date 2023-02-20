@@ -5,7 +5,7 @@
  * @license     http://fishpig.co.uk/license.txt
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
- 
+
 class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 {
 	/*
@@ -14,21 +14,21 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 * @var bool
 	 */
 	static protected $_isInit = array();
-	
+
 	/**
 	 * App errors that occur while integrating
 	 *
 	 * @var array
-	 */	
+	 */
 	protected $_errors = array();
-	
+
 	/**
 	 * DB connection with WordPress
 	 *
 	 * @var
 	 */
 	static protected $_db = array();
-	
+
 	/**
 	 * Array of post type data
 	 *
@@ -42,7 +42,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 * @var array
 	 */
 	static protected $_taxonomies = array();
-	
+
 	/**
 	 * Holds the current store
 	 * Determines correct store if Admin
@@ -50,7 +50,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 * @var Mage_Core_Model_Store
 	 */
 	static protected $_store = null;
-	
+
 	/**
 	 * Blog ID. This is taken from Fishpig_Wordpress_Addon_Multisite
 	 *
@@ -62,7 +62,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 * Content taken from WordPress to be injected into Magento
 	 *
 	 * @var array
-	 */	
+	 */
 	protected $_contentHolder = array();
 
 	/**
@@ -71,7 +71,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	 * @var bool
 	 */
 	static protected $_tablePrefixIsWrong = false;
-	
+
 	/**
 	 *
 	 */
@@ -86,7 +86,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		 * Determine the blog ID (if Multisite)
 		**/
 		$this->getBlogId();
-		
+
 		/**
 		 * Initialise the DB
 		 */
@@ -103,18 +103,18 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		if (isset(self::$_isInit[$this->_getStoreId()])) {
 			return $this;
 		}
-		
+
 		self::$_isInit[$this->_getStoreId()] = true;
 
 		try {
 			if (Mage::helper('wordpress')->isFullyIntegrated()) {
 
 				$themeHelper = Mage::helper('wordpress/theme');
-				
+
 				if ($themeHelper->install()) {
 					$themeHelper->enable();
 				}
-				
+
 				if (!$themeHelper->isEnabled()) {
 					throw new Exception('Unable to install FishPig theme in WordPress.');
 				}
@@ -123,13 +123,13 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		catch (Exception $e) {
 			$this->addError($e->getMessage());
 		}
-		
+
 		$this->_initPostTypes();
 		$this->_initTaxonomies();
 
 		return $this;
 	}
-	
+
 	/**
 	 * Initialise the DB
 	 *
@@ -142,7 +142,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		}
 
 		self::$_db[$this->_getStoreId()] = false;
-		
+
 		/**
 		  * Before connecting to the database
 		  * Map the WordPress table names with the table prefix
@@ -176,23 +176,23 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 
 			foreach(array('username', 'password', 'dbname') as $field) {
 				if (isset($configs[$field])) {
-					$configs[$field] = Mage::helper('core')->decrypt($configs[$field]);
+					$configs[$field] = Mage::helper('core')->decrypt($configs[$field]) ?: $configs[$field];
 				}
 			}
 
 			if (!isset($configs['host']) || !$configs['host']) {
 				return $this->addError('Database host not defined.');
 			}
-			
+
 			try {
 				$connection = Mage::getSingleton('core/resource')->createConnection('wordpress', 'pdo_mysql', $configs);
-			
+
 				if (!is_object($connection)) {
 					return $this;
 				}
-				
+
 				$connection->getConnection();
-				
+
 				if (!$connection->isConnected()) {
 					return $this->addError('Unable to connect to WordPress database.');
 				}
@@ -200,7 +200,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 			catch (Exception $e) {
 				return $this->addError($e->getMessage());
 			}
-			
+
 			$db = $connection;
 		}
 		else {
@@ -227,12 +227,12 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		foreach($wordpressEntities as $entity => $table) {
 			Mage::getSingleton('core/resource')->setMappedTableName((string)$table->table, $tablePrefix . $table->table);
 		}
-		
+
 		self::$_db[$this->_getStoreId()] = $db;
-		
+
 		return $this;
 	}
-	
+
 	/**
 	 * Initialise the post type data
 	 *
@@ -241,13 +241,13 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	protected function _initPostTypes()
 	{
 		if (isset(self::$_postTypes[$this->_getStoreId()]) && !is_null(self::$_postTypes[$this->_getStoreId()])) {
-			return $this;	
+			return $this;
 		}
 
 		self::$_postTypes[$this->_getStoreId()] = false;
 
 		$transportObject = new Varien_Object(array('post_types' => false));
-		
+
 		Mage::dispatchEvent('wordpress_app_init_post_types', array('transport' => $transportObject, 'helper' => $this));
 
 		if ($transportObject->getPostTypes()) {
@@ -270,28 +270,28 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 				))
 			);
 		}
-		
+
 		$transportObject = new Varien_Object(array('post_types' => self::$_postTypes[$this->_getStoreId()]));
-		
+
 		Mage::dispatchEvent('wordpress_app_init_post_types_after', array('transport' => $transportObject, 'helper' => $this));
-		
+
 		self::$_postTypes[$this->_getStoreId()] = $transportObject->getPostTypes();
 
 		return $this;
 	}
-	
+
 	/**
 	 * Get the DB connection
 	 *
-	 * @return 
-	 */	
+	 * @return
+	 */
 	public function getDbConnection()
 	{
 		$this->_initDb();
 
 		return self::$_db[$this->_getStoreId()];
 	}
-	
+
 	/**
 	 * Get the post type array
 	 *
@@ -300,10 +300,10 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	public function getPostTypes()
 	{
 		$this->init();
-		
+
 		return self::$_postTypes[$this->_getStoreId()];
 	}
-	
+
 	/**
 	 * Get a single post type
 	 *
@@ -313,7 +313,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	public function getPostType($type)
 	{
 		$this->init();
-		
+
 		return isset(self::$_postTypes[$this->_getStoreId()][$type])
 			? self::$_postTypes[$this->_getStoreId()][$type]
 			: false;
@@ -327,10 +327,10 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	public function getTaxonomies()
 	{
 		$this->init();
-		
+
 		return self::$_taxonomies[$this->_getStoreId()];
 	}
-	
+
 	/**
 	 * Get a taxonomy
 	 *
@@ -340,12 +340,12 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	public function getTaxonomy($taxonomy)
 	{
 		$this->init();
-		
+
 		return isset(self::$_taxonomies[$this->_getStoreId()][$taxonomy])
 			? self::$_taxonomies[$this->_getStoreId()][$taxonomy]
 			: false;
 	}
-	
+
 	/**
 	 * Initialise the taxonomy data
 	 *
@@ -356,13 +356,13 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		if (isset(self::$_taxonomies[$this->_getStoreId()]) && !is_null(self::$_taxonomies[$this->_getStoreId()])) {
 			return $this;
 		}
-		
+
 		self::$_taxonomies[$this->_getStoreId()] = false;
-					
+
 		$transportObject = new Varien_Object(array('taxonomies' => false));
-		
+
 		Mage::dispatchEvent('wordpress_app_init_taxonomies', array('transport' => $transportObject));
-		
+
 		if ($transportObject->getTaxonomies()) {
 			self::$_taxonomies[$this->_getStoreId()] = $transportObject->getTaxonomies();
 		}
@@ -378,14 +378,14 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 
 			foreach($bases as $baseType => $base) {
 				if ($blogPrefix && $base && strpos($base, '/blog') === 0) {
-					$bases[$baseType] = substr($base, strlen('/blog'));	
+					$bases[$baseType] = substr($base, strlen('/blog'));
 				}
 			}
-			
+
 			if (!$bases['category']) {
 				$bases['category'] = 'category';
 			}
-			
+
 			if (!$bases['post_tag']) {
 				$bases['post_tag'] = 'tag';
 			}
@@ -427,21 +427,21 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 
 		if (isset(self::$_taxonomies[$this->_getStoreId()]['category'])) {
 			$helper = Mage::helper('wordpress');
-			
+
 			$canRemoveCategoryPrefix = $helper->isPluginEnabled('wp-no-category-base/no-category-base.php')
 				|| $helper->isPluginEnabled('wp-remove-category-base/wp-remove-category-base.php')
 				|| $helper->isPluginEnabled('remove-category-url/remove-category-url.php')
 				|| Mage::helper('wp_addon_wordpressseo')->canRemoveCategoryBase();
-			
+
 			if ($canRemoveCategoryPrefix) {
 				self::$_taxonomies[$this->_getStoreId()]['category']->setSlug('');
 			}
 		}
-		
+
 		$transportObject = new Varien_Object(array('taxonomies' => self::$_taxonomies[$this->_getStoreId()]));
-		
+
 		Mage::dispatchEvent('wordpress_app_init_taxonomies_after', array('transport' => $transportObject, 'helper' => $this));
-		
+
 		self::$_taxonomies[$this->_getStoreId()] = $transportObject->getTaxonomies();
 
 		return $this;
@@ -456,7 +456,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	{
 		return Mage::getStoreConfig('wordpress/database/table_prefix', $this->getStore()->getId());
 	}
-	
+
 	/**
 	 * Get the blog ID
 	 *
@@ -465,16 +465,16 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	public function getBlogId()
 	{
 		$storeId = $this->getStore()->getId();
-		
+
 		if (!isset(self::$_blogId[$storeId])) {
-			self::$_blogId[$storeId] = Mage::getStoreConfigFlag('wordpress/mu/enabled', $storeId) 
+			self::$_blogId[$storeId] = Mage::getStoreConfigFlag('wordpress/mu/enabled', $storeId)
 				? (int)Mage::getStoreConfig('wordpress/mu/blog_id', $storeId)
 				: 1;
 		}
 
 		return (int)self::$_blogId[$storeId] > 0 ? self::$_blogId[$storeId] : 1;
 	}
-	
+
 	/**
 	 * Add an error message to the inernal errors array
 	 *
@@ -484,7 +484,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	public function addError($msg)
 	{
 		$this->_errors[] = $msg;
-		
+
 		return $this;
 	}
 
@@ -498,7 +498,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	{
 		return Mage::getSingleton('core/resource')->getTableName($entity);
 	}
-	
+
 	/**
 	 * Get the current store
 	 *
@@ -509,7 +509,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		if (isset(self::$_store[$this->_getStoreId()]) && self::$_store[$this->_getStoreId()] === false) {
 			return Mage::app()->getStore();
 		}
-		
+
 		self::$_store[$this->_getStoreId()] = Mage::app()->getStore();
 
 		if (Mage::app()->getStore()->getCode() === 'admin') {
@@ -523,15 +523,15 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 			else {
 				self::$_store[$this->_getStoreId()] = $this->getDefaultStore(Mage::app()->getRequest()->getParam('website', null));
 			}
-			
+
 			if (!self::$_store[$this->_getStoreId()]) {
 				self::$_store[$this->_getStoreId()] = Mage::app()->getStore();
 			}
 		}
-		
+
 		return self::$_store[$this->_getStoreId()];
-	}	
-	
+	}
+
 	/**
 	 * Add content from WP to the Magento footer
 	 *
@@ -548,16 +548,16 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 		else {
 			$content = implode("\n", $content);
 		}
-		
+
 		$key = md5(trim($content));
-		
+
 		if (!isset($this->_contentHolder[$key])) {
 			$this->_contentHolder[$key] = $content;
 		}
-		
+
 		return $this;
 	}
-	
+
 	/**
 	 * Get the WordPress content
 	 *
@@ -577,14 +577,14 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 			if (!$head || strpos(implode(',', array_keys($headBlock->getItems())), 'underscore') === false) {
 				array_shift($content, sprintf($jsTemplate, $helper->getBaseUrl('wp-includes/js/underscore.min.js?ver=1.6.0')));
 			}
-			
-			array_shift($content, sprintf($jsTemplate, $helper->getBaseUrl('wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1')));			
+
+			array_shift($content, sprintf($jsTemplate, $helper->getBaseUrl('wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1')));
 			array_shift($content, sprintf($jsTemplate, $helper->getBaseUrl('wp-includes/js/jquery/jquery.js?ver=1.11.3')));
 		}
 
 		return implode("\n", $content);
 	}
-	
+
 	/**
 	 * Get the currently set store ID
 	 *
@@ -594,7 +594,7 @@ class Fishpig_Wordpress_Helper_App extends Fishpig_Wordpress_Helper_Abstract
 	{
 		return (int)Mage::app()->getStore()->getId();
 	}
-	
+
 	/**
 	 * @return bool
 	 */
